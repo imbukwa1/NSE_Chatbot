@@ -1,0 +1,14 @@
+{
+  "SCOM": {
+    "name": "Safaricom",
+    "price": 18.50,
+    "pe_ratio": 12.5,
+    "dividend_yield": 0.065
+  },
+  "KQ": {
+    "name": "Kenya Airways",
+    "price": 4.20,
+    "pe_ratio": -5.3,
+    "dividend_yield": 0.0
+  }
+}
