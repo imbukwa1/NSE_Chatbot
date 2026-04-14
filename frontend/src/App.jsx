@@ -5,6 +5,7 @@ import InputBar from './components/InputBar.jsx'
 import PriceChart from './components/PriceChart.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import StockInfoCard from './components/StockInfoCard.jsx'
+import { useNissy } from './hooks/useNissy.js'
 
 const API_URL = 'http://127.0.0.1:8000/chat'
 const DISCLAIMER = 'This is not financial advice.'
@@ -57,7 +58,7 @@ const createWelcomeMessage = () => ({
   type: 'ai_response',
   data: {
     message:
-      'Welcome to NSE AI Advisor. Ask about price, valuation, risk, dividend yield, or compare two NSE-listed counters.',
+      'Welcome to NSE AI Advisor. Ask about price, valuation, risk, dividend yield, or compare 2-4 NSE-listed counters.',
     disclaimer: DISCLAIMER,
   },
 })
@@ -76,6 +77,7 @@ function App() {
   const [conversations, setConversations] = useState([createConversation()])
   const [activeConversationId, setActiveConversationId] = useState(null)
   const [voiceSupported, setVoiceSupported] = useState(false)
+  const { speak, voiceEnabled, setVoiceEnabled } = useNissy()
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
   const isRecognitionActiveRef = useRef(false)
@@ -238,6 +240,7 @@ function App() {
   }
 
   const sendMessage = async (messageText) => {
+    console.log("Sending query:", messageText)
     const trimmedQuery = messageText.trim()
     if (!trimmedQuery || isLoading || !activeConversation) {
       return
@@ -263,13 +266,27 @@ function App() {
     setIsLoading(true)
 
     try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: trimmedQuery }),
-      })
+      // Create AbortController with 30-second timeout
+      const controller = new AbortController()
+      const timeout = setTimeout(() => {
+        console.warn("30-second fetch timeout triggered")
+        controller.abort()
+      }, 30000)
+
+      console.log("Fetch fired")
+      let response
+      try {
+        response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query: trimmedQuery }),
+          signal: controller.signal,
+        })
+      } finally {
+        clearTimeout(timeout)
+      }
 
       if (!response.ok) {
         throw new Error('Unable to reach the NSE AI Advisor backend.')
@@ -278,13 +295,24 @@ function App() {
       const contentType = response.headers.get('content-type') || ''
       if (contentType.includes('application/json')) {
         const payload = await response.json()
+        console.log("JSON response received:", payload)
 
+        const messageData = buildAssistantData(payload)
+        console.log("Built assistant data:", messageData)
+        
         appendMessage({
           id: crypto.randomUUID(),
           role: 'assistant',
           type: payload.type ?? 'ai_response',
-          data: buildAssistantData(payload),
+          data: messageData,
         })
+
+        // Read response aloud if Nissy voice is enabled
+        const messageText =
+          payload.message || payload.data?.message || ''
+        if (messageText) {
+          speak(messageText)
+        }
         return
       }
 
@@ -337,20 +365,46 @@ function App() {
               }
             })
           }
+
+          if (item.event === 'done') {
+            // Read the complete response aloud if Nissy voice is enabled
+            updateMessage(assistantMessageId, (message) => {
+              const finalText = message.data.message || ''
+              if (finalText) {
+                speak(finalText)
+              }
+              return message
+            })
+          }
         }
       }
     } catch (error) {
-      appendMessage({
-        id: crypto.randomUUID(),
-        role: 'assistant',
-        type: 'ai_response',
-        data: {
-          message:
-            error.message ||
-            'There was a problem processing your request. Please try again.',
-          disclaimer: DISCLAIMER,
-        },
-      })
+      console.error("Request error:", error.name, error.message)
+      
+      // Handle AbortError (timeout) separately
+      if (error.name === 'AbortError') {
+        appendMessage({
+          id: crypto.randomUUID(),
+          role: 'assistant',
+          type: 'ai_response',
+          data: {
+            message: 'Request timed out after 30 seconds. The backend may be overloaded. Please try again.',
+            disclaimer: DISCLAIMER,
+          },
+        })
+      } else {
+        appendMessage({
+          id: crypto.randomUUID(),
+          role: 'assistant',
+          type: 'ai_response',
+          data: {
+            message:
+              error.message ||
+              'There was a problem processing your request. Please try again.',
+            disclaimer: DISCLAIMER,
+          },
+        })
+      }
     } finally {
       setIsLoading(false)
     }
@@ -367,15 +421,30 @@ function App() {
     <div className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.12),_transparent_36%),linear-gradient(180deg,_#f6f6fb_0%,_#f3f2f9_55%,_#efedf6_100%)] text-slate-900">
       <div className="mx-auto flex min-h-screen max-w-[1640px] min-w-0 flex-col px-0 pb-6 pt-0 lg:px-0">
         <header className="border-b border-slate-200/80 bg-white/70 px-6 py-10 backdrop-blur sm:px-8 lg:px-12">
-          <div className="flex items-center gap-4">
-            <span className="text-4xl font-semibold tracking-tight text-blue-600">
-              NSE
-            </span>
-            <span className="text-4xl font-light tracking-tight text-slate-700">
-              AI Advisor
-            </span>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-4xl font-semibold tracking-tight text-blue-600">
+                NSE
+              </span>
+              <span className="text-4xl font-light tracking-tight text-slate-700">
+                AI Advisor
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setVoiceEnabled(!voiceEnabled)}
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
+                voiceEnabled
+                  ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+              title="Toggle Nissy voice output"
+            >
+              <span className="text-lg">🎤</span>
+              <span>Nissy {voiceEnabled ? 'On' : 'Off'}</span>
+            </button>
           </div>
-          </header>
+        </header>
         <div className="flex min-w-0 flex-1 flex-col lg:flex-row">
           <section className="flex min-w-0 w-full flex-col border-r border-slate-200/70 bg-white/10 lg:w-4/5">
             <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-7">
@@ -393,30 +462,49 @@ function App() {
                   )}
 
                   {activeConversation?.messages.map((message) => (
-                    <ChatBubble key={message.id} role={message.role}>
-                      {message.role === 'user' ? (
-                        <p className="whitespace-pre-wrap break-words text-sm leading-7 [overflow-wrap:anywhere] sm:text-[15px]">
-                          {message.data.message}
-                        </p>
-                      ) : (
-                        <>
-                          {message.type === 'stock_info' && (
-                            <div className="space-y-4">
-                              <StockInfoCard data={message.data} />
-                              <PriceChart stock={message.data} />
-                            </div>
-                          )}
-                          {message.type === 'comparison' && (
-                            <div className="space-y-4">
-                              <ComparisonTable data={message.data} />
-                              <PriceChart
-                                stock1={message.data.stock1}
-                                stock2={message.data.stock2}
-                              />
-                            </div>
-                          )}
-                          {message.type !== 'stock_info' &&
-                            message.type !== 'comparison' && (
+                    <div key={message.id} className="group flex gap-2">
+                      <ChatBubble role={message.role}>
+                        {message.role === 'user' ? (
+                          <p className="whitespace-pre-wrap break-words text-sm leading-7 [overflow-wrap:anywhere] sm:text-[15px]">
+                            {message.data.message}
+                          </p>
+                        ) : (
+                          <div>
+                            {/* Stock Info Response */}
+                            {message.type === 'stock_info' && message.data.ticker && (
+                              <div className="space-y-4">
+                                <StockInfoCard data={message.data} />
+                                <PriceChart stock={message.data} />
+                                {message.data.message && (
+                                  <p className="text-sm text-slate-600 italic">
+                                    {message.data.message}
+                                  </p>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Comparison Response */}
+                            {message.type === 'comparison' && message.data.stocks && (
+                              <div className="space-y-4">
+                                <ComparisonTable data={message.data} />
+                                {message.data.stocks.length > 0 && (
+                                  <PriceChart
+                                    stock={message.data.stocks[0]}
+                                    title={`${message.data.stocks.map(s => s.ticker).join(' vs ')} - 12 Month Price History`}
+                                  />
+                                )}
+                                {message.data.message && (
+                                  <p className="text-sm text-slate-600 italic">
+                                    {message.data.message}
+                                  </p>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Text Response (Analysis, Error, etc) */}
+                            {message.type !== 'stock_info' && 
+                             message.type !== 'comparison' && 
+                             message.data.message && (
                               <div className="space-y-3">
                                 <p className="whitespace-pre-wrap break-words text-sm leading-7 text-slate-700 [overflow-wrap:anywhere] sm:text-[15px]">
                                   {message.data.message}
@@ -428,9 +516,34 @@ function App() {
                                 )}
                               </div>
                             )}
-                        </>
+
+                            {/* Debug: Show if nothing rendered */}
+                            {!message.data.message && 
+                             !message.data.ticker && 
+                             !message.data.stocks && (
+                              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-700">
+                                <p className="font-mono font-bold">⚠️ Debug Info</p>
+                                <p>Type: <code>{message.type}</code></p>
+                                <p>Data Keys: <code>{Object.keys(message.data || {}).join(', ')}</code></p>
+                                <p>Full Data: <code className="text-[10px]">{JSON.stringify(message.data).substring(0, 200)}...</code></p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </ChatBubble>
+
+                      {message.role === 'assistant' && message.data.message && (
+                        <button
+                          type="button"
+                          onClick={() => speak(message.data.message)}
+                          className="invisible mb-4 mt-1 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-200 text-slate-600 transition hover:bg-slate-300 group-hover:visible"
+                          title="Read message aloud"
+                          aria-label="Read message aloud"
+                        >
+                          <span className="text-lg">🔊</span>
+                        </button>
                       )}
-                    </ChatBubble>
+                    </div>
                   ))}
 
                   {isLoading && (

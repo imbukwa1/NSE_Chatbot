@@ -93,9 +93,9 @@ def classify_query(query: str) -> dict[str, str]:
     """Classify routing with GPT, falling back to local rules if OpenAI is unavailable."""
     try:
         client = get_openai_client()
-        response = client.responses.create(
+        response = client.chat.completions.create(
             model=DEFAULT_CHAT_MODEL,
-            input=[
+            messages=[
                 {
                     "role": "system",
                     "content": (
@@ -109,9 +109,9 @@ def classify_query(query: str) -> dict[str, str]:
                 {"role": "user", "content": query},
             ],
             temperature=0,
-            max_output_tokens=CLASSIFIER_MAX_TOKENS,
+            max_tokens=CLASSIFIER_MAX_TOKENS,
         )
-        text = _extract_response_text(response)
+        text = response.choices[0].message.content.strip()
         parsed = json.loads(text)
         classification_type = parsed.get("type")
         if classification_type in {"price", "compare", "analysis"}:
@@ -125,14 +125,14 @@ def classify_query(query: str) -> dict[str, str]:
 def generate_response(prompt: str) -> str:
     client = get_openai_client()
 
-    response = client.responses.create(
+    response = client.chat.completions.create(
         model=DEFAULT_CHAT_MODEL,
-        input=_build_input(prompt),
+        messages=_build_input(prompt),
         temperature=DEFAULT_TEMPERATURE,
-        max_output_tokens=DEFAULT_MAX_TOKENS,
+        max_tokens=DEFAULT_MAX_TOKENS,
     )
 
-    text = _extract_response_text(response)
+    text = response.choices[0].message.content.strip()
     if not text:
         raise RuntimeError("OpenAI returned an empty response.")
 
@@ -143,18 +143,17 @@ def generate_stream_response(prompt: str) -> Iterator[str]:
     client = get_openai_client()
     accumulated = ""
 
-    stream = client.responses.create(
+    stream = client.chat.completions.create(
         model=DEFAULT_CHAT_MODEL,
-        input=_build_input(prompt),
+        messages=_build_input(prompt),
         temperature=DEFAULT_TEMPERATURE,
-        max_output_tokens=DEFAULT_MAX_TOKENS,
+        max_tokens=DEFAULT_MAX_TOKENS,
         stream=True,
     )
 
-    for event in stream:
-        event_type = getattr(event, "type", "")
-        if event_type == "response.output_text.delta":
-            delta = getattr(event, "delta", "")
+    for chunk in stream:
+        if chunk.choices and chunk.choices[0].delta.content:
+            delta = chunk.choices[0].delta.content
             if delta:
                 accumulated += delta
                 yield delta

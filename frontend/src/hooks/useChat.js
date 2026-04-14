@@ -130,54 +130,58 @@ export function useChat() {
       const decoder = new TextDecoder()
       let buffer = ''
 
-      while (true) {
-        const { value, done } = await reader.read()
-        if (done) break
+      try {
+        while (true) {
+          const { value, done } = await reader.read()
+          if (done) break
 
-        buffer += decoder.decode(value, { stream: true })
-        const parsed = parseSseBuffer(buffer)
-        buffer = parsed.remainder
+          buffer += decoder.decode(value, { stream: true })
+          const parsed = parseSseBuffer(buffer)
+          buffer = parsed.remainder
 
-        for (const item of parsed.events) {
-          if (item.event === 'metadata') {
-            const payload = JSON.parse(item.data)
-            updateMessage(assistantMessageId, (message) => ({
-              ...message,
-              type: payload.type,
-              data: payload.data || {},
-              disclaimer: payload.disclaimer || DISCLAIMER,
-            }))
-          }
-
-          if (item.event === 'token') {
-            updateMessage(assistantMessageId, (message) => {
-              const nextMessage = `${message.message}${item.data}`
-              const nextData =
-                message.type === 'comparison'
-                  ? {
-                      ...message.data,
-                      scorecard: {
-                        ...(message.data.scorecard || {}),
-                        analysis: nextMessage,
-                      },
-                    }
-                  : message.data
-
-              return {
+          for (const item of parsed.events) {
+            if (item.event === 'metadata') {
+              const payload = JSON.parse(item.data)
+              updateMessage(assistantMessageId, (message) => ({
                 ...message,
-                message: nextMessage,
-                data: nextData,
-              }
-            })
-          }
+                type: payload.type,
+                data: payload.data || {},
+                disclaimer: payload.disclaimer || DISCLAIMER,
+              }))
+            }
 
-          if (item.event === 'done') {
-            updateMessage(assistantMessageId, (message) => ({
-              ...message,
-              isStreaming: false,
-            }))
+            if (item.event === 'token') {
+              updateMessage(assistantMessageId, (message) => {
+                const nextMessage = `${message.message}${item.data}`
+                const nextData =
+                  message.type === 'comparison'
+                    ? {
+                        ...message.data,
+                        scorecard: {
+                          ...(message.data.scorecard || {}),
+                          analysis: nextMessage,
+                        },
+                      }
+                    : message.data
+
+                return {
+                  ...message,
+                  message: nextMessage,
+                  data: nextData,
+                }
+              })
+            }
+
+            if (item.event === 'done') {
+              updateMessage(assistantMessageId, (message) => ({
+                ...message,
+                isStreaming: false,
+              }))
+            }
           }
         }
+      } finally {
+        reader.cancel()
       }
     } catch (error) {
       appendMessage({

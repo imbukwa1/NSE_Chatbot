@@ -19,23 +19,30 @@ from services.structured_data import get_stock_data, load_stock_data
 
 app = FastAPI()
 
+# ── CORS ──────────────────────────────────────────────────────────────────────
+# Covers Vite's default ports (5173 / 5174) and CRA's port (3000).
+# Add your production domain here before deploying.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
         "http://localhost:5173",
-        "http://127.0.0.1:4173",
-        "http://localhost:4173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",       # ← was missing — caused "Failed to fetch"
+        "http://127.0.0.1:5174",       # ← was missing
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ── Constants ─────────────────────────────────────────────────────────────────
 DISCLAIMER_TEXT = "This is not financial advice."
 PINECONE_NAMESPACES = ("annual_reports", "news", "macro")
-STOCK_CACHE_TTL_SECONDS = 60
+STOCK_CACHE_TTL_SECONDS = 3600
 _stock_cache: dict[tuple[str, bool], tuple[float, dict[str, Any] | None]] = {}
+
 PRICE_INTENT_PATTERNS = (
     r"\bprice\b",
     r"\bprices\b",
@@ -62,6 +69,7 @@ ANALYSIS_INTENT_PATTERNS = (
 COMPARE_INTENT_PATTERNS = (r"\bcompare\b", r"\bversus\b", r"\bvs\b")
 
 
+# ── Request models ────────────────────────────────────────────────────────────
 class ChatRequest(BaseModel):
     query: str
 
@@ -71,6 +79,7 @@ class CompareRequest(BaseModel):
     ticker2: str
 
 
+# ── Helpers ───────────────────────────────────────────────────────────────────
 async def _get_cached_stock_data(
     ticker: str, include_history: bool = False
 ) -> dict[str, Any] | None:
@@ -81,23 +90,25 @@ async def _get_cached_stock_data(
         if time.time() - cached_at < STOCK_CACHE_TTL_SECONDS:
             return cached_payload
 
+    # Get data from structured_data (uses yfinance with 3-sec timeout, falls back to seed)
     payload = await asyncio.to_thread(
         get_stock_data, ticker, include_history=include_history
     )
-    _stock_cache[cache_key] = (time.time(), payload)
+    
+    if payload:
+        _stock_cache[cache_key] = (time.time(), payload)
+    
     return payload
 
 
 async def _classify_query(user_query: str) -> str:
     lowered_query = user_query.lower()
-    if any(re.search(pattern, lowered_query) for pattern in COMPARE_INTENT_PATTERNS):
+    if any(re.search(p, lowered_query) for p in COMPARE_INTENT_PATTERNS):
         return "compare"
-    if any(re.search(pattern, lowered_query) for pattern in PRICE_INTENT_PATTERNS):
-        if not any(re.search(pattern, lowered_query) for pattern in ANALYSIS_INTENT_PATTERNS):
+    if any(re.search(p, lowered_query) for p in PRICE_INTENT_PATTERNS):
+        if not any(re.search(p, lowered_query) for p in ANALYSIS_INTENT_PATTERNS):
             return "price"
-
-    classification = await asyncio.to_thread(classify_query, user_query)
-    return classification.get("type", "analysis")
+    return "analysis"
 
 
 async def _query_namespace(namespace: str, query: str) -> list[dict]:
@@ -114,7 +125,7 @@ async def _query_namespace(namespace: str, query: str) -> list[dict]:
 
 async def _query_all_namespaces(query: str) -> list[dict]:
     namespace_results = await asyncio.gather(
-        *[_query_namespace(namespace, query) for namespace in PINECONE_NAMESPACES]
+        *[_query_namespace(ns, query) for ns in PINECONE_NAMESPACES]
     )
     matches: list[dict] = []
     for namespace, records in zip(PINECONE_NAMESPACES, namespace_results):
@@ -130,7 +141,6 @@ def _build_structured_response(stock: dict[str, Any]) -> dict[str, Any]:
         if price is not None
         else f"A live price for {stock['name']} is currently unavailable."
     )
-
     return {
         "type": "stock_info",
         "data": {
@@ -147,18 +157,18 @@ def _build_structured_response(stock: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-async def _build_supported_prices_response(include_history: bool = False) -> dict[str, Any]:
+async def _build_supported_prices_response(
+    include_history: bool = False,
+) -> dict[str, Any]:
     tickers = list(load_stock_data().keys())
     stocks = await asyncio.gather(
-        *[
-            _get_cached_stock_data(ticker, include_history=include_history)
-            for ticker in tickers
-        ]
+        *[_get_cached_stock_data(t, include_history=include_history) for t in tickers]
     )
-    valid_stocks = [stock for stock in stocks if stock]
+    valid_stocks = [s for s in stocks if s]
     price_lines = [
-        f"{stock['name']} ({stock['ticker']}): KES {stock['price']:.2f} [{stock.get('source', 'fallback')}]"
-        for stock in valid_stocks
+        f"{s['name']} ({s['ticker']}): KES {s['price']:.2f} [{s.get('source', 'fallback')}]"
+        for s in valid_stocks
+        if s.get("price") is not None
     ]
     return {
         "type": "stock_list",
@@ -169,21 +179,15 @@ async def _build_supported_prices_response(include_history: bool = False) -> dic
 
 
 def _format_percent(value: float | None) -> str:
-    if value is None:
-        return "N/A"
-    return f"{value * 100:.2f}%"
+    return "N/A" if value is None else f"{value * 100:.2f}%"
 
 
 def _format_ratio(value: float | None) -> str:
-    if value is None:
-        return "N/A"
-    return f"{value:.2f}"
+    return "N/A" if value is None else f"{value:.2f}"
 
 
 def _format_currency(value: float | None) -> str:
-    if value is None:
-        return "N/A"
-    return f"KES {value:.2f}"
+    return "N/A" if value is None else f"KES {value:.2f}"
 
 
 def _has_openai_key() -> bool:
@@ -194,12 +198,10 @@ def _trend_label(stock: dict[str, Any]) -> str:
     history = stock.get("history", [])
     if len(history) < 2:
         return "limited price-history signal"
-
     first_price = history[0].get("price")
     latest_price = history[-1].get("price")
     if first_price is None or latest_price is None:
         return "limited price-history signal"
-
     if latest_price > first_price:
         return "upward over the available period"
     if latest_price < first_price:
@@ -218,16 +220,16 @@ def _risk_level(stock: dict[str, Any]) -> str:
     return "Moderate to high"
 
 
-def _build_local_analysis_message(user_query: str, stocks: list[dict[str, Any]]) -> str:
+def _build_local_analysis_message(
+    user_query: str, stocks: list[dict[str, Any]]
+) -> str:
     if not stocks:
         return (
             "I can analyse supported NSE counters such as Safaricom, KQ, Equity Group, "
             "or EABL. Please mention a specific counter so I can provide a grounded view."
         )
-
     stock = stocks[0]
-    strengths = []
-    weaknesses = []
+    strengths, weaknesses = [], []
     dividend_yield = stock.get("dividend_yield")
     pe_ratio = stock.get("pe_ratio")
 
@@ -243,7 +245,9 @@ def _build_local_analysis_message(user_query: str, stocks: list[dict[str, Any]])
     if pe_ratio is None:
         weaknesses.append("valuation visibility is limited")
     if stock.get("ticker") == "KQ":
-        weaknesses.append("airline earnings can be volatile and sensitive to fuel, FX, and debt costs")
+        weaknesses.append(
+            "airline earnings can be volatile and sensitive to fuel, FX, and debt costs"
+        )
 
     return (
         f"{stock['name']} ({stock['ticker']}) is shown at {_format_currency(stock.get('price'))} "
@@ -254,67 +258,85 @@ def _build_local_analysis_message(user_query: str, stocks: list[dict[str, Any]])
     )
 
 
-def _build_local_comparison_analysis(stock1: dict[str, Any], stock2: dict[str, Any]) -> str:
-    dividend1 = stock1.get("dividend_yield") or 0
-    dividend2 = stock2.get("dividend_yield") or 0
-    preferred = stock1 if dividend1 >= dividend2 and stock1.get("pe_ratio") is not None else stock2
-
+def _build_local_comparison_analysis(
+    stocks: list[dict[str, Any]]
+) -> str:
+    if not stocks:
+        return "No stocks provided for comparison."
+    
+    # Find best performer by highest dividend yield with non-null P/E ratio
+    preferred = None
+    max_yield = -1
+    for stock in stocks:
+        yield_val = stock.get("dividend_yield") or 0
+        if yield_val > max_yield and stock.get("pe_ratio") is not None:
+            max_yield = yield_val
+            preferred = stock
+    
+    if not preferred:
+        preferred = stocks[0]
+    
+    # Build comparison text for all stocks
+    price_lines = []
+    for stock in stocks:
+        price_lines.append(
+            f"{stock['ticker']}: {stock['name']} at {_format_currency(stock.get('price'))}"
+        )
+    
+    metrics_lines = []
+    for stock in stocks:
+        metrics_lines.append(
+            f"{stock['ticker']}: Trend {_trend_label(stock)}, Risk {_risk_level(stock)}, "
+            f"Yield {_format_percent(stock.get('dividend_yield'))}, P/E {_format_ratio(stock.get('pe_ratio'))}"
+        )
+    
     return (
-        f"{stock1['name']} trades at {_format_currency(stock1.get('price'))}, while "
-        f"{stock2['name']} trades at {_format_currency(stock2.get('price'))}. "
-        f"Trend: {stock1['ticker']} is {_trend_label(stock1)}; {stock2['ticker']} is {_trend_label(stock2)}. "
-        f"Risk level: {stock1['ticker']} is {_risk_level(stock1)}; {stock2['ticker']} is {_risk_level(stock2)}. "
-        f"Strengths: {stock1['ticker']} has dividend yield {_format_percent(stock1.get('dividend_yield'))} "
-        f"and P/E {_format_ratio(stock1.get('pe_ratio'))}; {stock2['ticker']} has dividend yield "
-        f"{_format_percent(stock2.get('dividend_yield'))} and P/E {_format_ratio(stock2.get('pe_ratio'))}. "
+        "Prices: " + "; ".join(price_lines) + ". "
+        "Trends & Risk: " + "; ".join(metrics_lines) + ". "
         "Weaknesses: fallback data should be confirmed against live NSE quotes before use. "
-        f"Recommendation: {preferred['name']} looks more suitable for conservative screening based on available structured metrics."
+        f"Recommendation: {preferred['name']} ({preferred['ticker']}) looks more suitable for conservative screening based on available structured metrics."
     )
 
 
 def _build_analysis_prompt(user_query: str, retrieved_context: str) -> str:
+    context_preview = (retrieved_context[:800] + "..." if len(retrieved_context) > 800 else retrieved_context) if retrieved_context else "None"
     return f"""
 Question: {user_query}
 
-Retrieved context from Pinecone:
-{retrieved_context or "No Pinecone context was available."}
+Context: {context_preview}
 
-Write a concise, professional response in an NSE-focused financial analyst tone.
-Use the context where relevant. If context is limited, say so briefly.
-Include trend, risk level, strengths, and weaknesses where possible.
-Keep the answer under 200 tokens and include the disclaimer exactly once.
+Analyze briefly in NSE context. Respond in under 150 words. Include disclaimer once.
 """.strip()
 
 
 def _build_comparison_prompt(
     user_query: str,
-    stock1: dict[str, Any],
-    stock2: dict[str, Any],
+    stocks: list[dict[str, Any]],
     retrieved_context: str,
 ) -> str:
+    context_preview = (retrieved_context[:800] + "..." if len(retrieved_context) > 800 else retrieved_context) if retrieved_context else "None"
+    
+    # Build labeled blocks for each stock
+    labels = ['A', 'B', 'C', 'D']
+    stock_blocks = []
+    for i, stock in enumerate(stocks):
+        label = labels[i] if i < len(labels) else chr(65 + i)
+        stock_blocks.append(
+            f"{label}: {stock['ticker']} - {stock['name']} - Price {_format_currency(stock.get('price'))}, "
+            f"P/E {_format_ratio(stock.get('pe_ratio'))}, Yield {_format_percent(stock.get('dividend_yield'))}"
+        )
+    
+    ticker_list = ", ".join([s['ticker'] for s in stocks])
     return f"""
-Question: {user_query}
+Compare NSE counters: {ticker_list}
 
-Stock A: {stock1['name']} ({stock1['ticker']})
-- Price: {_format_currency(stock1.get('price'))}
-- P/E ratio: {_format_ratio(stock1.get('pe_ratio'))}
-- Dividend yield: {_format_percent(stock1.get('dividend_yield'))}
+{chr(10).join(stock_blocks)}
 
-Stock B: {stock2['name']} ({stock2['ticker']})
-- Price: {_format_currency(stock2.get('price'))}
-- P/E ratio: {_format_ratio(stock2.get('pe_ratio'))}
-- Dividend yield: {_format_percent(stock2.get('dividend_yield'))}
+Context: {context_preview}
 
-Retrieved context from Pinecone:
-{retrieved_context or "No Pinecone context was available."}
-
-Write a concise NSE-focused comparison with:
-1. strengths
-2. weaknesses
-3. trend and risk level
-4. recommendation
-Keep the answer under 200 tokens and include the disclaimer exactly once.
+Analyze all stocks in NSE context. Respond in under 150 words. Include disclaimer once.
 """.strip()
+
 
 
 def _to_sse(event: str, data: dict[str, Any] | str) -> str:
@@ -340,47 +362,52 @@ def _stream_sse_response(metadata: dict[str, Any], prompt: str) -> Iterator[str]
     yield _to_sse("done", "[DONE]")
 
 
-async def _build_compare_payload(ticker1: str, ticker2: str) -> dict[str, Any] | None:
-    stock1, stock2, pinecone_matches = await asyncio.gather(
-        _get_cached_stock_data(ticker1, include_history=True),
-        _get_cached_stock_data(ticker2, include_history=True),
-        _query_all_namespaces(f"Compare {ticker1} and {ticker2} on risk and performance"),
+async def _build_compare_payload(
+    tickers: list[str]
+) -> dict[str, Any] | None:
+    # Fetch all stocks in parallel
+    stock_futures = [_get_cached_stock_data(t, include_history=True) for t in tickers]
+    results = await asyncio.gather(
+        *stock_futures,
+        _query_all_namespaces(f"Compare {' and '.join(tickers)} on risk and performance"),
     )
-
-    if not stock1 or not stock2:
+    
+    stocks = results[:-1]
+    pinecone_matches = results[-1]
+    
+    # All stocks must be found
+    if not all(stocks) or len(stocks) != len(tickers):
         return None
-
-    scorecard = {
-        "ticker1": ticker1.upper(),
-        "ticker2": ticker2.upper(),
-        "metrics": {
-            "price": {
-                ticker1.upper(): stock1["price"],
-                ticker2.upper(): stock2["price"],
-            },
-            "pe_ratio": {
-                ticker1.upper(): stock1.get("pe_ratio"),
-                ticker2.upper(): stock2.get("pe_ratio"),
-            },
-            "dividend_yield": {
-                ticker1.upper(): stock1.get("dividend_yield"),
-                ticker2.upper(): stock2.get("dividend_yield"),
-            },
-        },
-        "analysis": _build_local_comparison_analysis(stock1, stock2),
+    
+    # Build dynamic metrics dict for all tickers
+    metrics = {
+        "price": {},
+        "pe_ratio": {},
+        "dividend_yield": {},
     }
-
+    for ticker, stock in zip(tickers, stocks):
+        ticker_upper = ticker.upper()
+        metrics["price"][ticker_upper] = stock["price"]
+        metrics["pe_ratio"][ticker_upper] = stock.get("pe_ratio")
+        metrics["dividend_yield"][ticker_upper] = stock.get("dividend_yield")
+    
+    scorecard = {
+        "tickers": [t.upper() for t in tickers],
+        "metrics": metrics,
+        "analysis": _build_local_comparison_analysis(stocks),
+    }
     return {
-        "stock1": stock1,
-        "stock2": stock2,
+        "stocks": stocks,
         "scorecard": scorecard,
         "analysis": scorecard["analysis"],
         "retrieved_context": "\n".join(
-            match["text"] for match in pinecone_matches if match.get("text")
+            m["text"] for m in pinecone_matches if m.get("text")
         ),
     }
 
 
+
+# ── Routes ────────────────────────────────────────────────────────────────────
 @app.get("/")
 async def home():
     return {"message": "NSE AI Advisor is running"}
@@ -449,7 +476,6 @@ async def compare(request: CompareRequest):
             },
             status_code=404,
         )
-
     return {
         "type": "comparison",
         "data": {
@@ -468,6 +494,7 @@ async def chat(request: ChatRequest):
     tickers = extract_tickers(request.query)
     query_type = await _classify_query(request.query)
 
+    # ── Price query ───────────────────────────────────────────────────────────
     if query_type == "price":
         if not tickers:
             return await _build_supported_prices_response(include_history=False)
@@ -484,82 +511,92 @@ async def chat(request: ChatRequest):
             )
         return _build_structured_response(stock)
 
+    # ── Compare query ─────────────────────────────────────────────────────────
     if query_type == "compare":
-        if len(tickers) < 2:
+        if len(tickers) < 2 or len(tickers) > 4:
             return {
                 "type": "error",
                 "data": {},
-                "message": "Please mention two NSE counters to compare.",
+                "message": "Please mention 2 to 4 NSE counters to compare.",
                 "disclaimer": DISCLAIMER_TEXT,
             }
-
-        payload = await _build_compare_payload(tickers[0], tickers[1])
+        payload = await _build_compare_payload(tickers)
         if not payload:
             return JSONResponse(
                 {
                     "type": "error",
                     "data": {},
-                    "message": "One or both tickers are not currently supported.",
+                    "message": "One or more tickers are not currently supported.",
                     "disclaimer": DISCLAIMER_TEXT,
                 },
                 status_code=404,
             )
 
-        metadata = {
-            "type": "comparison",
-            "data": {
-                "stock1": payload["stock1"],
-                "stock2": payload["stock2"],
-                "scorecard": payload["scorecard"],
-                "analysis": payload["analysis"],
-            },
-            "message": "",
-            "disclaimer": DISCLAIMER_TEXT,
-        }
+        # No OpenAI key — return structured comparison only
         if not _has_openai_key():
             return {
                 "type": "comparison",
                 "data": {
-                    "stock1": payload["stock1"],
-                    "stock2": payload["stock2"],
+                    "stocks": payload["stocks"],
                     "scorecard": payload["scorecard"],
                     "analysis": payload["analysis"],
                 },
                 "message": payload["analysis"],
                 "disclaimer": DISCLAIMER_TEXT,
             }
-        prompt = _build_comparison_prompt(
-            request.query,
-            payload["stock1"],
-            payload["stock2"],
-            payload["retrieved_context"],
-        )
+
+        # No Pinecone context — return structured comparison with note
         if not payload["retrieved_context"]:
             return {
                 "type": "comparison",
                 "data": {
-                    "stock1": payload["stock1"],
-                    "stock2": payload["stock2"],
+                    "stocks": payload["stocks"],
                     "scorecard": payload["scorecard"],
-                    "analysis": (
-                        payload["analysis"]
-                        + " Document analysis is currently unavailable because Pinecone returned no relevant annual-report context."
-                    ),
+                    "analysis": payload["analysis"]
+                    + " Document analysis is currently unavailable — Pinecone returned no relevant context.",
                 },
                 "message": payload["analysis"]
-                + " Document analysis is currently unavailable because Pinecone returned no relevant annual-report context.",
+                + " Document analysis is currently unavailable — Pinecone returned no relevant context.",
                 "disclaimer": DISCLAIMER_TEXT,
             }
+
+        # Full streaming comparison
+        metadata = {
+            "type": "comparison",
+            "data": {
+                "stocks": payload["stocks"],
+                "scorecard": payload["scorecard"],
+                "analysis": payload["analysis"],
+            },
+            "message": "",
+            "disclaimer": DISCLAIMER_TEXT,
+        }
+        prompt = _build_comparison_prompt(
+            request.query,
+            payload["stocks"],
+            payload["retrieved_context"],
+        )
+        return StreamingResponse(
+            _stream_sse_response(metadata, prompt),
+            media_type="text/event-stream",
+        )
+
         return StreamingResponse(
             _stream_sse_response(metadata, prompt),
             media_type="text/event-stream",
             headers={"Cache-Control": "no-cache", "Connection": "keep-alive"},
         )
 
-    stocks = await asyncio.gather(
-        *[_get_cached_stock_data(ticker, include_history=True) for ticker in tickers]
+    # ── Analysis query ────────────────────────────────────────────────────────
+    stocks, pinecone_matches = await asyncio.gather(
+        asyncio.gather(*[_get_cached_stock_data(t, include_history=True) for t in tickers]),
+        _query_all_namespaces(request.query),
     )
-    valid_stocks = [stock for stock in stocks if stock]
+    valid_stocks = [s for s in stocks if s]
+    retrieved_context = "\n".join(
+        m["text"] for m in pinecone_matches if m.get("text")
+    )
+
     if not _has_openai_key():
         return {
             "type": "ai_response",
@@ -568,20 +605,17 @@ async def chat(request: ChatRequest):
             "disclaimer": DISCLAIMER_TEXT,
         }
 
-    pinecone_matches = await _query_all_namespaces(request.query)
-    retrieved_context = "\n".join(
-        match["text"] for match in pinecone_matches if match.get("text")
-    )
     if not retrieved_context:
         return {
             "type": "ai_response",
             "data": {"tickers": tickers},
             "message": (
                 _build_local_analysis_message(request.query, valid_stocks)
-                + " Document analysis is currently unavailable because Pinecone returned no relevant annual-report context."
+                + " Document analysis is currently unavailable — Pinecone returned no relevant context."
             ),
             "disclaimer": DISCLAIMER_TEXT,
         }
+
     metadata = {
         "type": "ai_response",
         "data": {"tickers": tickers},

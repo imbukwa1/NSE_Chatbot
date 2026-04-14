@@ -1,45 +1,31 @@
-function formatPercent(value) {
-  if (value === null || value === undefined || Number.isNaN(Number(value))) {
-    return 'N/A'
-  }
-
-  return `${(value * 100).toFixed(2)}%`
-}
-
-function formatCurrency(value) {
-  if (value === null || value === undefined || Number.isNaN(Number(value))) {
-    return 'N/A'
-  }
-
-  return `KES ${Number(value).toFixed(2)}`
-}
-
-function formatRatio(value) {
-  if (value === null || value === undefined || Number.isNaN(Number(value))) {
-    return 'N/A'
-  }
-
-  return Number(value).toFixed(2)
-}
-
 function ComparisonTable({ data }) {
+  // Handle both old (stock1/stock2) and new (stocks) data structures
+  const stocks = data.stocks || (data.stock1 && data.stock2 ? [data.stock1, data.stock2] : [])
+  
+  if (!stocks || stocks.length === 0) {
+    return <div className="text-slate-500">No stocks to compare.</div>
+  }
+
+  // Build rows with metrics
   const rows = [
-    {
-      label: 'Price',
-      stock1: formatCurrency(data.stock1.price),
-      stock2: formatCurrency(data.stock2.price),
-    },
-    {
-      label: 'P/E Ratio',
-      stock1: formatRatio(data.stock1.pe_ratio),
-      stock2: formatRatio(data.stock2.pe_ratio),
-    },
-    {
-      label: 'Dividend Yield',
-      stock1: formatPercent(data.stock1.dividend_yield),
-      stock2: formatPercent(data.stock2.dividend_yield),
-    },
+    { label: 'Price' },
+    { label: 'P/E Ratio' },
+    { label: 'Dividend Yield' },
   ]
+
+  // Add stock values to each row
+  rows.forEach((row) => {
+    stocks.forEach((stock, idx) => {
+      const ticker = stock.ticker.toUpperCase()
+      if (row.label === 'Price') {
+        row[`stock${idx + 1}`] = formatCurrency(stock.price)
+      } else if (row.label === 'P/E Ratio') {
+        row[`stock${idx + 1}`] = formatRatio(stock.pe_ratio)
+      } else if (row.label === 'Dividend Yield') {
+        row[`stock${idx + 1}`] = formatPercent(stock.dividend_yield)
+      }
+    })
+  })
 
   return (
     <div className="space-y-4">
@@ -50,12 +36,14 @@ function ComparisonTable({ data }) {
               <th className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em]">
                 Metric
               </th>
-              <th className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em]">
-                {data.stock1.name}
-              </th>
-              <th className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em]">
-                {data.stock2.name}
-              </th>
+              {stocks.map((stock, idx) => (
+                <th
+                  key={idx}
+                  className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em]"
+                >
+                  {stock.name}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200 bg-white">
@@ -64,8 +52,17 @@ function ComparisonTable({ data }) {
                 <td className="px-4 py-3 text-sm font-medium text-slate-700">
                   {row.label}
                 </td>
-                <td className="px-4 py-3 text-sm text-slate-900">{row.stock1}</td>
-                <td className="px-4 py-3 text-sm text-slate-900">{row.stock2}</td>
+                {stocks.map((stock, idx) => {
+                  const cellKey = `stock${idx + 1}`
+                  return (
+                    <td
+                      key={idx}
+                      className="px-4 py-3 text-sm text-slate-900"
+                    >
+                      {row[cellKey] || 'N/A'}
+                    </td>
+                  )
+                })}
               </tr>
             ))}
           </tbody>
@@ -88,3 +85,4 @@ function ComparisonTable({ data }) {
 }
 
 export default ComparisonTable
+
