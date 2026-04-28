@@ -1,7 +1,19 @@
+function formatCurrency(value) {
+  return typeof value === 'number' ? `KES ${value.toFixed(2)}` : 'N/A'
+}
+
+function formatRatio(value) {
+  return typeof value === 'number' ? value.toFixed(2) : 'N/A'
+}
+
+function formatPercent(value) {
+  return typeof value === 'number' ? `${(value * 100).toFixed(2)}%` : 'N/A'
+}
+
 function ComparisonTable({ data }) {
   // Handle both old (stock1/stock2) and new (stocks) data structures
   const stocks = data.stocks || (data.stock1 && data.stock2 ? [data.stock1, data.stock2] : [])
-  
+
   if (!stocks || stocks.length === 0) {
     return <div className="text-slate-500">No stocks to compare.</div>
   }
@@ -16,7 +28,6 @@ function ComparisonTable({ data }) {
   // Add stock values to each row
   rows.forEach((row) => {
     stocks.forEach((stock, idx) => {
-      const ticker = stock.ticker.toUpperCase()
       if (row.label === 'Price') {
         row[`stock${idx + 1}`] = formatCurrency(stock.price)
       } else if (row.label === 'P/E Ratio') {
@@ -85,4 +96,3 @@ function ComparisonTable({ data }) {
 }
 
 export default ComparisonTable
-

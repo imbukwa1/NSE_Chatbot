@@ -1,7 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 
-const API_BASE_URL = 'http://127.0.0.1:8000'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001'
 const DISCLAIMER = 'This is not financial advice.'
+
+function getRequestErrorMessage(error) {
+  if (error.name === 'AbortError' || error.message?.includes('aborted')) {
+    return 'Request timed out before the advisor finished. Please try a narrower comparison or ask again.'
+  }
+
+  return (
+    error.message ||
+    'There was a problem processing your request. Please try again.'
+  )
+}
 
 const createWelcomeMessage = () => ({
   id: crypto.randomUUID(),
@@ -181,7 +192,7 @@ export function useChat() {
           }
         }
       } finally {
-        reader.cancel()
+        reader.releaseLock()
       }
     } catch (error) {
       appendMessage({
@@ -189,9 +200,7 @@ export function useChat() {
         role: 'assistant',
         type: 'ai_response',
         data: {},
-        message:
-          error.message ||
-          'There was a problem processing your request. Please try again.',
+        message: getRequestErrorMessage(error),
         disclaimer: DISCLAIMER,
       })
     } finally {

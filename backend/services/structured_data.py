@@ -39,7 +39,61 @@ def load_stock_data() -> dict[str, dict[str, Any]]:
     }
 
 
+def _seed_payload(ticker: str, include_history: bool = False) -> dict[str, Any] | None:
+    seed_record = _seed_cache.get(ticker)
+    if not seed_record:
+        return None
+    return {
+        "ticker": ticker,
+        "name": seed_record.get("name", ticker),
+        "price": seed_record.get("price"),
+        "history": seed_record.get("history", []) if include_history else [],
+        "pe_ratio": seed_record.get("pe_ratio"),
+        "dividend_yield": seed_record.get("dividend_yield"),
+        "change_pct": seed_record.get("change_pct"),
+        "volume": seed_record.get("volume"),
+        "source": "seed_data",
+    }
+
+
+def get_all_stock_data(include_history: bool = False) -> list[dict[str, Any]]:
+    live_prices = {}
+    try:
+        live_prices = _fetcher._get_nse_prices()
+    except Exception:
+        live_prices = {}
+
+    stocks = []
+    for ticker in _seed_cache.keys():
+        seed_payload = _seed_payload(ticker, include_history=include_history)
+        if not seed_payload:
+            continue
+
+        live_payload = live_prices.get(ticker)
+        if live_payload and live_payload.get("price") is not None:
+            stocks.append(
+                {
+                    **seed_payload,
+                    **live_payload,
+                    "history": seed_payload.get("history", []),
+                    "pe_ratio": seed_payload.get("pe_ratio"),
+                    "dividend_yield": seed_payload.get("dividend_yield"),
+                    "source": live_payload.get("source", "nse_scraper"),
+                }
+            )
+        else:
+            stocks.append(seed_payload)
+
+    return stocks
+
+
 def get_stock_data(ticker: str, include_history: bool = False) -> dict[str, Any] | None:
+    ticker = _fetcher.resolve_ticker(ticker)
+    seed_record = _seed_cache.get(ticker)
+
+    if include_history and seed_record:
+        return _seed_payload(ticker, include_history=True)
+
     # Try to fetch from yfinance with 3-second hard timeout
     stock = None
     try:
@@ -51,19 +105,9 @@ def get_stock_data(ticker: str, include_history: bool = False) -> dict[str, Any]
 
     if not stock:
         # Fall back to seed data immediately
-        seed_record = _seed_cache.get(ticker)
-        if seed_record:
-            return {
-                "ticker": ticker,
-                "name": seed_record.get("name", ticker),
-                "price": seed_record.get("price"),
-                "history": seed_record.get("history", []) if include_history else [],
-                "pe_ratio": seed_record.get("pe_ratio"),
-                "dividend_yield": seed_record.get("dividend_yield"),
-                "change_pct": seed_record.get("change_pct"),
-                "volume": seed_record.get("volume"),
-                "source": "seed_data",
-            }
+        seed_payload = _seed_payload(ticker, include_history=include_history)
+        if seed_payload:
+            return seed_payload
         return None
 
     price = stock.get("price")

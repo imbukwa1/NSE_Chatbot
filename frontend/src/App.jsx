@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 import ChatBubble from './components/ChatBubble.jsx'
 import ComparisonTable from './components/ComparisonTable.jsx'
 import InputBar from './components/InputBar.jsx'
+import MarketOverview from './components/MarketOverview.jsx'
 import PriceChart from './components/PriceChart.jsx'
+import PortfolioTable from './components/PortfolioTable.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import StockInfoCard from './components/StockInfoCard.jsx'
+import StockListTable from './components/StockListTable.jsx'
 import { useNissy } from './hooks/useNissy.js'
 
-const API_URL = 'http://127.0.0.1:8000/chat'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001'
+const API_URL = `${API_BASE_URL}/chat`
 const DISCLAIMER = 'This is not financial advice.'
 
 function parseSseBuffer(buffer) {
@@ -52,13 +56,24 @@ function buildAssistantData(payload) {
   }
 }
 
+function getRequestErrorMessage(error) {
+  if (error.name === 'AbortError' || error.message?.includes('aborted')) {
+    return 'Request timed out before the advisor finished. Please try a narrower comparison or ask again.'
+  }
+
+  return (
+    error.message ||
+    'There was a problem processing your request. Please try again.'
+  )
+}
+
 const createWelcomeMessage = () => ({
   id: crypto.randomUUID(),
   role: 'assistant',
   type: 'ai_response',
   data: {
     message:
-      'Welcome to NSE AI Advisor. Ask about price, valuation, risk, dividend yield, or compare 2-4 NSE-listed counters.',
+      'Welcome to NSE AI Advisor. Ask about price, valuation, risk, dividend yield, news, or compare NSE-listed counters.',
     disclaimer: DISCLAIMER,
   },
 })
@@ -264,29 +279,25 @@ function App() {
 
     setQuery('')
     setIsLoading(true)
+    let requestTimeout
 
     try {
-      // Create AbortController with 30-second timeout
+      // Keep the full response below one minute while allowing larger comparisons.
       const controller = new AbortController()
-      const timeout = setTimeout(() => {
-        console.warn("30-second fetch timeout triggered")
+      requestTimeout = setTimeout(() => {
+        console.warn("55-second fetch timeout triggered")
         controller.abort()
-      }, 30000)
+      }, 55000)
 
       console.log("Fetch fired")
-      let response
-      try {
-        response = await fetch(API_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ query: trimmedQuery }),
-          signal: controller.signal,
-        })
-      } finally {
-        clearTimeout(timeout)
-      }
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: trimmedQuery }),
+        signal: controller.signal,
+      })
 
       if (!response.ok) {
         throw new Error('Unable to reach the NSE AI Advisor backend.')
@@ -299,7 +310,7 @@ function App() {
 
         const messageData = buildAssistantData(payload)
         console.log("Built assistant data:", messageData)
-        
+
         appendMessage({
           id: crypto.randomUUID(),
           role: 'assistant',
@@ -313,6 +324,7 @@ function App() {
         if (messageText) {
           speak(messageText)
         }
+        clearTimeout(requestTimeout)
         return
       }
 
@@ -378,34 +390,21 @@ function App() {
           }
         }
       }
+      clearTimeout(requestTimeout)
     } catch (error) {
       console.error("Request error:", error.name, error.message)
-      
-      // Handle AbortError (timeout) separately
-      if (error.name === 'AbortError') {
-        appendMessage({
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          type: 'ai_response',
-          data: {
-            message: 'Request timed out after 30 seconds. The backend may be overloaded. Please try again.',
-            disclaimer: DISCLAIMER,
-          },
-        })
-      } else {
-        appendMessage({
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          type: 'ai_response',
-          data: {
-            message:
-              error.message ||
-              'There was a problem processing your request. Please try again.',
-            disclaimer: DISCLAIMER,
-          },
-        })
-      }
+
+      appendMessage({
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        type: 'ai_response',
+        data: {
+          message: getRequestErrorMessage(error),
+          disclaimer: DISCLAIMER,
+        },
+      })
     } finally {
+      clearTimeout(requestTimeout)
       setIsLoading(false)
     }
   }
@@ -455,7 +454,7 @@ function App() {
                       <div className="max-w-xl">
                         <p className="text-lg text-slate-400">
                           Ask about Safaricom, Kenya Airways, dividends,
-                          valuation, risk, or compare two NSE counters.
+                          valuation, news, risk, or compare NSE counters.
                         </p>
                       </div>
                     </div>
@@ -501,14 +500,35 @@ function App() {
                               </div>
                             )}
 
+                            {/* Stock List Response */}
+                            {message.type === 'stock_list' && (
+                              <StockListTable data={message.data} />
+                            )}
+
+                            {/* Market Overview Response */}
+                            {message.type === 'market_overview' && (
+                              <MarketOverview data={message.data} />
+                            )}
+
+                            {/* Portfolio Response */}
+                            {message.type === 'portfolio' && (
+                              <PortfolioTable data={message.data} />
+                            )}
+
                             {/* Text Response (Analysis, Error, etc) */}
-                            {message.type !== 'stock_info' && 
-                             message.type !== 'comparison' && 
+                            {message.type !== 'stock_info' &&
+                             message.type !== 'comparison' &&
+                             message.type !== 'stock_list' &&
+                             message.type !== 'market_overview' &&
+                             message.type !== 'portfolio' &&
                              message.data.message && (
                               <div className="space-y-3">
                                 <p className="whitespace-pre-wrap break-words text-sm leading-7 text-slate-700 [overflow-wrap:anywhere] sm:text-[15px]">
                                   {message.data.message}
                                 </p>
+                                {message.data.stocks && (
+                                  <StockListTable data={message.data} />
+                                )}
                                 {message.data.disclaimer && (
                                   <p className="text-xs text-slate-400">
                                     Disclaimer: {message.data.disclaimer}
@@ -518,9 +538,12 @@ function App() {
                             )}
 
                             {/* Debug: Show if nothing rendered */}
-                            {!message.data.message && 
-                             !message.data.ticker && 
-                             !message.data.stocks && (
+                            {!message.data.message &&
+                             !message.data.ticker &&
+                             !message.data.stocks &&
+                             message.type !== 'stock_list' &&
+                             message.type !== 'market_overview' &&
+                             message.type !== 'portfolio' && (
                               <div className="p-3 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-700">
                                 <p className="font-mono font-bold">⚠️ Debug Info</p>
                                 <p>Type: <code>{message.type}</code></p>

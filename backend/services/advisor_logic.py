@@ -9,6 +9,7 @@ DISCLAIMER_TEXT = "This is not financial advice."
 PRICE_INTENT_PATTERNS = (
     r"\bprice\b",
     r"\bprices\b",
+    r"\bprizes\b",
     r"\bhow\s+much\b",
     r"\bworth\b",
     r"\btrading\b",
@@ -80,12 +81,17 @@ def _build_symbol_lookup() -> dict[str, str]:
 def extract_tickers(user_query: str) -> list[str]:
     lookup = _build_symbol_lookup()
     normalized_query = user_query.lower()
-    matched_tickers = []
+    matches = []
 
     for alias, ticker in lookup.items():
-        if re.search(rf"\b{re.escape(alias)}\b", normalized_query):
-            if ticker not in matched_tickers:
-                matched_tickers.append(ticker)
+        match = re.search(rf"\b{re.escape(alias)}\b", normalized_query)
+        if match:
+            matches.append((match.start(), len(alias), ticker))
+
+    matched_tickers = []
+    for _, _, ticker in sorted(matches):
+        if ticker not in matched_tickers:
+            matched_tickers.append(ticker)
 
     return matched_tickers
 
