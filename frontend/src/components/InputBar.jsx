@@ -36,20 +36,21 @@ function InputBar({
   onMicClick,
   onQueryChange,
   onSubmit,
+  placeholder = 'Ask about Safaricom, KCB, dividends, market trends...',
   query,
   voiceSupported,
 }) {
   return (
-    <form onSubmit={onSubmit} className="space-y-3">
-      <div className="flex items-center gap-3 rounded-[1.75rem] border border-slate-300/80 bg-white px-4 py-3 shadow-[0_16px_40px_rgba(173,178,214,0.24)]">
+    <form onSubmit={onSubmit} className="space-y-2">
+      <div className="flex items-center gap-2.5 rounded-[1.35rem] border border-slate-200 bg-white px-3.5 py-2.5 shadow-[0_14px_34px_rgba(96,126,203,0.1)]">
         <button
           type="button"
           onClick={onMicClick}
           disabled={!voiceSupported || isLoading}
-          className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition ${
+          className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition ${
             isListening
-              ? 'bg-rose-50 text-rose-600'
-              : 'bg-transparent text-slate-500'
+              ? 'bg-blue-50 text-blue-600'
+              : 'bg-slate-50 text-slate-500 hover:bg-blue-50 hover:text-blue-600'
           } disabled:cursor-not-allowed disabled:opacity-50`}
           title={voiceSupported ? 'Use voice input' : 'Voice input is not supported'}
         >
@@ -60,24 +61,24 @@ function InputBar({
           type="text"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
-          placeholder="Ask query"
-          className="h-12 flex-1 bg-transparent px-1 text-2xl font-light text-slate-700 outline-none placeholder:text-slate-400 sm:text-[2rem]"
+          placeholder={placeholder}
+          className="h-10 flex-1 bg-transparent px-1 text-sm text-slate-700 outline-none placeholder:text-slate-400"
         />
 
         <button
           type="submit"
           disabled={isLoading || !query.trim()}
-          className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-blue-500 text-white shadow-[0_12px_24px_rgba(96,126,203,0.3)] transition hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-[0_10px_22px_rgba(37,99,235,0.2)] transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           <SendIcon />
         </button>
       </div>
 
-      <div className="flex min-h-5 items-center justify-between px-1 text-xs text-slate-400">
+      <div className="flex min-h-4 items-center justify-between px-1 text-[11px] text-slate-400">
         <span>
           {isListening
             ? 'Listening... speak naturally and pause when finished.'
-            : 'Use voice or type a query to explore NSE data and analysis.'}
+            : 'Voice and text are available for simple NSE research.'}
         </span>
         {!voiceSupported && <span>Voice input unavailable in this browser.</span>}
       </div>

@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
+import AboutPage from './components/AboutPage.jsx'
 import ChatBubble from './components/ChatBubble.jsx'
 import ComparisonTable from './components/ComparisonTable.jsx'
 import InputBar from './components/InputBar.jsx'
+import AdminDashboardScreen from './components/AdminDashboardScreen.jsx'
 import MarketOverview from './components/MarketOverview.jsx'
 import PriceChart from './components/PriceChart.jsx'
 import PortfolioTable from './components/PortfolioTable.jsx'
-import Sidebar from './components/Sidebar.jsx'
-import StockInfoCard from './components/StockInfoCard.jsx'
+import StockDetailsScreen from './components/StockDetailsScreen.jsx'
 import StockListTable from './components/StockListTable.jsx'
+import UserProfileScreen from './components/UserProfileScreen.jsx'
 import { useNissy } from './hooks/useNissy.js'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001'
@@ -85,6 +87,214 @@ const createConversation = (title = 'New conversation') => ({
   lastQuery: null,
 })
 
+function MiniChart() {
+  const bars = [44, 64, 50, 78, 58, 86, 72]
+
+  return (
+    <div className="flex h-20 items-end gap-2">
+      {bars.map((height, index) => (
+        <span
+          key={index}
+          className="w-full rounded-t-lg bg-blue-100"
+          style={{ height: `${height}%` }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function StockPreviewCard({ ticker, name, price, change }) {
+  const isPositive = change.startsWith('+')
+
+  return (
+    <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_18px_45px_rgba(96,126,203,0.12)]">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-slate-900">{ticker}</p>
+          <p className="mt-1 text-xs text-slate-500">{name}</p>
+        </div>
+        <span
+          className={`rounded-full px-2.5 py-1 text-xs font-medium ${
+            isPositive ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-500'
+          }`}
+        >
+          {change}
+        </span>
+      </div>
+      <p className="mt-4 text-xl font-semibold text-slate-900">{price}</p>
+    </div>
+  )
+}
+
+function LandingScreen({ onAbout, onStartChatting }) {
+  return (
+    <div className="min-h-screen bg-[linear-gradient(180deg,_#f8fafc_0%,_#f3f6fb_56%,_#eef2f8_100%)] text-slate-900">
+      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
+        <button
+          type="button"
+          onClick={onStartChatting}
+          className="flex items-center gap-3 text-left"
+          aria-label="NSE AI Advisor home"
+        >
+          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-sm font-bold text-white shadow-[0_12px_28px_rgba(37,99,235,0.28)]">
+            NSE
+          </span>
+          <span>
+            <span className="block text-base font-semibold text-slate-900">
+              NSE AI Advisor
+            </span>
+            <span className="block text-xs text-slate-500">
+              Nairobi Securities Exchange
+            </span>
+          </span>
+        </button>
+
+        <div className="hidden items-center gap-8 text-sm font-medium text-slate-500 md:flex">
+          <button type="button" className="text-blue-600">
+            Home
+          </button>
+          <button type="button" onClick={onStartChatting} className="hover:text-blue-600">
+            AI Chatbot
+          </button>
+          <button type="button" onClick={onAbout} className="hover:text-blue-600">
+            About
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="hidden rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-white sm:inline-flex"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_26px_rgba(37,99,235,0.22)] transition hover:bg-blue-700"
+          >
+            Register
+          </button>
+        </div>
+      </nav>
+
+      <main className="mx-auto grid min-h-[calc(100vh-86px)] w-full max-w-7xl items-center gap-10 px-5 pb-10 pt-4 sm:px-8 lg:grid-cols-[1fr_0.92fr] lg:px-10">
+        <section className="max-w-2xl">
+          <div className="mb-6 inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
+            Smart NSE research, made simple
+          </div>
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-5xl lg:text-6xl">
+            Your AI-Powered NSE Investment Assistant
+          </h1>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
+            A premium fintech AI assistant for the Nairobi Securities Exchange.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={onStartChatting}
+              className="rounded-full bg-blue-600 px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(37,99,235,0.24)] transition hover:bg-blue-700"
+            >
+              Start Chatting
+            </button>
+          </div>
+
+          <div className="mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
+            <StockPreviewCard
+              ticker="SCOM"
+              name="Safaricom PLC"
+              price="KES 22.80"
+              change="+0.44%"
+            />
+            <StockPreviewCard
+              ticker="EQTY"
+              name="Equity Group"
+              price="KES 47.50"
+              change="+0.21%"
+            />
+            <StockPreviewCard
+              ticker="KCB"
+              name="KCB Group"
+              price="KES 38.75"
+              change="-0.39%"
+            />
+          </div>
+        </section>
+
+        <section className="relative mx-auto w-full max-w-xl">
+          <div className="absolute -left-4 top-10 hidden rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-[0_18px_45px_rgba(96,126,203,0.13)] sm:block">
+            <p className="text-xs text-slate-500">AI insight</p>
+            <p className="mt-1 text-sm font-semibold text-slate-900">
+              Dividend leaders ready
+            </p>
+          </div>
+
+          <div className="rounded-[2rem] border border-white bg-white/90 p-5 shadow-[0_28px_80px_rgba(96,126,203,0.18)]">
+            <div className="rounded-[1.5rem] border border-slate-100 bg-slate-50 p-5">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">Market Preview</p>
+                  <p className="mt-1 text-xs text-slate-500">NSE sample analytics</p>
+                </div>
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-600">
+                  Calm signal
+                </span>
+              </div>
+
+              <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-slate-500">Safaricom PLC</p>
+                    <p className="mt-1 text-2xl font-semibold text-slate-900">SCOM</p>
+                  </div>
+                  <p className="text-right text-sm font-semibold text-blue-600">
+                    KES 22.80
+                    <span className="block text-xs font-medium text-emerald-600">
+                      +0.44%
+                    </span>
+                  </p>
+                </div>
+                <MiniChart />
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                <div className="rounded-2xl bg-white p-4 shadow-sm">
+                  <p className="text-xs text-slate-500">Dividend yield</p>
+                  <p className="mt-2 text-xl font-semibold text-slate-900">6.7%</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 shadow-sm">
+                  <p className="text-xs text-slate-500">P/E ratio</p>
+                  <p className="mt-2 text-xl font-semibold text-slate-900">19.2</p>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl bg-blue-600 p-4 text-white shadow-[0_16px_32px_rgba(37,99,235,0.22)]">
+                <p className="text-xs text-blue-100">Sample chatbot prompt</p>
+                <p className="mt-2 text-sm font-medium">
+                  “Compare Safaricom and Equity for a beginner investor.”
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute -bottom-4 right-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_45px_rgba(96,126,203,0.13)]">
+            <p className="text-xs text-slate-500">Market chart</p>
+            <div className="mt-2 flex h-10 items-end gap-1.5">
+              {[18, 28, 22, 35, 30, 42].map((height, index) => (
+                <span
+                  key={index}
+                  className="w-3 rounded-t bg-blue-200"
+                  style={{ height }}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
 function App() {
   const [query, setQuery] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -92,6 +302,8 @@ function App() {
   const [conversations, setConversations] = useState([createConversation()])
   const [activeConversationId, setActiveConversationId] = useState(null)
   const [voiceSupported, setVoiceSupported] = useState(false)
+  const [showLanding, setShowLanding] = useState(true)
+  const [activeScreen, setActiveScreen] = useState('chat')
   const { speak, voiceEnabled, setVoiceEnabled } = useNissy()
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
@@ -214,17 +426,6 @@ function App() {
       ...conversation,
       messages: [...conversation.messages, message],
     }))
-  }
-
-  const handleNewConversation = () => {
-    const conversation = createConversation()
-    setConversations((currentConversations) => [conversation, ...currentConversations])
-    setActiveConversationId(conversation.id)
-    setQuery('')
-  }
-
-  const handleSelectConversation = (conversationId) => {
-    setActiveConversationId(conversationId)
   }
 
   const handleMicClick = () => {
@@ -416,50 +617,147 @@ function App() {
     await sendMessage(query)
   }
 
+  const handleStartChatting = () => {
+    setShowLanding(false)
+    setActiveScreen('chat')
+  }
+
+  const handleShowAbout = () => {
+    setShowLanding(false)
+    setActiveScreen('about')
+  }
+
+  const handleBackHome = () => {
+    setShowLanding(true)
+    setActiveScreen('chat')
+  }
+
+  const suggestedQuestions = [
+    'Safaricom share price',
+    'Top gainers today',
+    'Compare KCB and Equity',
+    'What are dividends?',
+  ]
+
+  if (showLanding) {
+    return (
+      <LandingScreen
+        onAbout={handleShowAbout}
+        onStartChatting={handleStartChatting}
+      />
+    )
+  }
+
+  if (activeScreen === 'about') {
+    return (
+      <AboutPage
+        onBackHome={handleBackHome}
+        onStartChatting={handleStartChatting}
+      />
+    )
+  }
+
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.12),_transparent_36%),linear-gradient(180deg,_#f6f6fb_0%,_#f3f2f9_55%,_#efedf6_100%)] text-slate-900">
-      <div className="mx-auto flex min-h-screen max-w-[1640px] min-w-0 flex-col px-0 pb-6 pt-0 lg:px-0">
-        <header className="border-b border-slate-200/80 bg-white/70 px-6 py-10 backdrop-blur sm:px-8 lg:px-12">
+    <div className="min-h-screen overflow-x-hidden bg-[linear-gradient(180deg,_#f8fafc_0%,_#f3f6fb_56%,_#eef2f8_100%)] text-slate-900">
+      <div className="mx-auto flex min-h-screen max-w-[1640px] min-w-0 flex-col">
+        <header className="border-b border-slate-200/80 bg-white/80 px-4 py-3 backdrop-blur sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <span className="text-4xl font-semibold tracking-tight text-blue-600">
+            <button
+              type="button"
+              onClick={() => setShowLanding(true)}
+              className="flex shrink-0 items-center gap-3 text-left"
+              aria-label="Back to NSE AI Advisor welcome screen"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-xs font-bold text-white shadow-[0_10px_22px_rgba(37,99,235,0.2)]">
                 NSE
               </span>
-              <span className="text-4xl font-light tracking-tight text-slate-700">
-                AI Advisor
+              <span>
+                <span className="block text-sm font-semibold text-slate-900">
+                  NSE AI Advisor
+                </span>
+                <span className="hidden text-xs text-slate-400 sm:block">
+                  AI market assistant
+                </span>
               </span>
+            </button>
+
+            <div className="hidden min-w-0 w-[42%] max-w-[34rem] flex-none items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-slate-400 shadow-inner md:flex">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="h-4 w-4 shrink-0"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+              <input
+                type="search"
+                placeholder="Search NSE topics or conversations"
+                className="min-w-0 flex-1 bg-transparent px-3 text-sm text-slate-700 outline-none placeholder:text-slate-400"
+              />
             </div>
             <button
               type="button"
               onClick={() => setVoiceEnabled(!voiceEnabled)}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
+              className={`hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition sm:inline-flex ${
                 voiceEnabled
-                  ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
+                  ? 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
-              title="Toggle Nissy voice output"
+              title="Toggle voice output"
             >
               <span className="text-lg">🎤</span>
               <span>Nissy {voiceEnabled ? 'On' : 'Off'}</span>
             </button>
+            <button
+              type="button"
+              onClick={() => setActiveScreen('admin')}
+              className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:text-blue-600 sm:inline-flex"
+              aria-label="Admin dashboard"
+              title="Admin dashboard"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveScreen('about')}
+              className="hidden rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-blue-700 md:inline-flex"
+            >
+              About
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveScreen('profile')}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(37,99,235,0.18)]"
+              aria-label="User profile"
+              title="User profile"
+            >
+              U
+            </button>
           </div>
         </header>
-        <div className="flex min-w-0 flex-1 flex-col lg:flex-row">
-          <section className="flex min-w-0 w-full flex-col border-r border-slate-200/70 bg-white/10 lg:w-4/5">
-            <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-7">
-              <div className="h-full rounded-[2rem] border border-white/80 bg-white/90 px-4 py-5 shadow-[0_18px_60px_rgba(128,137,177,0.16)] sm:px-6">
-                <div className="mx-auto flex min-h-[56vh] w-full max-w-5xl min-w-0 flex-col gap-5">
-                  {activeConversation?.messages.length === 1 && !isLoading && (
-                    <div className="flex flex-1 items-center justify-center rounded-[1.75rem] border border-dashed border-slate-200 bg-[linear-gradient(180deg,_rgba(255,255,255,0.95),_rgba(247,247,252,0.9))] p-10 text-center">
-                      <div className="max-w-xl">
-                        <p className="text-lg text-slate-400">
-                          Ask about Safaricom, Kenya Airways, dividends,
-                          valuation, news, risk, or compare NSE counters.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
+        {activeScreen === 'profile' ? (
+          <UserProfileScreen onBackToChat={() => setActiveScreen('chat')} />
+        ) : activeScreen === 'admin' ? (
+          <AdminDashboardScreen />
+        ) : (
+        <div className="flex min-w-0 flex-1 flex-col">
+          <section className="flex min-w-0 w-full flex-1 flex-col">
+            <div className="flex-1 overflow-y-auto px-4 py-5 sm:px-6 lg:px-8">
+              <div className="mx-auto flex min-h-[62vh] w-full max-w-6xl min-w-0 flex-col gap-4">
                   {activeConversation?.messages.map((message) => (
                     <div key={message.id} className="group flex gap-2">
                       <ChatBubble role={message.role}>
@@ -471,15 +769,7 @@ function App() {
                           <div>
                             {/* Stock Info Response */}
                             {message.type === 'stock_info' && message.data.ticker && (
-                              <div className="space-y-4">
-                                <StockInfoCard data={message.data} />
-                                <PriceChart stock={message.data} />
-                                {message.data.message && (
-                                  <p className="text-sm text-slate-600 italic">
-                                    {message.data.message}
-                                  </p>
-                                )}
-                              </div>
+                              <StockDetailsScreen data={message.data} onAsk={sendMessage} />
                             )}
 
                             {/* Comparison Response */}
@@ -489,13 +779,8 @@ function App() {
                                 {message.data.stocks.length > 0 && (
                                   <PriceChart
                                     stock={message.data.stocks[0]}
-                                    title={`${message.data.stocks.map(s => s.ticker).join(' vs ')} - 12 Month Price History`}
+                                    title={`${message.data.stocks.map(s => s.ticker).join(' vs ')} - Available Price History`}
                                   />
-                                )}
-                                {message.data.message && (
-                                  <p className="text-sm text-slate-600 italic">
-                                    {message.data.message}
-                                  </p>
                                 )}
                               </div>
                             )}
@@ -582,33 +867,38 @@ function App() {
 
                   <div ref={messagesEndRef} />
                 </div>
-              </div>
             </div>
 
-            <div className="border-t border-slate-200/70 bg-white/20 px-4 py-5 sm:px-6 lg:px-7">
+            <div className="border-t border-slate-200/70 bg-white/70 px-4 py-3 backdrop-blur sm:px-6 lg:px-8">
               <div className="mx-auto w-full max-w-5xl">
+                <div className="mb-3 flex flex-wrap gap-2">
+                  {suggestedQuestions.map((question) => (
+                    <button
+                      key={question}
+                      type="button"
+                      onClick={() => sendMessage(question)}
+                      disabled={isLoading}
+                      className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-600 shadow-sm transition hover:border-blue-200 hover:text-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {question}
+                    </button>
+                  ))}
+                </div>
                 <InputBar
                   isListening={isListening}
                   isLoading={isLoading}
                   onMicClick={handleMicClick}
                   onQueryChange={setQuery}
                   onSubmit={handleSubmit}
+                  placeholder="Ask about Safaricom, dividends, market trends..."
                   query={query}
                   voiceSupported={voiceSupported}
                 />
               </div>
             </div>
           </section>
-
-          <aside className="w-full bg-white/20 lg:w-1/5">
-            <Sidebar
-              activeConversationId={activeConversation?.id}
-              conversations={conversations}
-              onNewConversation={handleNewConversation}
-              onSelectConversation={handleSelectConversation}
-            />
-          </aside>
         </div>
+        )}
       </div>
     </div>
   )

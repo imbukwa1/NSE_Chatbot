@@ -10,16 +10,55 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
+
 logger = logging.getLogger(__name__)
 
 # Database path
 DB_DIR = Path(__file__).resolve().parent / "data"
 DB_PATH = DB_DIR / "nse_stocks.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
+
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={"check_same_thread": False},
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 
 
 def ensure_db_exists():
     """Create database file if it doesn't exist."""
     DB_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def get_db():
+    """FastAPI dependency for SQLAlchemy-backed application models."""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+def init_auth_db():
+    """Create SQLAlchemy-managed application tables."""
+    ensure_db_exists()
+    # Import models here so SQLAlchemy registers them before create_all().
+    from models.user import User  # noqa: F401
+    from models.chat import ChatMessage, ChatSession  # noqa: F401
+    from models.favorite_stock import FavoriteStock  # noqa: F401
+    from models.admin_log import AdminLog  # noqa: F401
+    from models.profile import UserProfile  # noqa: F401
+    from models.knowledge_base import KnowledgeBaseEntry  # noqa: F401
+    from models.recent_search import RecentSearch  # noqa: F401
+    from models.scraper_log import ScraperLog  # noqa: F401
+    from models.stock_view import StockView  # noqa: F401
+    from models.system_log import SystemLog  # noqa: F401
+    from models.watchlist import Watchlist  # noqa: F401
+
+    Base.metadata.create_all(bind=engine)
 
 
 @contextmanager
@@ -41,6 +80,7 @@ def get_db_connection():
 def init_db():
     """Initialize database tables."""
     ensure_db_exists()
+    init_auth_db()
 
     with get_db_connection() as conn:
         cursor = conn.cursor()
@@ -56,10 +96,22 @@ def init_db():
                 volume INTEGER,
                 pe_ratio REAL,
                 dividend_yield REAL,
+                market_status TEXT,
                 source TEXT,
+                last_updated TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+
+        # Lightweight migrations for existing SQLite databases.
+        existing_columns = {
+            row["name"]
+            for row in cursor.execute("PRAGMA table_info(stocks)").fetchall()
+        }
+        if "market_status" not in existing_columns:
+            cursor.execute("ALTER TABLE stocks ADD COLUMN market_status TEXT")
+        if "last_updated" not in existing_columns:
+            cursor.execute("ALTER TABLE stocks ADD COLUMN last_updated TIMESTAMP")
 
         # Create index for faster ticker lookups
         cursor.execute("""
@@ -103,8 +155,9 @@ def insert_or_update_stock(stock_data: dict[str, Any]) -> bool:
 
             cursor.execute("""
                 INSERT INTO stocks
-                (ticker, name, price, change_pct, volume, pe_ratio, dividend_yield, source)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                (ticker, name, price, change_pct, volume, pe_ratio, dividend_yield,
+                 market_status, source, last_updated)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(ticker) DO UPDATE SET
                     name = excluded.name,
                     price = excluded.price,
@@ -112,7 +165,9 @@ def insert_or_update_stock(stock_data: dict[str, Any]) -> bool:
                     volume = excluded.volume,
                     pe_ratio = excluded.pe_ratio,
                     dividend_yield = excluded.dividend_yield,
+                    market_status = excluded.market_status,
                     source = excluded.source,
+                    last_updated = excluded.last_updated,
                     updated_at = CURRENT_TIMESTAMP
             """, (
                 ticker,
@@ -122,7 +177,9 @@ def insert_or_update_stock(stock_data: dict[str, Any]) -> bool:
                 stock_data.get("volume"),
                 stock_data.get("pe_ratio"),
                 stock_data.get("dividend_yield"),
+                stock_data.get("market_status"),
                 stock_data.get("source", "unknown"),
+                stock_data.get("last_updated") or datetime.now().isoformat(),
             ))
 
             conn.commit()
@@ -159,7 +216,7 @@ def get_all_stocks() -> list[dict[str, Any]]:
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT ticker, name, price, change_pct, volume, pe_ratio,
-                       dividend_yield, source, updated_at
+                       dividend_yield, market_status, source, last_updated, updated_at
                 FROM stocks
                 ORDER BY ticker
             """)
@@ -179,7 +236,7 @@ def get_stock_by_ticker(ticker: str) -> dict[str, Any] | None:
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT ticker, name, price, change_pct, volume, pe_ratio,
-                       dividend_yield, source, updated_at
+                       dividend_yield, market_status, source, last_updated, updated_at
                 FROM stocks
                 WHERE ticker = ?
             """, (ticker.upper(),))

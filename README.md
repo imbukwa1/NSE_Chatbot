@@ -1,46 +1,63 @@
-# NSE Chatbot
+# NSE AI Advisor
 
-An intelligent chatbot project designed to provide insights and data visualizations for the National Stock Exchange (NSE).
+FastAPI + React chatbot for Nairobi Securities Exchange market questions, stock comparisons, charts, news context, and education.
 
-## 🚀 Features
+## Setup
 
-- **Interactive Chat Interface**: Real-time communication for querying stock data.
-- **Data Visualization**: Integrated with **Recharts** for high-quality, responsive stock market charts.
-- **Efficient Storage**: Utilizes **Keyv** for consistent key-value storage across multiple backends.
-- **Robust Architecture**: Implements `@humanwhocodes/retry` for resilient API interactions and `@humanfs` for standardized file system bindings.
+Install backend dependencies:
 
-## 🛠️ Tech Stack
-
-- **Frontend**: React / Next.js
-- **Charts**: Recharts
-- **Storage**: Keyv
-- **Utilities**: @humanfs, @humanwhocodes/retry
-
-## 📦 Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone <your-repository-url>
-   cd NSE_Chatbot
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   # Install root dependencies (if any)
-   npm install
-
-   # Install frontend dependencies
-   cd frontend
-   npm install
-   ```
-
-## 🚦 Running the Project
-
-Navigate to the `frontend` directory and start the development server:
-```bash
-npm run dev
+```powershell
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
 ```
 
-## 📄 License
+Configure `backend/.env`:
 
-This project is licensed under the MIT License.
+```env
+FEATHERLESS_API_KEY=your_featherless_api_key
+FEATHERLESS_BASE_URL=https://api.featherless.ai/v1
+FEATHERLESS_CHAT_MODEL=your_featherless_chat_model
+
+PINECONE_API_KEY=your_pinecone_api_key
+NEWSAPI_KEY=your_newsapi_key
+```
+
+The backend uses the OpenAI SDK package for Featherless because Featherless is OpenAI-compatible. `OPENAI_API_KEY` is optional and only needed for legacy OpenAI embeddings/Pinecone document search.
+
+Install frontend dependencies:
+
+```powershell
+cd ..\frontend
+npm install
+```
+
+## Run
+
+Backend:
+
+```powershell
+cd backend
+venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8001
+```
+
+Frontend:
+
+```powershell
+cd frontend
+npm run dev -- --host 127.0.0.1 --port 5175 --strictPort
+```
+
+Open:
+
+```text
+http://127.0.0.1:5175
+```
+
+Health check:
+
+```text
+http://127.0.0.1:8001/health
+```

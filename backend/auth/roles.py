@@ -1,0 +1,6 @@
+ROLE_GUEST = "guest"
+ROLE_USER = "user"
+ROLE_ADMIN = "admin"
+
+VALID_ROLES = {ROLE_GUEST, ROLE_USER, ROLE_ADMIN}
+

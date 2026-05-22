@@ -1,31 +1,27 @@
-from datetime import date, timedelta
-from typing import Any
 import json
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
+from typing import Any
 
 from services.data_fetcher import NSEDataFetcher, TICKER_ALIASES
-
+from services.market_cache import get_all_cached_stocks, get_cached_stock
 
 _fetcher = NSEDataFetcher()
 _seed_cache: dict[str, dict[str, Any]] | None = None
-_executor = ThreadPoolExecutor(max_workers=4)
 
-# Pre-load seed data at import time
+
 def _load_seed_at_startup() -> dict[str, dict[str, Any]]:
     seed_path = Path(__file__).resolve().parent.parent / "data" / "nse_seed.json"
     try:
-        with open(seed_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        with open(seed_path, "r", encoding="utf-8") as file:
+            return json.load(file)
     except Exception:
         return {}
+
 
 _seed_cache = _load_seed_at_startup()
 
 
 def load_stock_data() -> dict[str, dict[str, Any]]:
-    # Build lookup from seed cache seed cache - NEVER call yfinance here, it will hang
-    seed_records = _seed_cache
     return {
         ticker: {
             "name": record.get("name", ticker) if record else ticker,
@@ -35,7 +31,7 @@ def load_stock_data() -> dict[str, dict[str, Any]]:
                 if resolved_ticker == ticker
             ],
         }
-        for ticker, record in seed_records.items()
+        for ticker, record in _seed_cache.items()
     }
 
 
@@ -57,75 +53,11 @@ def _seed_payload(ticker: str, include_history: bool = False) -> dict[str, Any] 
 
 
 def get_all_stock_data(include_history: bool = False) -> list[dict[str, Any]]:
-    live_prices = {}
-    try:
-        live_prices = _fetcher._get_nse_prices()
-    except Exception:
-        live_prices = {}
-
-    stocks = []
-    for ticker in _seed_cache.keys():
-        seed_payload = _seed_payload(ticker, include_history=include_history)
-        if not seed_payload:
-            continue
-
-        live_payload = live_prices.get(ticker)
-        if live_payload and live_payload.get("price") is not None:
-            stocks.append(
-                {
-                    **seed_payload,
-                    **live_payload,
-                    "history": seed_payload.get("history", []),
-                    "pe_ratio": seed_payload.get("pe_ratio"),
-                    "dividend_yield": seed_payload.get("dividend_yield"),
-                    "source": live_payload.get("source", "nse_scraper"),
-                }
-            )
-        else:
-            stocks.append(seed_payload)
-
-    return stocks
+    """Return SQLite-cached market data, with local seed data as fallback."""
+    return get_all_cached_stocks(include_history=include_history)
 
 
 def get_stock_data(ticker: str, include_history: bool = False) -> dict[str, Any] | None:
-    ticker = _fetcher.resolve_ticker(ticker)
-    seed_record = _seed_cache.get(ticker)
-
-    if include_history and seed_record:
-        return _seed_payload(ticker, include_history=True)
-
-    # Try to fetch from yfinance with 3-second hard timeout
-    stock = None
-    try:
-        future = _executor.submit(_fetcher.get_price, ticker)
-        stock = future.result(timeout=3)
-    except (FuturesTimeoutError, Exception):
-        # Timeout or error — use seed data
-        stock = None
-
-    if not stock:
-        # Fall back to seed data immediately
-        seed_payload = _seed_payload(ticker, include_history=include_history)
-        if seed_payload:
-            return seed_payload
-        return None
-
-    price = stock.get("price")
-
-    # Use seed data for missing fields
-    seed_record = _seed_cache.get(ticker, {})
-    pe_ratio = stock.get("pe_ratio") or seed_record.get("pe_ratio")
-    dividend_yield = stock.get("dividend_yield") or seed_record.get("dividend_yield")
-    history = seed_record.get("history", []) if include_history else []
-
-    return {
-        "ticker": stock["ticker"],
-        "name": stock.get("name", stock["ticker"]),
-        "price": price,
-        "history": history,
-        "pe_ratio": pe_ratio,
-        "dividend_yield": dividend_yield,
-        "change_pct": stock.get("change_pct"),
-        "volume": stock.get("volume"),
-        "source": stock.get("source", "yfinance"),
-    }
+    """Resolve a ticker and return cached stock data without request-time scraping."""
+    resolved = _fetcher.resolve_ticker(ticker)
+    return get_cached_stock(resolved, include_history=include_history)

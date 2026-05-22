@@ -1,12 +1,9 @@
 import re
-from datetime import datetime, time
+from datetime import datetime
 from typing import Any
 
-from pytz import timezone
-
+from services.market_cache import get_market_status
 from services.structured_data import get_all_stock_data, get_stock_data
-
-EAT = timezone("Africa/Nairobi")
 
 SECTOR_BY_TICKER = {
     "SCOM": "Telecommunications",
@@ -35,17 +32,7 @@ SECTOR_BY_TICKER = {
 
 
 def market_status(now: datetime | None = None) -> dict[str, Any]:
-    current = now.astimezone(EAT) if now else datetime.now(EAT)
-    open_time = time(9, 0)
-    close_time = time(15, 0)
-    is_weekday = current.weekday() < 5
-    is_open = is_weekday and open_time <= current.time() <= close_time
-    return {
-        "is_open": is_open,
-        "label": "Open" if is_open else "Closed",
-        "time_eat": current.isoformat(),
-        "hours": "Mon-Fri, 09:00-15:00 EAT",
-    }
+    return get_market_status(now)
 
 
 def enrich_stock(stock: dict[str, Any]) -> dict[str, Any]:

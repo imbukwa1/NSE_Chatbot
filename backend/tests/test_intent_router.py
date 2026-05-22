@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for OpenAI Intent Router
+Test script for the Featherless-compatible intent router.
 Demonstrates classification of various user queries.
 """
 
@@ -61,15 +61,15 @@ TEST_QUERIES = {
 async def test_intent_classification():
     """Test intent classification with sample queries."""
     print("=" * 80)
-    print("OPENAI INTENT ROUTER - TEST SUITE")
+    print("FEATHERLESS INTENT ROUTER - TEST SUITE")
     print("=" * 80)
 
     api_key = Path("../.env").exists()
 
     if not api_key:
-        print("\n[!] WARNING: OpenAI API key not configured (.env file not found)")
+        print("\n[!] WARNING: Featherless API key not configured (.env file not found)")
         print("   Testing with FALLBACK mode (regex-based classification)")
-        print("   For full demonstration, add OPENAI_API_KEY to .env file\n")
+        print("   For full demonstration, add FEATHERLESS_API_KEY and FEATHERLESS_CHAT_MODEL to .env file\n")
 
     print(f"\n[*] Testing {len(TEST_QUERIES)} intent types...\n")
 
@@ -149,8 +149,8 @@ async def test_classify_and_route():
     for query in test_queries:
         print(f"\nQuery: \"{query}\"")
         result = await intent_router.classify_and_route(query)
-        print(f"  → Intent: {result.get('classification', {}).get('intent')}")
-        print(f"  → Handler: {result.get('handler')}")
+        print(f"  -> Intent: {result.get('classification', {}).get('intent')}")
+        print(f"  -> Handler: {result.get('handler')}")
 
 
 if __name__ == "__main__":
@@ -166,3 +166,6 @@ if __name__ == "__main__":
     asyncio.run(test_classify_and_route())
 
     print("\n[OK] All tests completed!\n")
+
+
+

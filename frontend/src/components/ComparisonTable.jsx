@@ -10,6 +10,13 @@ function formatPercent(value) {
   return typeof value === 'number' ? `${(value * 100).toFixed(2)}%` : 'N/A'
 }
 
+function splitAnalysisText(text = '') {
+  return text
+    .split(/(?<=\.)\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+}
+
 function ComparisonTable({ data }) {
   // Handle both old (stock1/stock2) and new (stocks) data structures
   const stocks = data.stocks || (data.stock1 && data.stock2 ? [data.stock1, data.stock2] : [])
@@ -24,6 +31,7 @@ function ComparisonTable({ data }) {
     { label: 'P/E Ratio' },
     { label: 'Dividend Yield' },
   ]
+  const analysisRows = splitAnalysisText(data.analysis || data.message)
 
   // Add stock values to each row
   rows.forEach((row) => {
@@ -80,14 +88,39 @@ function ComparisonTable({ data }) {
         </table>
       </div>
 
-      <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-5 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">
-          Balanced Analysis
-        </p>
-        <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-slate-700">
-          {data.analysis}
-        </p>
-        <p className="mt-4 text-xs text-slate-400">
+      <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white shadow-sm">
+        <div className="border-b border-emerald-100 bg-emerald-50/80 px-4 py-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
+            Balanced Analysis
+          </p>
+        </div>
+        <table className="min-w-full divide-y divide-slate-100 text-left">
+          <tbody className="divide-y divide-slate-100">
+            {analysisRows.length ? (
+              analysisRows.map((item, index) => {
+                const [label, ...rest] = item.split(':')
+                const hasLabel = rest.length > 0 && label.length <= 28
+                return (
+                  <tr key={`${item}-${index}`}>
+                    <td className="w-40 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+                      {hasLabel ? label : `Point ${index + 1}`}
+                    </td>
+                    <td className="px-4 py-3 text-sm leading-6 text-slate-700">
+                      {hasLabel ? rest.join(':').trim() : item}
+                    </td>
+                  </tr>
+                )
+              })
+            ) : (
+              <tr>
+                <td className="px-4 py-3 text-sm text-slate-500">
+                  No additional analysis is available.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        <p className="border-t border-slate-100 px-4 py-3 text-xs text-slate-400">
           Disclaimer: {data.disclaimer}
         </p>
       </div>

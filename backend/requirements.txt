@@ -57,6 +57,10 @@ pydantic==2.12.5
 pydantic_core==2.41.5
 pydeck==0.9.1
 PyJWT==2.12.1
+SQLAlchemy==2.0.45
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+email-validator==2.3.0
 pyogrio==0.12.1
 pyproj==3.7.2
 python-dateutil==2.9.0.post0

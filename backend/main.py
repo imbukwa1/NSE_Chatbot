@@ -11,23 +11,19 @@ from pathlib import Path
 from typing import Any
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.cron import CronTrigger
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel
-from pytz import timezone
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
+load_dotenv(BASE_DIR / ".env", override=True)
 load_dotenv(BASE_DIR / ".env.example")
 
 import database
 import intent_router
 import news as news_module
-import embeddings as embeddings_module
-from scraper import scrape_nse_data, get_last_scraped_time
 
 from services.advisor_logic import extract_tickers
 from services import llm_service, pinecone_service
@@ -40,63 +36,50 @@ from services.market_intelligence import (
     get_market_overview,
     stocks_by_sector,
 )
+from services.market_cache import EAT
+from routes.auth_routes import router as auth_router
+from routes.admin_routes import router as admin_router
+from routes.analytics_routes import router as analytics_router
+from routes.chat_routes import router as chat_history_router
+from routes.dashboard_routes import router as dashboard_router
+from routes.favorites_routes import router as favorites_router
+from routes.market_routes import router as market_router
+from routes.profile_routes import router as profile_router
+from routes.system_routes import router as system_router
+from routes.watchlist_routes import router as watchlist_router
+from services.scheduler import register_market_scrape_jobs
+from services.scraper import scrape_and_update_cache
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+app.include_router(auth_router)
+app.include_router(admin_router)
+app.include_router(analytics_router)
+app.include_router(chat_history_router)
+app.include_router(profile_router)
+app.include_router(favorites_router)
+app.include_router(watchlist_router)
+app.include_router(market_router)
+app.include_router(dashboard_router)
+app.include_router(system_router)
 
 database.init_db()
 
 scheduler = BackgroundScheduler()
-EAT = timezone("Africa/Nairobi")
 
 
-def scrape_and_cache():
-    logger.info("Scrape job triggered")
-    try:
-        stocks_data = scrape_nse_data()
-        if stocks_data:
-            stocks_list = list(stocks_data.values())
-            count = database.batch_insert_stocks(stocks_list)
-            logger.info(f"Scraped and cached {count} stocks")
-            for ticker, stock in stocks_data.items():
-                price = stock.get("price")
-                if price:
-                    database.record_price_history(ticker, price)
-
-            # Re-embed and upsert vectors after scrape (to keep prices current)
-            try:
-                import asyncio
-                updated_stocks = database.get_all_stocks()
-                if updated_stocks:
-                    loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(loop)
-                    upserted = loop.run_until_complete(
-                        embeddings_module.upsert_stock_vectors(updated_stocks)
-                    )
-                    loop.close()
-                    logger.info(f"Re-embedded and upserted {upserted} stock vectors")
-            except Exception as e:
-                logger.error(f"Failed to update embeddings: {e}")
-        else:
-            logger.warning("Scrape returned no data")
-    except Exception as e:
-        logger.error(f"Scrape job failed: {e}")
+def scrape_and_cache(snapshot_label: str = "manual"):
+    return scrape_and_update_cache(snapshot_label)
 
 
 @app.on_event("startup")
 async def startup_event():
     logger.info("Starting background scheduler")
-    scheduler.add_job(
-        scrape_and_cache,
-        CronTrigger(hour="9-15", minute="*/15", timezone=EAT),
-        id="nse_scraper",
-        name="Scrape NSE data every 15 minutes",
-        replace_existing=True,
-    )
+    register_market_scrape_jobs(scheduler)
     scheduler.start()
-    logger.info("Scheduler started with NSE scraper job")
+    logger.info("Scheduler started with fixed daily NSE scraper jobs")
 
 
 @app.on_event("shutdown")
@@ -108,10 +91,25 @@ async def shutdown_event():
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
 # Covers Vite's default ports (5173 / 5174) and CRA's port (3000).
-# Add your production domain here before deploying.
+# Add production domains through FRONTEND_ORIGINS before deploying.
+DEFAULT_CORS_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
+    "http://localhost:5175",
+    "http://127.0.0.1:5175",
+]
+configured_origins = [
+    origin.strip()
+    for origin in os.getenv("FRONTEND_ORIGINS", "").split(",")
+    if origin.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
+    allow_origins=configured_origins or [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:5173",
@@ -148,6 +146,16 @@ PRICE_INTENT_PATTERNS = (
     r"\bdividend\b",
     r"\bp/?e\b",
 )
+TREND_INTENT_PATTERNS = (
+    r"\btrend\b",
+    r"\btrends\b",
+    r"\btrens\b",
+    r"\bhistorical\b",
+    r"\bhistory\b",
+    r"\bover\s+\d+\s+(day|days|week|weeks|month|months|year|years)\b",
+    r"\b(last|past)\s+\d+\s+(day|days|week|weeks|month|months|year|years)\b",
+    r"\b\d+\s*(d|day|days|w|wk|wks|week|weeks|m|mo|mos|month|months|y|yr|yrs|year|years)\b",
+)
 ANALYSIS_INTENT_PATTERNS = (
     r"\bwhy\b",
     r"\brisk\b",
@@ -155,6 +163,7 @@ ANALYSIS_INTENT_PATTERNS = (
     r"\bexplain\b",
     r"\boutlook\b",
     r"\bperformance\b",
+    *TREND_INTENT_PATTERNS,
 )
 COMPARE_INTENT_PATTERNS = (r"\bcompare\b", r"\bversus\b", r"\bvs\b")
 ADVICE_INTENT_PATTERNS = (
@@ -232,16 +241,46 @@ async def _get_cached_stock_data(
     return payload
 
 
+def _extract_timeframe(lowered_query: str) -> str | None:
+    match = re.search(
+        r"\b(?:over|last|past)?\s*(\d+)\s*(day|days|week|weeks|month|months|year|years|d|w|wk|wks|m|mo|mos|y|yr|yrs)\b",
+        lowered_query,
+    )
+    if not match:
+        return None
+    amount, unit = match.groups()
+    unit_map = {
+        "d": "days",
+        "day": "days",
+        "w": "weeks",
+        "wk": "weeks",
+        "wks": "weeks",
+        "week": "weeks",
+        "m": "months",
+        "mo": "months",
+        "mos": "months",
+        "month": "months",
+        "y": "years",
+        "yr": "years",
+        "yrs": "years",
+        "year": "years",
+    }
+    normalized = unit_map.get(unit, unit)
+    return f"{amount} {normalized}"
+
+
 async def _classify_query(user_query: str) -> dict[str, Any]:
     """
-    Classify a query using OpenAI intent router.
-    Falls back to analysis if no OpenAI key is available.
+    Classify a query using Featherless intent routing.
+    Falls back to local rules if no chat provider is available.
     """
     lowered_query = user_query.lower()
     if any(re.search(p, lowered_query) for p in COMPARE_INTENT_PATTERNS):
         return {"intent": "compare", "entity": None, "timeframe": None}
     if any(re.search(p, lowered_query) for p in MARKET_OVERVIEW_PATTERNS):
         return {"intent": "market_overview", "entity": None, "timeframe": "current"}
+    if any(re.search(p, lowered_query) for p in TREND_INTENT_PATTERNS):
+        return {"intent": "stock_summary", "entity": None, "timeframe": _extract_timeframe(lowered_query)}
     if any(re.search(p, lowered_query) for p in PRICE_INTENT_PATTERNS):
         if not any(re.search(p, lowered_query) for p in ANALYSIS_INTENT_PATTERNS):
             return {"intent": "price_lookup", "entity": None, "timeframe": None}
@@ -252,8 +291,8 @@ async def _classify_query(user_query: str) -> dict[str, Any]:
     if any(re.search(p, lowered_query) for p in FUNDAMENTAL_INTENT_PATTERNS):
         return {"intent": "fundamentals", "entity": None, "timeframe": None}
 
-    if not os.getenv("OPENAI_API_KEY"):
-        # Fallback to regex-based classification if no OpenAI key
+    if not _has_ai_provider():
+        # Fallback to regex-based classification if no AI provider is configured.
         return {"intent": "ai_advice", "entity": None, "timeframe": None}
 
     classification = intent_router.classify(user_query)
@@ -299,10 +338,23 @@ async def _query_all_namespaces(query: str) -> list[dict]:
 
 def _build_structured_response(stock: dict[str, Any]) -> dict[str, Any]:
     price = stock.get("price")
+    change = stock.get("change_pct")
+    if isinstance(change, (int, float)) and change > 0:
+        movement = f", up {change:.2f}% today"
+    elif isinstance(change, (int, float)) and change < 0:
+        movement = f", down {abs(change):.2f}% today"
+    else:
+        movement = ""
+    updated = stock.get("last_updated") or stock.get("updated_at") or "latest cached snapshot"
+    source = stock.get("source", "sqlite_cache")
     message = (
-        f"{stock['name']} is trading at KES {price:.2f}."
+        f"{stock['name']} ({stock['ticker']}) is currently trading at KES {price:.2f}{movement}.\n\n"
+        f"Last updated: {updated}\nSource: {source}"
         if price is not None
-        else f"A live price for {stock['name']} is currently unavailable."
+        else (
+            f"A cached price for {stock['name']} is currently unavailable.\n\n"
+            f"Last updated: {updated}\nSource: {source}"
+        )
     )
     return {
         "type": "stock_info",
@@ -313,7 +365,9 @@ def _build_structured_response(stock: dict[str, Any]) -> dict[str, Any]:
             "history": stock.get("history", []),
             "pe_ratio": stock.get("pe_ratio"),
             "dividend_yield": stock.get("dividend_yield"),
-            "source": stock.get("source", "fallback"),
+            "source": source,
+            "last_updated": updated,
+            "market_status": stock.get("market_status"),
         },
         "message": message,
         "disclaimer": DISCLAIMER_TEXT,
@@ -352,8 +406,92 @@ def _format_currency(value: float | None) -> str:
     return "N/A" if value is None else f"KES {value:.2f}"
 
 
+def _is_configured_secret(value: str | None) -> bool:
+    if not value:
+        return False
+    normalized = value.strip().lower()
+    if not normalized:
+        return False
+    placeholder_tokens = (
+        "your_",
+        "your-",
+        "replace",
+        "placeholder",
+        "example",
+        "test_key",
+        "api_key_here",
+    )
+    return not any(token in normalized for token in placeholder_tokens)
+
+
 def _has_openai_key() -> bool:
-    return bool(os.getenv("OPENAI_API_KEY"))
+    # Backward-compatible name used throughout older route logic.
+    return _has_ai_provider()
+
+
+def _has_ai_provider() -> bool:
+    return llm_service.has_chat_provider()
+
+
+def _parse_history_point(point: dict[str, Any]) -> tuple[str | None, float | None]:
+    price = point.get("price")
+    try:
+        price_value = float(price) if price is not None else None
+    except (TypeError, ValueError):
+        price_value = None
+    return point.get("date"), price_value
+
+
+def _build_trend_analysis_message(
+    user_query: str,
+    stock: dict[str, Any],
+    timeframe: str | None = None,
+) -> str:
+    history = stock.get("history") or []
+    valid_points = [
+        {"date": date, "price": price}
+        for date, price in (_parse_history_point(point) for point in history)
+        if date and price is not None
+    ]
+
+    if len(valid_points) < 2:
+        return (
+            f"{stock['name']} ({stock['ticker']}) is shown at {_format_currency(stock.get('price'))}, "
+            "but I do not have enough historical price points connected right now to calculate a reliable trend. "
+            f"Source: {stock.get('source', 'fallback')}. Confirm live NSE data before acting."
+        )
+
+    first = valid_points[0]
+    latest = valid_points[-1]
+    first_price = first["price"]
+    latest_price = latest["price"]
+    absolute_change = latest_price - first_price
+    percent_change = (absolute_change / first_price) * 100 if first_price else 0
+    high = max(valid_points, key=lambda point: point["price"])
+    low = min(valid_points, key=lambda point: point["price"])
+
+    direction = "up" if absolute_change > 0 else "down" if absolute_change < 0 else "flat"
+    requested = timeframe or _extract_timeframe(user_query.lower())
+    period_label = f"the requested {requested}" if requested else "the available period"
+    coverage_note = (
+        f"Available chart data runs from {first['date']} to {latest['date']}; "
+        f"use that coverage as the basis for this answer, even if you asked for {requested}."
+        if requested
+        else f"Available chart data runs from {first['date']} to {latest['date']}."
+    )
+
+    return (
+        f"{stock['name']} ({stock['ticker']}) trend over {period_label}: {direction}. "
+        f"It moved from {_format_currency(first_price)} on {first['date']} to "
+        f"{_format_currency(latest_price)} on {latest['date']} "
+        f"({_format_currency(absolute_change)}, {percent_change:.2f}%). "
+        f"Range: high {_format_currency(high['price'])} on {high['date']}, "
+        f"low {_format_currency(low['price'])} on {low['date']}. "
+        f"Current snapshot: {_format_currency(stock.get('price'))}, P/E {_format_ratio(stock.get('pe_ratio'))}, "
+        f"dividend yield {_format_percent(stock.get('dividend_yield'))}. "
+        f"{coverage_note} Source: {stock.get('source', 'fallback')}. "
+        "This is a screening view, not financial advice."
+    )
 
 
 def _trend_label(stock: dict[str, Any]) -> str:
@@ -621,7 +759,7 @@ def _stream_sse_response(metadata: dict[str, Any], prompt: str) -> Iterator[str]
             "token",
             (
                 "I could not stream live AI analysis right now, but the structured NSE "
-                "data response is still available. Please check your OpenAI configuration "
+                "data response is still available. Please check your Featherless configuration "
                 "and try again.\n\nDisclaimer: This is not financial advice."
             ),
         )
@@ -686,10 +824,13 @@ async def health():
         "services": {
             "api": True,
             "yfinance": get_stock_data is not None,
-            "openai_sdk": llm_service.OpenAI is not None,
-            "openai_key_loaded": bool(os.getenv("OPENAI_API_KEY")),
+            "openai_compatible_sdk": llm_service.OpenAI is not None,
+            "ai_provider": llm_service.get_provider_settings()["provider"],
+            "featherless_key_loaded": _has_ai_provider(),
             "pinecone_sdk": pinecone_service.Pinecone is not None,
-            "pinecone_key_loaded": bool(os.getenv("PINECONE_API_KEY")),
+            "pinecone_key_loaded": _is_configured_secret(os.getenv("PINECONE_API_KEY")),
+            "newsapi_key_loaded": _is_configured_secret(os.getenv("NEWSAPI_KEY")),
+            "env_file_present": (BASE_DIR / ".env").exists(),
         },
     }
 
@@ -791,7 +932,7 @@ async def scraper_status():
             "stock_count": stock_count,
             "last_database_update": last_update,
             "current_time_eat": datetime.now(EAT).isoformat(),
-            "scrape_schedule": "Every 15 minutes between 09:00-15:00 EAT",
+            "scrape_schedule": "Daily snapshots at 09:00, 12:00, and 15:00 EAT",
         }
     except Exception as e:
         logger.error(f"Error getting scraper status: {e}")
@@ -1014,7 +1155,11 @@ async def chat(request: ChatRequest):
                 status_code=404,
             )
 
-        summary_msg = _build_local_analysis_message(request.query, [stock])
+        summary_msg = (
+            _build_trend_analysis_message(request.query, stock, timeframe)
+            if any(re.search(p, lowered_query) for p in TREND_INTENT_PATTERNS)
+            else _build_local_analysis_message(request.query, [stock])
+        )
         return {
             "type": "stock_info",
             "data": stock,
@@ -1110,7 +1255,7 @@ async def chat(request: ChatRequest):
                 "disclaimer": DISCLAIMER_TEXT,
             }
 
-        # If no OpenAI key, return formatted response
+        # If no AI provider, return formatted response
         if not _has_openai_key():
             return {
                 "type": "ai_response",
@@ -1148,7 +1293,7 @@ async def chat(request: ChatRequest):
             return {
                 "type": "error",
                 "data": {},
-                "message": "Educational mode requires OpenAI API key.",
+            "message": "Educational mode requires a Featherless API key and chat model.",
                 "disclaimer": DISCLAIMER_TEXT,
             }
 

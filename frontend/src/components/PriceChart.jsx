@@ -47,16 +47,77 @@ function buildComparisonSeries(stock1, stock2) {
   )
 }
 
-function PriceChart({ stock, stock1, stock2 }) {
+function formatDateRange(history = []) {
+  if (!history.length) {
+    return 'Available History'
+  }
+
+  const firstDate = history[0]?.date
+  const latestDate = history[history.length - 1]?.date
+
+  if (!firstDate || !latestDate || firstDate === latestDate) {
+    return firstDate || 'Available History'
+  }
+
+  return `${firstDate} to ${latestDate}`
+}
+
+function PriceChart({ compact = false, stock, stock1, stock2, title }) {
   const isComparison = Boolean(stock1 && stock2)
   const chartData = isComparison
     ? buildComparisonSeries(stock1, stock2)
     : buildSingleSeries(stock?.history, stock?.name || 'Price')
+  const chartTitle = title || (
+    isComparison
+      ? `${stock1.name} vs ${stock2.name} | ${formatDateRange(chartData)}`
+      : `${stock.name} | ${formatDateRange(stock.history)}`
+  )
 
   if (!chartData.length) {
     return (
       <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-8 text-sm text-slate-500">
         Historical price data is currently unavailable.
+      </div>
+    )
+  }
+
+  if (compact) {
+    return (
+      <div style={{ width: "100%", height: 260 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+            <XAxis
+              dataKey="date"
+              tick={{ fill: '#94a3b8', fontSize: 11 }}
+              tickLine={false}
+              axisLine={false}
+            />
+            <YAxis
+              tickFormatter={formatCurrency}
+              tick={{ fill: '#94a3b8', fontSize: 11 }}
+              tickLine={false}
+              axisLine={false}
+              width={78}
+            />
+            <Tooltip
+              formatter={(value) => formatCurrency(value)}
+              contentStyle={{
+                borderRadius: '16px',
+                borderColor: '#e2e8f0',
+                boxShadow: '0 12px 30px rgba(15, 23, 42, 0.08)',
+              }}
+            />
+            <Line
+              type="monotone"
+              dataKey={stock.name}
+              stroke="#2563eb"
+              strokeWidth={2.5}
+              dot={false}
+              activeDot={{ r: 5 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     )
   }
@@ -68,9 +129,7 @@ function PriceChart({ stock, stock1, stock2 }) {
           Price Trend
         </p>
         <h3 className="mt-2 text-lg font-semibold text-slate-950">
-          {isComparison
-            ? `${stock1.name} vs ${stock2.name} | Last 30 Days`
-            : `${stock.name} | Last 30 Days`}
+          {chartTitle}
         </h3>
       </div>
 

@@ -14,11 +14,29 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
+load_dotenv(BASE_DIR / ".env", override=True)
 load_dotenv(BASE_DIR / ".env.example")
 
 # NewsAPI configuration
 NEWSAPI_BASE_URL = "https://newsapi.org/v2"
+
+
+def _is_configured_secret(value: str | None) -> bool:
+    if not value:
+        return False
+    normalized = value.strip().lower()
+    if not normalized:
+        return False
+    placeholder_tokens = (
+        "your_",
+        "your-",
+        "replace",
+        "placeholder",
+        "example",
+        "test_key",
+        "api_key_here",
+    )
+    return not any(token in normalized for token in placeholder_tokens)
 
 # Map NSE tickers to company names for news queries
 TICKER_TO_COMPANY = {
@@ -71,7 +89,7 @@ def get_stock_news(ticker: str, company_name: str | None = None, limit: int = 5)
         news = get_stock_news("SCOM", "Safaricom Kenya")
     """
     newsapi_key = os.getenv("NEWSAPI_KEY")
-    if not newsapi_key:
+    if not _is_configured_secret(newsapi_key):
         logger.warning("NEWSAPI_KEY not set. News retrieval unavailable.")
         return []
 
@@ -155,7 +173,7 @@ def get_market_news(limit: int = 10) -> list[dict[str, Any]]:
         List of market news articles
     """
     newsapi_key = os.getenv("NEWSAPI_KEY")
-    if not newsapi_key:
+    if not _is_configured_secret(newsapi_key):
         logger.warning("NEWSAPI_KEY not set. News retrieval unavailable.")
         return []
 
