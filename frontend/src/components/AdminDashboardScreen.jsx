@@ -1,86 +1,84 @@
-import {
-  Bar,
-  BarChart,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useAuth } from '../context/AuthContext.jsx'
+import { adminApi } from '../services/api.js'
 
-const conversationData = [
-  { day: 'Mon', chats: 42 },
-  { day: 'Tue', chats: 58 },
-  { day: 'Wed', chats: 50 },
-  { day: 'Thu', chats: 74 },
-  { day: 'Fri', chats: 68 },
-  { day: 'Sat', chats: 36 },
+const CATEGORIES = [
+  'Investment Basics',
+  'Dividends',
+  'Valuation',
+  'NSE Rules',
+  'Company Information',
 ]
 
-const searchedStocks = [
-  { ticker: 'SCOM', searches: 82 },
-  { ticker: 'KCB', searches: 58 },
-  { ticker: 'EQTY', searches: 54 },
-  { ticker: 'COOP', searches: 31 },
-]
+const EMPTY_FORM = {
+  category: CATEGORIES[0],
+  question: '',
+  answer: '',
+}
 
-function SummaryCard({ label, value, note }) {
+function formatDate(value) {
+  if (!value) return 'No update yet'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+  return date.toLocaleString(undefined, {
+    hour: 'numeric',
+    minute: '2-digit',
+    month: 'short',
+    day: 'numeric',
+  })
+}
+
+function formatMarketUpdate(value) {
+  if (!value) return 'No market update yet'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+  return `${date.toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit',
+  })} EAT`
+}
+
+function EmptyState({ children }) {
+  return (
+    <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-7 text-center text-sm text-slate-500">
+      {children}
+    </div>
+  )
+}
+
+function SummaryCard({ icon, title, value, subtitle }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-medium text-slate-400">{label}</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-950">{value}</p>
-        </div>
-        <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">
-          {label.slice(0, 1)}
+      <div className="flex items-start gap-3">
+        <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-50 text-lg text-blue-700">
+          {icon}
         </span>
-      </div>
-      {note && <p className="mt-3 text-xs text-slate-500">{note}</p>}
-    </div>
-  )
-}
-
-function StatusCard({ label, status = 'Online' }) {
-  const isOnline = status === 'Online' || status === 'Connected' || status === 'Healthy'
-
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-slate-900">{label}</p>
-          <p className="mt-1 text-xs text-slate-400">{status}</p>
+          <p className="text-xs font-medium text-slate-400">{title}</p>
+          <p className="mt-2 text-2xl font-semibold text-slate-950">{value}</p>
+          <p className="mt-1 text-xs text-slate-500">{subtitle}</p>
         </div>
-        <span
-          className={`h-3 w-3 rounded-full ${
-            isOnline ? 'bg-emerald-500' : 'bg-rose-500'
-          }`}
-        />
       </div>
     </div>
   )
 }
 
-function ActionButton({ children, tone = 'default' }) {
+function StatusPill({ isActive }) {
   return (
-    <button
-      type="button"
-      className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
-        tone === 'danger'
-          ? 'bg-rose-50 text-rose-600 hover:bg-rose-100'
-          : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+    <span
+      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+        isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'
       }`}
     >
-      {children}
-    </button>
+      {isActive ? 'Active' : 'Inactive'}
+    </span>
   )
 }
 
-function AdminTable({ columns, rows }) {
+function AdminTable({ columns, children, minWidth = '720px' }) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[720px] text-left">
+      <table className="w-full text-left" style={{ minWidth }}>
         <thead>
           <tr className="border-b border-slate-200 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
             {columns.map((column) => (
@@ -90,224 +88,464 @@ function AdminTable({ columns, rows }) {
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-100">
-          {rows}
-        </tbody>
+        <tbody className="divide-y divide-slate-100">{children}</tbody>
       </table>
     </div>
   )
 }
 
-function AdminDashboardScreen() {
+function ActionButton({ children, onClick, tone = 'default', type = 'button' }) {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+        tone === 'danger'
+          ? 'bg-rose-50 text-rose-600 hover:bg-rose-100'
+          : tone === 'primary'
+            ? 'bg-blue-600 text-white shadow-[0_10px_20px_rgba(37,99,235,0.16)] hover:bg-blue-700'
+            : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+      }`}
+    >
+      {children}
+    </button>
+  )
+}
+
+function KnowledgeForm({ form, isEditing, onCancel, onChange, onSubmit }) {
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="mb-4 rounded-2xl border border-blue-100 bg-blue-50/60 p-4"
+    >
+      <div className="grid gap-3 md:grid-cols-[12rem_1fr]">
+        <label className="block">
+          <span className="text-xs font-semibold text-slate-500">Category</span>
+          <select
+            value={form.category}
+            onChange={(event) => onChange({ ...form, category: event.target.value })}
+            className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-blue-300"
+          >
+            {CATEGORIES.map((category) => (
+              <option key={category}>{category}</option>
+            ))}
+          </select>
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold text-slate-500">Question</span>
+          <input
+            value={form.question}
+            onChange={(event) => onChange({ ...form, question: event.target.value })}
+            className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-blue-300"
+            placeholder="What should the chatbot know?"
+          />
+        </label>
+      </div>
+      <label className="mt-3 block">
+        <span className="text-xs font-semibold text-slate-500">Answer</span>
+        <textarea
+          value={form.answer}
+          onChange={(event) => onChange({ ...form, answer: event.target.value })}
+          rows={3}
+          className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-blue-300"
+          placeholder="Write a clear beginner-friendly answer."
+        />
+      </label>
+      <div className="mt-3 flex justify-end gap-2">
+        <ActionButton onClick={onCancel}>Cancel</ActionButton>
+        <ActionButton type="submit" tone="primary">
+          {isEditing ? 'Save Entry' : 'Add Entry'}
+        </ActionButton>
+      </div>
+    </form>
+  )
+}
+
+function AdminDashboardScreen({ onRequireLogin }) {
+  const { isAuthLoading, isAuthenticated, logout, user } = useAuth()
+  const [analytics, setAnalytics] = useState(null)
+  const [users, setUsers] = useState([])
+  const [knowledgeEntries, setKnowledgeEntries] = useState([])
+  const [marketUpdate, setMarketUpdate] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [feedback, setFeedback] = useState('')
+  const [showKnowledgeForm, setShowKnowledgeForm] = useState(false)
+  const [editingEntryId, setEditingEntryId] = useState(null)
+  const [knowledgeForm, setKnowledgeForm] = useState(EMPTY_FORM)
+
+  const isAdmin = user?.role === 'admin'
+
+  const loadAdminData = useCallback(async () => {
+    if (!isAuthenticated || !isAdmin) {
+      setIsLoading(false)
+      return
+    }
+
+    setIsLoading(true)
+    setError('')
+
+    try {
+      // Load the four MVP admin sections from real backend data, never demo rows.
+      const [analyticsPayload, usersPayload, knowledgePayload, marketPayload] =
+        await Promise.all([
+          adminApi.getAnalytics(),
+          adminApi.getUsers(),
+          adminApi.getKnowledgeBase(),
+          adminApi.getMarketOverview().catch(() => null),
+        ])
+
+      setAnalytics(analyticsPayload.data?.analytics || {})
+      setUsers(usersPayload.data?.users || [])
+      setKnowledgeEntries(knowledgePayload.data?.entries || [])
+      setMarketUpdate(
+        marketPayload?.data?.market?.generated_at ||
+          marketPayload?.data?.market?.last_updated ||
+          null,
+      )
+    } catch (err) {
+      if (err.status === 401) {
+        await logout()
+        onRequireLogin?.()
+        return
+      }
+      setError(err.message || 'Unable to load admin dashboard.')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [isAdmin, isAuthenticated, logout, onRequireLogin])
+
+  useEffect(() => {
+    loadAdminData()
+  }, [loadAdminData])
+
+  const totalStocksTracked = useMemo(() => {
+    const collections = [
+      analytics?.most_searched_stocks || [],
+      analytics?.top_viewed_companies || [],
+    ]
+    const tickers = new Set()
+    collections.flat().forEach((item) => {
+      if (item.ticker) tickers.add(item.ticker)
+    })
+    return tickers.size || 'N/A'
+  }, [analytics])
+
+  const chatbotActivity = useMemo(
+    () => ({
+      popularQueries: analytics?.most_popular_queries || [],
+      searchedStocks: analytics?.most_searched_stocks || [],
+      recentQueries: analytics?.recent_queries || [],
+      failedQuestions: analytics?.failed_questions || [],
+    }),
+    [analytics],
+  )
+
+  const handleStatusChange = async (targetUser, isActive) => {
+    try {
+      const payload = await adminApi.updateUserStatus(targetUser.id, isActive)
+      const updatedUser = payload.data?.user
+      setUsers((currentUsers) =>
+        currentUsers.map((item) =>
+          item.id === targetUser.id ? { ...item, ...(updatedUser || {}), is_active: isActive } : item,
+        ),
+      )
+      setFeedback(`${targetUser.full_name} is now ${isActive ? 'active' : 'inactive'}.`)
+    } catch (err) {
+      setFeedback(err.message || 'Could not update user status.')
+    }
+  }
+
+  const openCreateForm = () => {
+    setKnowledgeForm(EMPTY_FORM)
+    setEditingEntryId(null)
+    setShowKnowledgeForm(true)
+  }
+
+  const openEditForm = (entry) => {
+    setKnowledgeForm({
+      category: entry.category || CATEGORIES[0],
+      question: entry.question || '',
+      answer: entry.answer || '',
+    })
+    setEditingEntryId(entry.id)
+    setShowKnowledgeForm(true)
+  }
+
+  const closeKnowledgeForm = () => {
+    setKnowledgeForm(EMPTY_FORM)
+    setEditingEntryId(null)
+    setShowKnowledgeForm(false)
+  }
+
+  const handleKnowledgeSubmit = async (event) => {
+    event.preventDefault()
+    if (!knowledgeForm.category || !knowledgeForm.question.trim() || !knowledgeForm.answer.trim()) {
+      setFeedback('Please fill in category, question, and answer.')
+      return
+    }
+
+    try {
+      // The same compact form supports both adding and editing knowledge entries.
+      const payload = editingEntryId
+        ? await adminApi.updateKnowledgeEntry(editingEntryId, knowledgeForm)
+        : await adminApi.createKnowledgeEntry(knowledgeForm)
+      const entry = payload.data?.entry
+      if (entry) {
+        setKnowledgeEntries((currentEntries) =>
+          editingEntryId
+            ? currentEntries.map((item) => (item.id === entry.id ? entry : item))
+            : [entry, ...currentEntries],
+        )
+      }
+      setFeedback(editingEntryId ? 'Knowledge entry updated.' : 'Knowledge entry added.')
+      closeKnowledgeForm()
+    } catch (err) {
+      setFeedback(err.message || 'Could not save knowledge entry.')
+    }
+  }
+
+  const handleDeleteKnowledge = async (entryId) => {
+    try {
+      await adminApi.deleteKnowledgeEntry(entryId)
+      setKnowledgeEntries((currentEntries) =>
+        currentEntries.filter((item) => item.id !== entryId),
+      )
+      setFeedback('Knowledge entry deleted.')
+    } catch (err) {
+      setFeedback(err.message || 'Could not delete knowledge entry.')
+    }
+  }
+
+  if (isAuthLoading || isLoading) {
+    return (
+      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl space-y-6">
+          <div className="h-40 animate-pulse rounded-[1.75rem] bg-white shadow-sm" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="h-28 animate-pulse rounded-2xl bg-white shadow-sm" />
+            ))}
+          </div>
+        </div>
+      </main>
+    )
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+        <EmptyState>Please login to access the admin dashboard.</EmptyState>
+      </main>
+    )
+  }
+
+  if (!isAdmin) {
+    return (
+      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+        <EmptyState>You do not have permission to access this page.</EmptyState>
+      </main>
+    )
+  }
+
   return (
     <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl space-y-6">
         <section className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-[0_18px_50px_rgba(96,126,203,0.12)] sm:p-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
-                Admin dashboard
-              </p>
-              <h2 className="mt-2 text-2xl font-semibold text-slate-950">
-                NSE AI Advisor management
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                Manage users, NSE company records, chatbot knowledge, and basic activity in one simple workspace.
-              </p>
-            </div>
-            <div className="flex rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-slate-400 shadow-inner">
-              <input
-                type="search"
-                placeholder="Search admin records"
-                className="w-60 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-              />
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            <SummaryCard label="Total Users" value="128" note="12 new this month" />
-            <SummaryCard label="Total Conversations" value="2,430" note="Across chatbot sessions" />
-            <SummaryCard label="Total NSE Companies" value="64" note="Company records tracked" />
-            <SummaryCard label="Active Users Today" value="37" note="Simple daily usage count" />
-          </div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
+            Admin dashboard
+          </p>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-950">
+            Admin Dashboard
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+            Manage users, chatbot knowledge, and system activity.
+          </p>
         </section>
 
-        <section className="grid gap-6 xl:grid-cols-[1fr_22rem]">
+        {feedback && (
+          <p className="rounded-2xl bg-blue-50 px-4 py-3 text-sm font-medium text-blue-700">
+            {feedback}
+          </p>
+        )}
+        {error && (
+          <p className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-medium text-rose-600">
+            {error}
+          </p>
+        )}
+
+        <section className="grid gap-4 md:grid-cols-3">
+          <SummaryCard
+            icon="U"
+            title="Total Users"
+            value={analytics?.total_users ?? users.length}
+            subtitle={`${analytics?.active_users ?? users.filter((item) => item.is_active).length} active users`}
+          />
+          <SummaryCard
+            icon="S"
+            title="Total Stocks Tracked"
+            value={totalStocksTracked}
+            subtitle="Based on recorded stock activity"
+          />
+          <SummaryCard
+            icon="T"
+            title="Last Market Update"
+            value={formatMarketUpdate(marketUpdate)}
+            subtitle="Latest market snapshot"
+          />
+        </section>
+
+        <section className="grid gap-6 xl:grid-cols-[1fr_28rem]">
           <div className="space-y-6">
             <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
-              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-lg font-semibold text-slate-950">
-                  User management
-                </h3>
-                <div className="flex gap-2">
-                  <input
-                    type="search"
-                    placeholder="Search users"
-                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm outline-none placeholder:text-slate-400"
-                  />
-                  <select className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 outline-none">
-                    <option>All roles</option>
-                    <option>Admin</option>
-                    <option>User</option>
-                  </select>
-                </div>
-              </div>
-
-              <AdminTable
-                columns={['User name', 'Email', 'Role', 'Status', 'Actions']}
-                rows={[
-                  ['Grace Wanjiku', 'grace@example.com', 'User', 'Active'],
-                  ['Brian Otieno', 'brian@example.com', 'Admin', 'Active'],
-                  ['Amina Ali', 'amina@example.com', 'User', 'Inactive'],
-                ].map(([name, email, role, status]) => (
-                  <tr key={email}>
-                    <td className="px-3 py-4 text-sm font-semibold text-slate-900">{name}</td>
-                    <td className="px-3 py-4 text-sm text-slate-500">{email}</td>
-                    <td className="px-3 py-4 text-sm text-slate-600">{role}</td>
-                    <td className="px-3 py-4">
-                      <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-600">
-                        {status}
-                      </span>
-                    </td>
-                    <td className="px-3 py-4">
-                      <div className="flex gap-2">
-                        <ActionButton>Edit</ActionButton>
-                        <ActionButton>Disable</ActionButton>
-                        <ActionButton tone="danger">Delete</ActionButton>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              />
-            </section>
-
-            <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
-              <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-slate-950">
-                  Knowledge base management
-                </h3>
-                <button
-                  type="button"
-                  className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(37,99,235,0.18)]"
-                >
-                  Add New
-                </button>
-              </div>
-
-              <div className="space-y-3">
-                {[
-                  ['What are dividends?', 'Explains dividends using simple NSE examples.', 'Education', 'May 2026'],
-                  ['How do I compare stocks?', 'Shows price, P/E ratio, yield, and risk basics.', 'Investing basics', 'May 2026'],
-                  ['What affects stock prices?', 'Covers news, earnings, rates, and demand.', 'Market learning', 'Apr 2026'],
-                ].map(([question, preview, category, date]) => (
-                  <div
-                    key={question}
-                    className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4"
-                  >
-                    <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-                      <div>
-                        <p className="text-sm font-semibold text-slate-900">{question}</p>
-                        <p className="mt-1 text-xs leading-5 text-slate-500">{preview}</p>
-                        <p className="mt-2 text-xs text-slate-400">
-                          {category} | Last updated {date}
-                        </p>
-                      </div>
-                      <div className="flex gap-2">
-                        <ActionButton>Edit</ActionButton>
-                        <ActionButton tone="danger">Delete</ActionButton>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <h3 className="mb-4 text-lg font-semibold text-slate-950">
+                User Management
+              </h3>
+              {users.length ? (
+                <AdminTable columns={['Name', 'Email', 'Role', 'Status', 'Action']}>
+                  {users.map((item) => (
+                    <tr key={item.id}>
+                      <td className="px-3 py-4 text-sm font-semibold text-slate-900">
+                        {item.full_name}
+                      </td>
+                      <td className="px-3 py-4 text-sm text-slate-500">{item.email}</td>
+                      <td className="px-3 py-4 text-sm capitalize text-slate-600">{item.role}</td>
+                      <td className="px-3 py-4"><StatusPill isActive={item.is_active} /></td>
+                      <td className="px-3 py-4">
+                        <ActionButton
+                          tone={item.is_active ? 'danger' : 'default'}
+                          onClick={() => handleStatusChange(item, !item.is_active)}
+                        >
+                          {item.is_active ? 'Deactivate' : 'Activate'}
+                        </ActionButton>
+                      </td>
+                    </tr>
+                  ))}
+                </AdminTable>
+              ) : (
+                <EmptyState>No users found.</EmptyState>
+              )}
             </section>
 
             <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
               <h3 className="mb-4 text-lg font-semibold text-slate-950">
-                Company data management
+                Chatbot Activity
               </h3>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl bg-slate-50 p-4">
+                  <h4 className="text-sm font-semibold text-slate-900">Most asked questions</h4>
+                  <div className="mt-3 space-y-2">
+                    {chatbotActivity.popularQueries.length ? (
+                      chatbotActivity.popularQueries.map((item) => (
+                        <p key={item.query} className="rounded-xl bg-white px-3 py-2 text-sm text-slate-600 shadow-sm">
+                          {item.query} <span className="text-xs text-slate-400">({item.count})</span>
+                        </p>
+                      ))
+                    ) : (
+                      <EmptyState>No chatbot activity recorded yet.</EmptyState>
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-slate-50 p-4">
+                  <h4 className="text-sm font-semibold text-slate-900">Most searched stocks</h4>
+                  <div className="mt-3 space-y-2">
+                    {chatbotActivity.searchedStocks.length ? (
+                      chatbotActivity.searchedStocks.map((item) => (
+                        <p key={item.ticker} className="rounded-xl bg-white px-3 py-2 text-sm font-semibold text-blue-700 shadow-sm">
+                          {item.ticker} <span className="text-xs font-normal text-slate-400">({item.count})</span>
+                        </p>
+                      ))
+                    ) : (
+                      <EmptyState>No stock searches recorded yet.</EmptyState>
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-slate-50 p-4">
+                  <h4 className="text-sm font-semibold text-slate-900">Recent chatbot queries</h4>
+                  <div className="mt-3">
+                    {chatbotActivity.recentQueries.length ? (
+                      chatbotActivity.recentQueries.map((item) => (
+                        <p key={item.id || item.query} className="rounded-xl bg-white px-3 py-2 text-sm text-slate-600 shadow-sm">
+                          {item.query}
+                        </p>
+                      ))
+                    ) : (
+                      <EmptyState>No recent chatbot queries yet.</EmptyState>
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-slate-50 p-4">
+                  <h4 className="text-sm font-semibold text-slate-900">Failed/unknown questions</h4>
+                  <div className="mt-3">
+                    {chatbotActivity.failedQuestions.length ? (
+                      chatbotActivity.failedQuestions.map((item) => (
+                        <p key={item.id || item.query} className="rounded-xl bg-white px-3 py-2 text-sm text-slate-600 shadow-sm">
+                          {item.query}
+                        </p>
+                      ))
+                    ) : (
+                      <EmptyState>No failed questions recorded yet.</EmptyState>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h3 className="text-lg font-semibold text-slate-950">
+                Knowledge Base Management
+              </h3>
+              <ActionButton tone="primary" onClick={openCreateForm}>
+                Add Knowledge Entry
+              </ActionButton>
+            </div>
+
+            {showKnowledgeForm && (
+              <KnowledgeForm
+                form={knowledgeForm}
+                isEditing={Boolean(editingEntryId)}
+                onCancel={closeKnowledgeForm}
+                onChange={setKnowledgeForm}
+                onSubmit={handleKnowledgeSubmit}
+              />
+            )}
+
+            {knowledgeEntries.length ? (
               <AdminTable
-                columns={['Company', 'Ticker', 'Sector', 'Current price', 'Last updated', 'Actions']}
-                rows={[
-                  ['Safaricom PLC', 'SCOM', 'Telecommunications', 'KES 22.80', 'Today'],
-                  ['KCB Group', 'KCB', 'Banking', 'KES 38.75', 'Today'],
-                  ['Equity Group', 'EQTY', 'Banking', 'KES 47.50', 'Today'],
-                ].map(([company, ticker, sector, price, updated]) => (
-                  <tr key={ticker}>
-                    <td className="px-3 py-4 text-sm font-semibold text-slate-900">{company}</td>
-                    <td className="px-3 py-4 text-sm text-blue-600">{ticker}</td>
-                    <td className="px-3 py-4 text-sm text-slate-500">{sector}</td>
-                    <td className="px-3 py-4 text-sm text-slate-700">{price}</td>
-                    <td className="px-3 py-4 text-sm text-slate-400">{updated}</td>
+                columns={['Category', 'Question', 'Answer', 'Last Updated', 'Actions']}
+                minWidth="760px"
+              >
+                {knowledgeEntries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td className="px-3 py-4 text-sm font-semibold text-blue-700">
+                      {entry.category}
+                    </td>
+                    <td className="px-3 py-4 text-sm font-semibold text-slate-900">
+                      {entry.question}
+                    </td>
+                    <td className="max-w-[16rem] px-3 py-4 text-sm leading-6 text-slate-500">
+                      <span className="line-clamp-3">{entry.answer}</span>
+                    </td>
+                    <td className="px-3 py-4 text-sm text-slate-400">
+                      {formatDate(entry.updated_at)}
+                    </td>
                     <td className="px-3 py-4">
                       <div className="flex gap-2">
-                        <ActionButton>Update information</ActionButton>
-                        <ActionButton>Edit profile</ActionButton>
+                        <ActionButton onClick={() => openEditForm(entry)}>Edit</ActionButton>
+                        <ActionButton tone="danger" onClick={() => handleDeleteKnowledge(entry.id)}>
+                          Delete
+                        </ActionButton>
                       </div>
                     </td>
                   </tr>
                 ))}
-              />
-            </section>
-          </div>
-
-          <aside className="space-y-6">
-            <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-950">
-                System status
-              </h3>
-              <div className="mt-4 space-y-3">
-                <StatusCard label="AI chatbot" status="Online" />
-                <StatusCard label="Database" status="Healthy" />
-                <StatusCard label="API connection" status="Connected" />
-              </div>
-            </section>
-
-            <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-950">
-                Daily conversations
-              </h3>
-              <div className="mt-4 h-48">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={conversationData} margin={{ top: 8, right: 8, left: -24, bottom: 0 }}>
-                    <XAxis dataKey="day" tick={{ fill: '#94a3b8', fontSize: 11 }} tickLine={false} axisLine={false} />
-                    <YAxis hide />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="chats" stroke="#2563eb" strokeWidth={2.5} dot={false} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </section>
-
-            <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-950">
-                Most searched stocks
-              </h3>
-              <div className="mt-4 h-44">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={searchedStocks} margin={{ top: 8, right: 8, left: -24, bottom: 0 }}>
-                    <XAxis dataKey="ticker" tick={{ fill: '#94a3b8', fontSize: 11 }} tickLine={false} axisLine={false} />
-                    <YAxis hide />
-                    <Tooltip />
-                    <Bar dataKey="searches" fill="#93c5fd" radius={[8, 8, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </section>
-
-            <section className="rounded-[1.75rem] border border-blue-100 bg-blue-50/70 p-5 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
-                Most asked questions
-              </p>
-              <div className="mt-4 space-y-2">
-                {['What is Safaricom price?', 'Which stocks pay dividends?', 'Compare KCB and Equity'].map((question) => (
-                  <div key={question} className="rounded-2xl bg-white px-4 py-3 text-sm text-slate-600 shadow-sm">
-                    {question}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </aside>
+              </AdminTable>
+            ) : (
+              <EmptyState>No knowledge base entries yet.</EmptyState>
+            )}
+          </section>
         </section>
       </div>
     </main>

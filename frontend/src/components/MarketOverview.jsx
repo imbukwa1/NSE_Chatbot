@@ -42,7 +42,7 @@ function formatLastUpdated(value) {
   })} EAT`
 }
 
-function MarketRow({ stock, mode = 'change' }) {
+function MarketRow({ onAddFavorite, onAddWatchlist, stock, mode = 'change' }) {
   const change = Number(stock.change_pct || 0)
   const isNegative = change < 0
 
@@ -77,11 +77,27 @@ function MarketRow({ stock, mode = 'change' }) {
           </>
         )}
       </span>
+      <div className="col-span-3 mt-2 flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={() => onAddFavorite?.(stock.ticker)}
+          className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+        >
+          ♡ Favorite
+        </button>
+        <button
+          type="button"
+          onClick={() => onAddWatchlist?.(stock.ticker)}
+          className="rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-700 transition hover:bg-blue-100"
+        >
+          + Watchlist
+        </button>
+      </div>
     </div>
   )
 }
 
-function MarketColumn({ title, items = [], mode = 'change' }) {
+function MarketColumn({ onAddFavorite, onAddWatchlist, title, items = [], mode = 'change' }) {
   const visibleItems = items.slice(0, 5)
 
   return (
@@ -98,6 +114,8 @@ function MarketColumn({ title, items = [], mode = 'change' }) {
           visibleItems.map((stock) => (
             <MarketRow
               key={`${title}-${stock.ticker}`}
+              onAddFavorite={onAddFavorite}
+              onAddWatchlist={onAddWatchlist}
               stock={stock}
               mode={mode}
             />
@@ -112,7 +130,7 @@ function MarketColumn({ title, items = [], mode = 'change' }) {
   )
 }
 
-function MarketOverview({ data }) {
+function MarketOverview({ data, onAddFavorite, onAddWatchlist }) {
   const [scraperUpdatedAt, setScraperUpdatedAt] = useState(null)
   const status = data.status || {}
   const topGainers = data.top_gainers || []
@@ -175,9 +193,25 @@ function MarketOverview({ data }) {
       </div>
 
       <div className="mt-4 grid gap-3 xl:grid-cols-3">
-        <MarketColumn title="Top Gainers" items={topGainers} />
-        <MarketColumn title="Top Losers" items={topLosers} />
-        <MarketColumn title="Most Active" items={mostActive} mode="volume" />
+        <MarketColumn
+          title="Top Gainers"
+          items={topGainers}
+          onAddFavorite={onAddFavorite}
+          onAddWatchlist={onAddWatchlist}
+        />
+        <MarketColumn
+          title="Top Losers"
+          items={topLosers}
+          onAddFavorite={onAddFavorite}
+          onAddWatchlist={onAddWatchlist}
+        />
+        <MarketColumn
+          title="Most Active"
+          items={mostActive}
+          mode="volume"
+          onAddFavorite={onAddFavorite}
+          onAddWatchlist={onAddWatchlist}
+        />
       </div>
 
       <p className="mt-4 text-[11px] leading-5 text-slate-400">

@@ -4,17 +4,35 @@ import ChatBubble from './components/ChatBubble.jsx'
 import ComparisonTable from './components/ComparisonTable.jsx'
 import InputBar from './components/InputBar.jsx'
 import AdminDashboardScreen from './components/AdminDashboardScreen.jsx'
+import LoginModal from './components/LoginModal.jsx'
 import MarketOverview from './components/MarketOverview.jsx'
+import NavbarAuthControls from './components/Navbar.jsx'
 import PriceChart from './components/PriceChart.jsx'
 import PortfolioTable from './components/PortfolioTable.jsx'
+import RegisterModal from './components/RegisterModal.jsx'
 import StockDetailsScreen from './components/StockDetailsScreen.jsx'
 import StockListTable from './components/StockListTable.jsx'
 import UserProfileScreen from './components/UserProfileScreen.jsx'
 import { useNissy } from './hooks/useNissy.js'
+import { API_BASE_URL, getStoredToken, profileApi } from './services/api.js'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001'
 const API_URL = `${API_BASE_URL}/chat`
 const DISCLAIMER = 'This is not financial advice.'
+const SCREEN_STORAGE_KEY = 'nse_advisor_active_screen'
+const LANDING_STORAGE_KEY = 'nse_advisor_show_landing'
+const VALID_SCREENS = new Set(['chat', 'about', 'profile', 'admin'])
+
+function getInitialScreen() {
+  const storedScreen = localStorage.getItem(SCREEN_STORAGE_KEY)
+  return VALID_SCREENS.has(storedScreen) ? storedScreen : 'chat'
+}
+
+function getInitialLandingState(initialScreen) {
+  const storedLanding = localStorage.getItem(LANDING_STORAGE_KEY)
+  if (storedLanding === 'true') return true
+  if (storedLanding === 'false') return false
+  return initialScreen === 'chat'
+}
 
 function parseSseBuffer(buffer) {
   const events = []
@@ -126,7 +144,7 @@ function StockPreviewCard({ ticker, name, price, change }) {
   )
 }
 
-function LandingScreen({ onAbout, onStartChatting }) {
+function LandingScreen({ onAbout, onLogin, onRegister, onStartChatting }) {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,_#f8fafc_0%,_#f3f6fb_56%,_#eef2f8_100%)] text-slate-900">
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
@@ -162,18 +180,7 @@ function LandingScreen({ onAbout, onStartChatting }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="hidden rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-white sm:inline-flex"
-          >
-            Login
-          </button>
-          <button
-            type="button"
-            className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_26px_rgba(37,99,235,0.22)] transition hover:bg-blue-700"
-          >
-            Register
-          </button>
+          <NavbarAuthControls onLogin={onLogin} onRegister={onRegister} />
         </div>
       </nav>
 
@@ -296,19 +303,30 @@ function LandingScreen({ onAbout, onStartChatting }) {
 }
 
 function App() {
+  const initialScreenRef = useRef(getInitialScreen())
   const [query, setQuery] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isListening, setIsListening] = useState(false)
   const [conversations, setConversations] = useState([createConversation()])
   const [activeConversationId, setActiveConversationId] = useState(null)
   const [voiceSupported, setVoiceSupported] = useState(false)
-  const [showLanding, setShowLanding] = useState(true)
-  const [activeScreen, setActiveScreen] = useState('chat')
+  const [showLanding, setShowLanding] = useState(() =>
+    getInitialLandingState(initialScreenRef.current),
+  )
+  const [activeScreen, setActiveScreen] = useState(initialScreenRef.current)
+  const [authModal, setAuthModal] = useState(null)
+  const [actionFeedback, setActionFeedback] = useState('')
   const { speak, voiceEnabled, setVoiceEnabled } = useNissy()
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
   const isRecognitionActiveRef = useRef(false)
   const sendMessageRef = useRef(null)
+
+  useEffect(() => {
+    // Preserve the admin/profile/chat screen across refreshes in this single-page app.
+    localStorage.setItem(SCREEN_STORAGE_KEY, activeScreen)
+    localStorage.setItem(LANDING_STORAGE_KEY, String(showLanding))
+  }, [activeScreen, showLanding])
 
   useEffect(() => {
     const removeInjectedWidgets = () => {
@@ -491,10 +509,12 @@ function App() {
       }, 55000)
 
       console.log("Fetch fired")
+      const token = getStoredToken()
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         body: JSON.stringify({ query: trimmedQuery }),
         signal: controller.signal,
@@ -502,6 +522,10 @@ function App() {
 
       if (!response.ok) {
         throw new Error('Unable to reach the NSE AI Advisor backend.')
+      }
+
+      if (token) {
+        profileApi.saveRecentSearch(trimmedQuery).catch(() => {})
       }
 
       const contentType = response.headers.get('content-type') || ''
@@ -632,6 +656,48 @@ function App() {
     setActiveScreen('chat')
   }
 
+  const handleLoginSuccess = (loggedInUser) => {
+    // Admins land directly on the MVP admin dashboard after receiving a fresh role claim.
+    if (loggedInUser?.role === 'admin') {
+      setShowLanding(false)
+      setActiveScreen('admin')
+      return
+    }
+
+    setShowLanding(false)
+    setActiveScreen('chat')
+  }
+
+  const requireAuthForAction = () => {
+    if (!getStoredToken()) {
+      setAuthModal('login')
+      return false
+    }
+    return true
+  }
+
+  const handleAddFavorite = async (ticker) => {
+    if (!ticker || !requireAuthForAction()) return
+
+    try {
+      await profileApi.addFavorite(ticker)
+      setActionFeedback(`${ticker.toUpperCase()} added to favorites.`)
+    } catch (error) {
+      setActionFeedback(error.message || `Could not add ${ticker.toUpperCase()} to favorites.`)
+    }
+  }
+
+  const handleAddWatchlist = async (ticker) => {
+    if (!ticker || !requireAuthForAction()) return
+
+    try {
+      await profileApi.addWatchlist(ticker)
+      setActionFeedback(`${ticker.toUpperCase()} added to watchlist.`)
+    } catch (error) {
+      setActionFeedback(error.message || `Could not add ${ticker.toUpperCase()} to watchlist.`)
+    }
+  }
+
   const suggestedQuestions = [
     'Safaricom share price',
     'Top gainers today',
@@ -641,10 +707,26 @@ function App() {
 
   if (showLanding) {
     return (
-      <LandingScreen
-        onAbout={handleShowAbout}
-        onStartChatting={handleStartChatting}
-      />
+      <>
+        <LandingScreen
+          onAbout={handleShowAbout}
+          onLogin={() => setAuthModal('login')}
+          onRegister={() => setAuthModal('register')}
+          onStartChatting={handleStartChatting}
+        />
+        {authModal === 'login' && (
+          <LoginModal
+            onClose={() => setAuthModal(null)}
+            onLoginSuccess={handleLoginSuccess}
+          />
+        )}
+        {authModal === 'register' && (
+          <RegisterModal
+            onClose={() => setAuthModal(null)}
+            onLoginRequested={() => setAuthModal('login')}
+          />
+        )}
+      </>
     )
   }
 
@@ -738,26 +820,30 @@ function App() {
             >
               About
             </button>
-            <button
-              type="button"
-              onClick={() => setActiveScreen('profile')}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(37,99,235,0.18)]"
-              aria-label="User profile"
-              title="User profile"
-            >
-              U
-            </button>
+            <NavbarAuthControls
+              onLogin={() => setAuthModal('login')}
+              onRegister={() => setAuthModal('register')}
+              onProfile={() => setActiveScreen('profile')}
+            />
           </div>
         </header>
         {activeScreen === 'profile' ? (
-          <UserProfileScreen onBackToChat={() => setActiveScreen('chat')} />
+          <UserProfileScreen
+            onBackToChat={() => setActiveScreen('chat')}
+            onRequireLogin={() => setAuthModal('login')}
+          />
         ) : activeScreen === 'admin' ? (
-          <AdminDashboardScreen />
+          <AdminDashboardScreen onRequireLogin={() => setAuthModal('login')} />
         ) : (
         <div className="flex min-w-0 flex-1 flex-col">
           <section className="flex min-w-0 w-full flex-1 flex-col">
             <div className="flex-1 overflow-y-auto px-4 py-5 sm:px-6 lg:px-8">
               <div className="mx-auto flex min-h-[62vh] w-full max-w-6xl min-w-0 flex-col gap-4">
+                  {actionFeedback && (
+                    <div className="rounded-2xl bg-blue-50 px-4 py-3 text-sm font-medium text-blue-700">
+                      {actionFeedback}
+                    </div>
+                  )}
                   {activeConversation?.messages.map((message) => (
                     <div key={message.id} className="group flex gap-2">
                       <ChatBubble role={message.role}>
@@ -769,7 +855,12 @@ function App() {
                           <div>
                             {/* Stock Info Response */}
                             {message.type === 'stock_info' && message.data.ticker && (
-                              <StockDetailsScreen data={message.data} onAsk={sendMessage} />
+                              <StockDetailsScreen
+                                data={message.data}
+                                onAddFavorite={handleAddFavorite}
+                                onAddWatchlist={handleAddWatchlist}
+                                onAsk={sendMessage}
+                              />
                             )}
 
                             {/* Comparison Response */}
@@ -787,12 +878,20 @@ function App() {
 
                             {/* Stock List Response */}
                             {message.type === 'stock_list' && (
-                              <StockListTable data={message.data} />
+                              <StockListTable
+                                data={message.data}
+                                onAddFavorite={handleAddFavorite}
+                                onAddWatchlist={handleAddWatchlist}
+                              />
                             )}
 
                             {/* Market Overview Response */}
                             {message.type === 'market_overview' && (
-                              <MarketOverview data={message.data} />
+                              <MarketOverview
+                                data={message.data}
+                                onAddFavorite={handleAddFavorite}
+                                onAddWatchlist={handleAddWatchlist}
+                              />
                             )}
 
                             {/* Portfolio Response */}
@@ -812,7 +911,11 @@ function App() {
                                   {message.data.message}
                                 </p>
                                 {message.data.stocks && (
-                                  <StockListTable data={message.data} />
+                                  <StockListTable
+                                    data={message.data}
+                                    onAddFavorite={handleAddFavorite}
+                                    onAddWatchlist={handleAddWatchlist}
+                                  />
                                 )}
                                 {message.data.disclaimer && (
                                   <p className="text-xs text-slate-400">
@@ -900,6 +1003,18 @@ function App() {
         </div>
         )}
       </div>
+      {authModal === 'login' && (
+        <LoginModal
+          onClose={() => setAuthModal(null)}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      )}
+      {authModal === 'register' && (
+        <RegisterModal
+          onClose={() => setAuthModal(null)}
+          onLoginRequested={() => setAuthModal('login')}
+        />
+      )}
     </div>
   )
 }

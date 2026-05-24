@@ -14,7 +14,7 @@ function formatRatio(value) {
   return typeof value === 'number' ? value.toFixed(2) : 'N/A'
 }
 
-function StockListTable({ data }) {
+function StockListTable({ data, onAddFavorite, onAddWatchlist }) {
   const stocks = data.stocks || data.top_gainers || []
 
   if (!stocks.length) {
@@ -57,6 +57,9 @@ function StockListTable({ data }) {
               <th className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]">
                 Source
               </th>
+              <th className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200 bg-white">
@@ -82,6 +85,24 @@ function StockListTable({ data }) {
                 </td>
                 <td className="whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[0.12em] text-slate-400">
                   {stock.source || 'fallback'}
+                </td>
+                <td className="whitespace-nowrap px-4 py-3">
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => onAddFavorite?.(stock.ticker)}
+                      className="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                    >
+                      ♡ Favorite
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onAddWatchlist?.(stock.ticker)}
+                      className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100"
+                    >
+                      + Watchlist
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

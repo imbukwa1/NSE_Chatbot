@@ -132,7 +132,7 @@ function RelatedQuestionButton({ children, onClick }) {
   )
 }
 
-function StockDetailsScreen({ data, onAsk }) {
+function StockDetailsScreen({ data, onAddFavorite, onAddWatchlist, onAsk }) {
   const dailyChange = Number(data.change_pct)
   const recommendation = dailyChange < -2 ? 'Neutral' : 'Neutral'
   const sentiment = dailyChange > 0 ? 'Stable positive' : 'Stable'
@@ -177,6 +177,22 @@ function StockDetailsScreen({ data, onAsk }) {
               <p className="mt-2 text-3xl font-semibold">
                 {formatCurrency(data.price)}
               </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => onAddFavorite?.(data.ticker)}
+                  className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/25"
+                >
+                  ♡ Favorite
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onAddWatchlist?.(data.ticker)}
+                  className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/25"
+                >
+                  + Watchlist
+                </button>
+              </div>
             </div>
           </div>
 
