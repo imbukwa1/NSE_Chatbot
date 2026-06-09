@@ -15,6 +15,9 @@ import StockListTable from './components/StockListTable.jsx'
 import UserProfileScreen from './components/UserProfileScreen.jsx'
 import { useNissy } from './hooks/useNissy.js'
 import { API_BASE_URL, getStoredToken, profileApi } from './services/api.js'
+import equityLogo from './assets/images/equity-logo.png'
+import kcbLogo from './assets/images/kcb-logo.png'
+import safaricomLogo from './assets/images/safaricom-logo.png'
 
 const API_URL = `${API_BASE_URL}/chat`
 const DISCLAIMER = 'This is not financial advice.'
@@ -35,6 +38,7 @@ function getInitialLandingState(initialScreen) {
 }
 
 function parseSseBuffer(buffer) {
+  // Streaming AI responses arrive as SSE chunks; keep incomplete chunks for the next read.
   const events = []
   const parts = buffer.split('\n\n')
   const remainder = parts.pop() ?? ''
@@ -63,6 +67,7 @@ function parseSseBuffer(buffer) {
 }
 
 function buildAssistantData(payload) {
+  // Normalize every backend response shape into the message format the chat UI expects.
   const message =
     payload.message ||
     payload.data?.analysis ||
@@ -99,6 +104,7 @@ const createWelcomeMessage = () => ({
 })
 
 const createConversation = (title = 'New conversation') => ({
+  // Local-only conversations keep the UI responsive even before backend history is saved.
   id: crypto.randomUUID(),
   title,
   messages: [createWelcomeMessage()],
@@ -121,11 +127,18 @@ function MiniChart() {
   )
 }
 
-function StockPreviewCard({ ticker, name, price, change }) {
+function StockPreviewCard({ ticker, name, price, change, logo }) {
   const isPositive = change.startsWith('+')
 
   return (
-    <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_18px_45px_rgba(96,126,203,0.12)]">
+    <div className="flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_18px_45px_rgba(96,126,203,0.12)]">
+      <div className="mb-4 flex h-14 w-full items-center justify-center rounded-xl border border-slate-100 bg-white px-3">
+        <img
+          src={logo}
+          alt={`${name} logo`}
+          className="h-10 w-full object-contain object-center"
+        />
+      </div>
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-semibold text-slate-900">{ticker}</p>
@@ -139,12 +152,13 @@ function StockPreviewCard({ ticker, name, price, change }) {
           {change}
         </span>
       </div>
-      <p className="mt-4 text-xl font-semibold text-slate-900">{price}</p>
+      <p className="mt-auto pt-4 text-xl font-semibold text-slate-900">{price}</p>
     </div>
   )
 }
 
 function LandingScreen({ onAbout, onLogin, onRegister, onStartChatting }) {
+  // Landing page stays lightweight; all real product work starts in the chat workspace.
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,_#f8fafc_0%,_#f3f6fb_56%,_#eef2f8_100%)] text-slate-900">
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
@@ -212,18 +226,21 @@ function LandingScreen({ onAbout, onLogin, onRegister, onStartChatting }) {
               name="Safaricom PLC"
               price="KES 22.80"
               change="+0.44%"
+              logo={safaricomLogo}
             />
             <StockPreviewCard
               ticker="EQTY"
               name="Equity Group"
               price="KES 47.50"
               change="+0.21%"
+              logo={equityLogo}
             />
             <StockPreviewCard
               ticker="KCB"
               name="KCB Group"
               price="KES 38.75"
               change="-0.39%"
+              logo={kcbLogo}
             />
           </div>
         </section>
@@ -525,6 +542,7 @@ function App() {
       }
 
       if (token) {
+        // Recent searches are user-owned data, so save them only when a JWT exists.
         profileApi.saveRecentSearch(trimmedQuery).catch(() => {})
       }
 

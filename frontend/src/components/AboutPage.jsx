@@ -1,4 +1,14 @@
-import audryProfile from '../assets/audry-profile.jpg'
+import audryProfile from '../assets/images/audry-profile.jpg'
+import aiAssistanceImage from '../assets/images/ai-assistance.jpg'
+import capabilityImage1 from '../assets/images/capability-1.png'
+import capabilityImage2 from '../assets/images/capability-2.png'
+import capabilityImage3 from '../assets/images/capability-3.png'
+import capabilityImage4 from '../assets/images/capability-4.png'
+import capabilityImage5 from '../assets/images/capability-5.png'
+import capabilityImage6 from '../assets/images/capability-6.png'
+import learningImage from '../assets/images/learning.jpg'
+import nseIpoImage from '../assets/images/nse-ipo.jpg'
+import tradePicture from '../assets/images/trade-pictures.jpg'
 
 function SectionHeading({ eyebrow, title, children }) {
   return (
@@ -18,14 +28,25 @@ function SectionHeading({ eyebrow, title, children }) {
   )
 }
 
-function FeatureCard({ title, description, icon }) {
+function FeatureCard({ title, description, icon, image, imageAlt }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-100 hover:shadow-[0_18px_45px_rgba(96,126,203,0.12)]">
-      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">
-        {icon}
+    <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-blue-100 hover:shadow-[0_18px_45px_rgba(96,126,203,0.12)]">
+      {image && (
+        <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
+          <img
+            src={image}
+            alt={imageAlt || ''}
+            className="h-full w-full object-cover object-center"
+          />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">
+          {icon}
+        </div>
+        <h3 className="mt-4 text-base font-semibold text-slate-950">{title}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-500">{description}</p>
       </div>
-      <h3 className="mt-4 text-base font-semibold text-slate-950">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-500">{description}</p>
     </div>
   )
 }
@@ -43,6 +64,7 @@ function FlowStep({ index, title, description }) {
 }
 
 function InsightMockup() {
+  // Static mockup explains the product without depending on live backend data.
   return (
     <div className="relative mx-auto w-full max-w-lg">
       <div className="absolute -left-3 top-8 hidden rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-[0_18px_45px_rgba(96,126,203,0.13)] sm:block">
@@ -92,13 +114,14 @@ function InsightMockup() {
 }
 
 function AboutPage({ onStartChatting, onBackHome }) {
+  // Keep this content educational and stable; app data belongs in the chat/profile screens.
   const platformFeatures = [
-    ['AI Stock Questions', 'Ask natural-language questions about NSE-listed companies.', 'Q'],
-    ['Market Overview', 'Review simple market movers and market snapshot summaries.', 'M'],
-    ['Simplified Analysis', 'Turn technical market information into readable explanations.', 'A'],
-    ['NSE Learning Support', 'Learn investing terms, dividends, valuation, and risk basics.', 'L'],
-    ['Company Comparisons', 'Compare selected companies in a beginner-friendly format.', 'C'],
-    ['AI Investment Insights', 'Receive educational insight summaries with clear disclaimers.', 'I'],
+    ['AI Stock Questions', 'Ask natural-language questions about NSE-listed companies.', 'Q', capabilityImage1],
+    ['Market Overview', 'Review simple market movers and market snapshot summaries.', 'M', capabilityImage2],
+    ['Simplified Analysis', 'Turn technical market information into readable explanations.', 'A', capabilityImage3],
+    ['NSE Learning Support', 'Learn investing terms, dividends, valuation, and risk basics.', 'L', capabilityImage4],
+    ['Company Comparisons', 'Compare selected companies in a beginner-friendly format.', 'C', capabilityImage5],
+    ['AI Investment Insights', 'Receive educational insight summaries with clear disclaimers.', 'I', capabilityImage6],
   ]
 
   const tags = ['NSE Market Data', 'AI Analysis', 'Market Snapshots', 'Educational Insights']
@@ -174,19 +197,51 @@ function AboutPage({ onStartChatting, onBackHome }) {
             conversational AI, making stock research easier for students, beginners, and everyday investors.
           </SectionHeading>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <FeatureCard title="Simple Insights" description="Easy-to-understand market explanations." icon="01" />
-            <FeatureCard title="Accessible Learning" description="Designed for beginner-friendly NSE exploration." icon="02" />
-            <FeatureCard title="AI Assistance" description="Conversational stock research powered by AI." icon="03" />
+            <FeatureCard
+              title="Simple Insights"
+              description="Easy-to-understand market explanations."
+              icon="01"
+              image={nseIpoImage}
+              imageAlt="IPO market chart illustrating NSE investment insights"
+            />
+            <FeatureCard
+              title="Accessible Learning"
+              description="Designed for beginner-friendly NSE exploration."
+              icon="02"
+              image={learningImage}
+              imageAlt="People learning to understand financial market charts"
+            />
+            <FeatureCard
+              title="AI Assistance"
+              description="Conversational stock research powered by AI."
+              icon="03"
+              image={aiAssistanceImage}
+              imageAlt="People working together with artificial intelligence"
+            />
           </div>
         </section>
 
         <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
+          <div className="mb-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(96,126,203,0.1)]">
+            <img
+              src={tradePicture}
+              alt="Financial assets available for trading"
+              className="h-64 w-full object-contain object-center p-4 sm:h-80 sm:p-6"
+            />
+          </div>
           <SectionHeading title="What The Platform Does" eyebrow="Capabilities">
             A focused set of tools for learning, exploring, and asking better questions about the NSE.
           </SectionHeading>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {platformFeatures.map(([title, description, icon]) => (
-              <FeatureCard key={title} title={title} description={description} icon={icon} />
+            {platformFeatures.map(([title, description, icon, image]) => (
+              <FeatureCard
+                key={title}
+                title={title}
+                description={description}
+                icon={icon}
+                image={image}
+                imageAlt={`${title} illustration`}
+              />
             ))}
           </div>
         </section>

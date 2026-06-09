@@ -16,6 +16,7 @@ function RegisterModal({ onClose, onLoginRequested }) {
     setError('')
     setSuccess('')
 
+    // Validate locally first so simple form mistakes never hit the backend.
     if (!fullName.trim()) {
       setError('Please enter your full name.')
       return
@@ -38,6 +39,7 @@ function RegisterModal({ onClose, onLoginRequested }) {
 
     setIsSubmitting(true)
     try {
+      // Registration deliberately stops at account creation; login requires explicit user action.
       await register({ fullName: fullName.trim(), email: email.trim(), password })
       setSuccess('Account created successfully. Please login.')
       setPassword('')

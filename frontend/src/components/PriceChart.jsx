@@ -18,6 +18,7 @@ function formatCurrency(value) {
 }
 
 function buildSingleSeries(history = [], label = 'Price') {
+  // Recharts expects each series value to live under a named data key.
   return history.map((point) => ({
     date: point.date,
     [label]: point.price,
@@ -25,6 +26,7 @@ function buildSingleSeries(history = [], label = 'Price') {
 }
 
 function buildComparisonSeries(stock1, stock2) {
+  // Merge histories by date so two counters can share one x-axis.
   const combinedMap = new Map()
 
   for (const point of stock1.history || []) {
@@ -63,6 +65,7 @@ function formatDateRange(history = []) {
 }
 
 function PriceChart({ compact = false, stock, stock1, stock2, title }) {
+  // The same chart component supports both a single stock and a two-stock comparison.
   const isComparison = Boolean(stock1 && stock2)
   const chartData = isComparison
     ? buildComparisonSeries(stock1, stock2)

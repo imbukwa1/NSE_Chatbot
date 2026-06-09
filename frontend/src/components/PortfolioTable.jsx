@@ -3,6 +3,7 @@ function formatCurrency(value) {
 }
 
 function PortfolioTable({ data }) {
+  // Portfolio responses are computed by the backend; this component only renders the summary.
   const holdings = data.holdings || []
   const summary = data.summary || {}
 
@@ -32,6 +33,7 @@ function PortfolioTable({ data }) {
       </div>
 
       {summary.concentration_warning && (
+        // Highlight concentration risk separately because it is the most actionable warning.
         <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
           {summary.concentration_warning}
         </p>
