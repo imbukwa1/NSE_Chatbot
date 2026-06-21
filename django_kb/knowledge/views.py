@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .serializers import KnowledgeSearchResultSerializer
-from .services.search import keyword_search
+from .services.search import retrieve_best
 
 
 @api_view(["GET"])
@@ -17,7 +17,7 @@ def search(request):
     if not query:
         return Response({"detail": "The q query parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
 
-    match = keyword_search(
+    match = retrieve_best(
         query,
         category=request.query_params.get("category"),
         tag=request.query_params.get("tag"),

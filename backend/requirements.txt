@@ -70,6 +70,7 @@ PyYAML==6.0.3
 referencing==0.37.0
 requests==2.33.0
 requests-toolbelt==1.0.0
+rapidfuzz>=3.0,<4.0
 newsapi-python==0.1.7
 rpds-py==0.30.0
 shapely==2.1.2

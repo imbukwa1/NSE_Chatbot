@@ -1,9 +1,15 @@
 import re
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 
 from django.db.models import Q
 
 from knowledge.models import KnowledgeBase
+
+try:
+    from rapidfuzz import fuzz
+except ImportError:  # The service remains usable before optional dependencies are installed.
+    fuzz = None
 
 
 TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
@@ -71,3 +77,49 @@ def keyword_search(query, category=None, tag=None):
         return None
     confidence, entry = max(ranked, key=lambda item: item[0])
     return SearchMatch(entry=entry, confidence=confidence, strategy="keyword")
+
+
+def _similarity(left, right):
+    if not left or not right:
+        return 0.0
+    if fuzz is not None:
+        return fuzz.WRatio(left, right) / 100.0
+    return SequenceMatcher(None, left, right).ratio()
+
+
+def fuzzy_score(query, entry):
+    normalized_query = normalize(query)
+    values = [
+        normalize(entry.question),
+        normalize(entry.keywords),
+        *(normalize(tag) for tag in entry.tags or []),
+        *(normalize(synonym.phrase) for synonym in entry.synonyms.all()),
+    ]
+    return round(max((_similarity(normalized_query, value) for value in values), default=0.0), 4)
+
+
+def fuzzy_search(query, category=None, tag=None):
+    normalized_query = normalize(query)
+    if not normalized_query:
+        return None
+    queryset = KnowledgeBase.objects.filter(is_active=True).select_related("category").prefetch_related("synonyms")
+    if category:
+        queryset = queryset.filter(Q(category__slug__iexact=category) | Q(category__name__iexact=category))
+    candidates = list(queryset[:2000])
+    if tag:
+        wanted_tag = normalize(tag)
+        candidates = [entry for entry in candidates if wanted_tag in {normalize(value) for value in entry.tags or []}]
+    ranked = [(fuzzy_score(query, entry), entry) for entry in candidates]
+    if not ranked:
+        return None
+    confidence, entry = max(ranked, key=lambda item: item[0])
+    return SearchMatch(entry=entry, confidence=confidence, strategy="fuzzy")
+
+
+def retrieve_best(query, category=None, tag=None):
+    matches = [
+        keyword_search(query, category=category, tag=tag),
+        fuzzy_search(query, category=category, tag=tag),
+    ]
+    matches = [match for match in matches if match is not None]
+    return max(matches, key=lambda match: match.confidence) if matches else None
