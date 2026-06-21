@@ -2,6 +2,19 @@
 
 FastAPI + React chatbot for Nairobi Securities Exchange market questions, stock comparisons, charts, news context, and education.
 
+## Repository Structure
+
+```text
+backend/      FastAPI chatbot, authentication, market data, and application APIs
+frontend/     React and Vite user interface
+django_kb/    Independent Django knowledge-base and retrieval service
+docs/         Integration and operations documentation
+function.md/  Isolated frontend function tests using mock data only
+```
+
+Runtime databases, logs, caches, virtual environments, installed JavaScript packages,
+and frontend build output are not source files and are excluded from Git.
+
 ## Setup
 
 Install backend dependencies:
