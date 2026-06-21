@@ -85,6 +85,38 @@ class FeatherlessProviderTests(unittest.TestCase):
         self.assertIn("message", body)
         self.assertIn("disclaimer", body)
 
+    def test_beginner_dividence_typo_returns_education_without_provider(self):
+        client = TestClient(main.app)
+        with patch.object(main, "_has_ai_provider", return_value=False):
+            response = client.post("/chat", json={"query": "what is a dividence"})
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body["type"], "educational")
+        self.assertEqual(body["data"]["topic"], "dividend")
+        self.assertIn("paid to shareholders", body["message"])
+        self.assertIn("disclaimer", body)
+
+    def test_beginner_dividend_question_does_not_require_stock_ticker(self):
+        client = TestClient(main.app)
+        with patch.object(main, "_has_ai_provider", return_value=False):
+            response = client.post("/chat", json={"query": "what is a dividend"})
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body["type"], "educational")
+        self.assertNotIn("Please mention a specific stock", body["message"])
+
+    def test_stock_specific_dividend_query_still_uses_stock_data(self):
+        client = TestClient(main.app)
+        with patch.object(main, "_has_ai_provider", return_value=False):
+            response = client.post("/chat", json={"query": "SCOM dividend yield"})
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertNotEqual(body["type"], "educational")
+        self.assertIn("SCOM", str(body.get("data", {})))
+
     def test_existing_openai_sdk_import_still_available(self):
         self.assertIsNotNone(llm_service.OpenAI)
 

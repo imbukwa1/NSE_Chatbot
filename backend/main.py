@@ -206,6 +206,71 @@ FUNDAMENTAL_INTENT_PATTERNS = (
     r"\bearnings\b",
     r"\beps\b",
 )
+BEGINNER_QUESTION_PATTERNS = (
+    r"\bwhat\s+is\b",
+    r"\bwhat\s+are\b",
+    r"\bmeaning\s+of\b",
+    r"\bdefine\b",
+    r"\bexplain\b",
+    r"\bteach\s+me\b",
+    r"\bhow\s+does\b",
+    r"\bhow\s+do\b",
+)
+BEGINNER_TOPICS = {
+    "dividend": (
+        "A dividend is part of a company's profit paid to shareholders. "
+        "For example, if you own shares in a company and it declares a dividend, "
+        "you may receive cash based on how many shares you own. On the NSE, dividends "
+        "usually have key dates: declaration date, book closure date, and payment date. "
+        "Dividend yield compares the dividend to the share price, helping investors "
+        "estimate income potential."
+    ),
+    "share": (
+        "A share is a small ownership unit in a company. When you buy shares of an "
+        "NSE-listed company, you own a small part of that company. You can benefit if "
+        "the share price rises, and some companies may also pay dividends."
+    ),
+    "stock": (
+        "A stock represents ownership in a listed company. In everyday NSE language, "
+        "people often use stock and share to mean almost the same thing."
+    ),
+    "bond": (
+        "A bond is a loan made by investors to a government or company. The issuer "
+        "normally pays interest over time and repays the principal at maturity. Bonds "
+        "are generally different from shares because they focus more on fixed income "
+        "than company ownership."
+    ),
+    "ipo": (
+        "An IPO, or Initial Public Offering, is when a company sells shares to the "
+        "public for the first time. After listing, those shares can trade on an "
+        "exchange such as the NSE."
+    ),
+    "p/e": (
+        "The P/E ratio, or price-to-earnings ratio, compares a company's share price "
+        "with its earnings per share. It helps investors judge whether a stock looks "
+        "expensive or cheap compared with its profits, though it should not be used alone."
+    ),
+    "eps": (
+        "EPS means earnings per share. It shows how much profit a company made for "
+        "each ordinary share. Rising EPS can suggest improving profitability."
+    ),
+    "market cap": (
+        "Market capitalization is the total market value of a listed company. It is "
+        "calculated as share price multiplied by the number of shares. It helps compare "
+        "company size."
+    ),
+    "cds": (
+        "A CDS account is the account used to hold securities such as shares in Kenya. "
+        "To buy NSE shares, investors normally open a CDS account through an approved "
+        "stockbroker or investment bank."
+    ),
+}
+TYPO_NORMALIZATIONS = (
+    (r"\bdividence\b", "dividend"),
+    (r"\bdivident\b", "dividend"),
+    (r"\bdividance\b", "dividend"),
+    (r"\bdividents\b", "dividends"),
+)
 
 
 # ── Request models ────────────────────────────────────────────────────────────
@@ -269,12 +334,55 @@ def _extract_timeframe(lowered_query: str) -> str | None:
     return f"{amount} {normalized}"
 
 
+def _normalize_user_query(user_query: str) -> str:
+    normalized = user_query
+    for pattern, replacement in TYPO_NORMALIZATIONS:
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+    return normalized
+
+
+def _is_beginner_question(lowered_query: str, tickers: list[str] | None = None) -> bool:
+    if tickers:
+        return False
+    has_beginner_phrase = any(
+        re.search(pattern, lowered_query) for pattern in BEGINNER_QUESTION_PATTERNS
+    )
+    has_known_topic = any(topic in lowered_query for topic in BEGINNER_TOPICS)
+    return has_beginner_phrase and has_known_topic
+
+
+def _topic_from_query(lowered_query: str) -> str:
+    for topic in BEGINNER_TOPICS:
+        if topic in lowered_query:
+            return topic
+    return "general investing"
+
+
+def _build_local_education_response(user_query: str) -> dict[str, Any]:
+    lowered_query = _normalize_user_query(user_query).lower()
+    topic = _topic_from_query(lowered_query)
+    explanation = BEGINNER_TOPICS.get(
+        topic,
+        "This is an investing education question. Ask about terms like dividends, "
+        "shares, bonds, IPOs, P/E ratio, EPS, market cap, or CDS accounts.",
+    )
+    return {
+        "type": "educational",
+        "data": {"topic": topic},
+        "message": explanation,
+        "disclaimer": DISCLAIMER_TEXT,
+    }
+
+
 async def _classify_query(user_query: str) -> dict[str, Any]:
     """
     Classify a query using Featherless intent routing.
     Falls back to local rules if no chat provider is available.
     """
-    lowered_query = user_query.lower()
+    normalized_query = _normalize_user_query(user_query)
+    lowered_query = normalized_query.lower()
+    if _is_beginner_question(lowered_query, extract_tickers(normalized_query)):
+        return {"intent": "learn_mode", "entity": _topic_from_query(lowered_query), "timeframe": None}
     if any(re.search(p, lowered_query) for p in COMPARE_INTENT_PATTERNS):
         return {"intent": "compare", "entity": None, "timeframe": None}
     if any(re.search(p, lowered_query) for p in MARKET_OVERVIEW_PATTERNS):
@@ -295,7 +403,7 @@ async def _classify_query(user_query: str) -> dict[str, Any]:
         # Fallback to regex-based classification if no AI provider is configured.
         return {"intent": "ai_advice", "entity": None, "timeframe": None}
 
-    classification = intent_router.classify(user_query)
+    classification = intent_router.classify(normalized_query)
     if inspect.isawaitable(classification):
         classification = await classification
 
@@ -1001,8 +1109,9 @@ async def compare(request: CompareRequest):
 
 @app.post("/chat")
 async def chat(request: ChatRequest):
-    tickers = extract_tickers(request.query)
-    lowered_query = request.query.lower()
+    normalized_query = _normalize_user_query(request.query)
+    tickers = extract_tickers(normalized_query)
+    lowered_query = normalized_query.lower()
     wants_market_list = bool(
         re.search(r"\b(all|every|list)\b", lowered_query)
         and re.search(
@@ -1012,7 +1121,7 @@ async def chat(request: ChatRequest):
     )
 
     if any(re.search(pattern, lowered_query) for pattern in PORTFOLIO_PATTERNS):
-        portfolio = await asyncio.to_thread(build_portfolio_payload, request.query)
+        portfolio = await asyncio.to_thread(build_portfolio_payload, normalized_query)
         if portfolio:
             return {
                 "type": "portfolio",
@@ -1035,7 +1144,7 @@ async def chat(request: ChatRequest):
             "disclaimer": DISCLAIMER_TEXT,
         }
 
-    classification = await _classify_query(request.query)
+    classification = await _classify_query(normalized_query)
     intent = classification.get("intent", "ai_advice")
     entity = classification.get("entity")
     timeframe = classification.get("timeframe")
@@ -1158,7 +1267,7 @@ async def chat(request: ChatRequest):
         summary_msg = (
             _build_trend_analysis_message(request.query, stock, timeframe)
             if any(re.search(p, lowered_query) for p in TREND_INTENT_PATTERNS)
-            else _build_local_analysis_message(request.query, [stock])
+            else _build_local_analysis_message(normalized_query, [stock])
         )
         return {
             "type": "stock_info",
@@ -1289,13 +1398,11 @@ async def chat(request: ChatRequest):
 
     # ── LEARN_MODE: Educational content about investing ─────────────────────
     if intent == "learn_mode":
+        if entity in BEGINNER_TOPICS:
+            return _build_local_education_response(normalized_query)
+
         if not _has_openai_key():
-            return {
-                "type": "error",
-                "data": {},
-            "message": "Educational mode requires a Featherless API key and chat model.",
-                "disclaimer": DISCLAIMER_TEXT,
-            }
+            return _build_local_education_response(normalized_query)
 
         metadata = {
             "type": "educational",
@@ -1305,7 +1412,7 @@ async def chat(request: ChatRequest):
         }
         prompt = (
             f"Provide educational content about {entity or 'investing in the NSE'} "
-            f"related to: {request.query}"
+            f"related to: {normalized_query}"
         )
         return StreamingResponse(
             _stream_sse_response(metadata, prompt),

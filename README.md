@@ -61,3 +61,14 @@ Health check:
 ```text
 http://127.0.0.1:8001/health
 ```
+
+## View Local Database Records
+
+If `sqlite3` is not installed on Windows, use the included Python viewer:
+
+```powershell
+cd backend
+.\venv\Scripts\python.exe view_db.py
+.\venv\Scripts\python.exe view_db.py users --limit 20
+.\venv\Scripts\python.exe view_db.py stocks --limit 20
+```
