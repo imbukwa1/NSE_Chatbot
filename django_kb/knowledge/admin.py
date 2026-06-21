@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import KnowledgeBase, KnowledgeCategory, KnowledgeSynonym, QueryLog
+from .models import KnowledgeBase, KnowledgeCategory, KnowledgeEmbedding, KnowledgeSynonym, QueryLog
 
 
 @admin.register(KnowledgeCategory)
@@ -32,3 +32,10 @@ class QueryLogAdmin(admin.ModelAdmin):
 
 
 admin.site.site_header = "NSE AI Advisor Knowledge Base"
+
+
+@admin.register(KnowledgeEmbedding)
+class KnowledgeEmbeddingAdmin(admin.ModelAdmin):
+    list_display = ("entry", "model_name", "dimensions", "updated_at")
+    list_filter = ("model_name",)
+    readonly_fields = ("vector", "dimensions", "model_name", "updated_at")

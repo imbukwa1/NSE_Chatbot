@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from difflib import SequenceMatcher
 
 from django.db.models import Q
+from django.conf import settings
 
 from knowledge.models import KnowledgeBase
 
@@ -122,4 +123,14 @@ def retrieve_best(query, category=None, tag=None):
         fuzzy_search(query, category=category, tag=tag),
     ]
     matches = [match for match in matches if match is not None]
+    if settings.KB_EMBEDDINGS_ENABLED:
+        try:
+            from knowledge.services.embeddings import semantic_search
+
+            semantic_match = semantic_search(query, category=category, tag=tag)
+            if semantic_match is not None:
+                matches.append(semantic_match)
+        except RuntimeError:
+            # Optional semantic search must never take down core KB retrieval.
+            pass
     return max(matches, key=lambda match: match.confidence) if matches else None

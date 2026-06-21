@@ -49,6 +49,17 @@ class KnowledgeSynonym(models.Model):
         return self.phrase
 
 
+class KnowledgeEmbedding(models.Model):
+    entry = models.OneToOneField(KnowledgeBase, on_delete=models.CASCADE, related_name="embedding")
+    vector = models.JSONField(default=list)
+    dimensions = models.PositiveIntegerField()
+    model_name = models.CharField(max_length=150, db_index=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.entry_id}: {self.model_name} ({self.dimensions})"
+
+
 class QueryLog(models.Model):
     query = models.TextField()
     matched_entry = models.ForeignKey(KnowledgeBase, null=True, blank=True, on_delete=models.SET_NULL, related_name="query_logs")
