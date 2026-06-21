@@ -107,6 +107,17 @@ class FeatherlessProviderTests(unittest.TestCase):
         self.assertEqual(body["type"], "educational")
         self.assertNotIn("Please mention a specific stock", body["message"])
 
+    def test_beginner_plural_dividends_question_is_educational(self):
+        client = TestClient(main.app)
+        with patch.object(main, "_has_ai_provider", return_value=False):
+            response = client.post("/chat", json={"query": "What are dividends?"})
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body["type"], "educational")
+        self.assertEqual(body["data"]["topic"], "dividend")
+        self.assertNotIn("Please mention a specific stock", body["message"])
+
     def test_stock_specific_dividend_query_still_uses_stock_data(self):
         client = TestClient(main.app)
         with patch.object(main, "_has_ai_provider", return_value=False):

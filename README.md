@@ -72,3 +72,13 @@ cd backend
 .\venv\Scripts\python.exe view_db.py users --limit 20
 .\venv\Scripts\python.exe view_db.py stocks --limit 20
 ```
+
+## Generate Beginner Knowledge Base
+
+The chatbot includes a generated beginner knowledge base for common NSE education
+questions. Regenerate it with:
+
+```powershell
+cd backend
+.\venv\Scripts\python.exe -m services.knowledge_base_generator
+```

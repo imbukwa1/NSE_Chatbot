@@ -37,6 +37,7 @@ from services.market_intelligence import (
     stocks_by_sector,
 )
 from services.market_cache import EAT
+from services.knowledge_base_service import answer_knowledge_question
 from routes.auth_routes import router as auth_router
 from routes.admin_routes import router as admin_router
 from routes.analytics_routes import router as analytics_router
@@ -216,6 +217,10 @@ BEGINNER_QUESTION_PATTERNS = (
     r"\bhow\s+does\b",
     r"\bhow\s+do\b",
 )
+KNOWLEDGE_QUESTION_PATTERNS = BEGINNER_QUESTION_PATTERNS + (
+    r"\btell\s+me\s+about\b",
+    r"\bi\s+want\s+to\s+learn\b",
+)
 BEGINNER_TOPICS = {
     "dividend": (
         "A dividend is part of a company's profit paid to shareholders. "
@@ -345,10 +350,12 @@ def _is_beginner_question(lowered_query: str, tickers: list[str] | None = None) 
     if tickers:
         return False
     has_beginner_phrase = any(
-        re.search(pattern, lowered_query) for pattern in BEGINNER_QUESTION_PATTERNS
+        re.search(pattern, lowered_query) for pattern in KNOWLEDGE_QUESTION_PATTERNS
     )
-    has_known_topic = any(topic in lowered_query for topic in BEGINNER_TOPICS)
-    return has_beginner_phrase and has_known_topic
+    has_local_topic = any(topic in lowered_query for topic in BEGINNER_TOPICS)
+    return has_beginner_phrase and (
+        has_local_topic or bool(_build_knowledge_base_response(lowered_query))
+    )
 
 
 def _topic_from_query(lowered_query: str) -> str:
@@ -359,6 +366,10 @@ def _topic_from_query(lowered_query: str) -> str:
 
 
 def _build_local_education_response(user_query: str) -> dict[str, Any]:
+    kb_response = _build_knowledge_base_response(user_query)
+    if kb_response:
+        return kb_response
+
     lowered_query = _normalize_user_query(user_query).lower()
     topic = _topic_from_query(lowered_query)
     explanation = BEGINNER_TOPICS.get(
@@ -370,6 +381,16 @@ def _build_local_education_response(user_query: str) -> dict[str, Any]:
         "type": "educational",
         "data": {"topic": topic},
         "message": explanation,
+        "disclaimer": DISCLAIMER_TEXT,
+    }
+
+
+def _build_knowledge_base_response(user_query: str) -> dict[str, Any] | None:
+    kb_response = answer_knowledge_question(_normalize_user_query(user_query))
+    if not kb_response:
+        return None
+    return {
+        **kb_response,
         "disclaimer": DISCLAIMER_TEXT,
     }
 
@@ -1189,6 +1210,9 @@ async def chat(request: ChatRequest):
 
     # ── DIVIDEND_INFO: Show dividend yield and history ──────────────────────
     if intent == "dividend_info":
+        if _is_beginner_question(lowered_query, tickers):
+            return _build_local_education_response(normalized_query)
+
         if not tickers:
             return {
                 "type": "error",

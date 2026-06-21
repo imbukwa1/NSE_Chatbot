@@ -1,0 +1,3387 @@
+[
+  {
+    "id": "basi_1",
+    "category": "Basic Concepts",
+    "question": "What is a share?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "share",
+      "what is a share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_2",
+    "category": "Basic Concepts",
+    "question": "Explain a share",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "explain a share",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_3",
+    "category": "Basic Concepts",
+    "question": "Define a share",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "define a share",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_4",
+    "category": "Basic Concepts",
+    "question": "What does a share mean?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "share",
+      "what does a share mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_5",
+    "category": "Basic Concepts",
+    "question": "Why is a share important?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "share",
+      "why is a share important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_6",
+    "category": "Basic Concepts",
+    "question": "How should beginners understand a share?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "how should beginners understand a share",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_7",
+    "category": "Basic Concepts",
+    "question": "Give a beginner explanation of a share",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "give a beginner explanation of a share",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_8",
+    "category": "Basic Concepts",
+    "question": "What should NSE investors know about a share?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "share",
+      "what should nse investors know about a share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_9",
+    "category": "Basic Concepts",
+    "question": "How does a share work?",
+    "answer": "A share represents ownership in a company. Buying shares makes you a partial owner of that company. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a share",
+      "basic concepts",
+      "how does a share work",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_10",
+    "category": "Basic Concepts",
+    "question": "What is a dividend?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "what is a dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_11",
+    "category": "Basic Concepts",
+    "question": "Explain a dividend",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "explain a dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_12",
+    "category": "Basic Concepts",
+    "question": "Define a dividend",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "define a dividend",
+      "dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_13",
+    "category": "Basic Concepts",
+    "question": "What does a dividend mean?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "what does a dividend mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_14",
+    "category": "Basic Concepts",
+    "question": "Why is a dividend important?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "why is a dividend important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_15",
+    "category": "Basic Concepts",
+    "question": "How should beginners understand a dividend?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "how should beginners understand a dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_16",
+    "category": "Basic Concepts",
+    "question": "Give a beginner explanation of a dividend",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "give a beginner explanation of a dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_17",
+    "category": "Basic Concepts",
+    "question": "What should NSE investors know about a dividend?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "what should nse investors know about a dividend"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_18",
+    "category": "Basic Concepts",
+    "question": "How does a dividend work?",
+    "answer": "A dividend is a portion of a company's profits paid to shareholders as a reward for investing. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a dividend",
+      "basic concepts",
+      "dividend",
+      "how does a dividend work"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_19",
+    "category": "Basic Concepts",
+    "question": "What is a stock exchange?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "stock",
+      "what is a stock exchange"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_20",
+    "category": "Basic Concepts",
+    "question": "Explain a stock exchange",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "explain a stock exchange",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_21",
+    "category": "Basic Concepts",
+    "question": "Define a stock exchange",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "define a stock exchange",
+      "exchange",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_22",
+    "category": "Basic Concepts",
+    "question": "What does a stock exchange mean?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "stock",
+      "what does a stock exchange mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_23",
+    "category": "Basic Concepts",
+    "question": "Why is a stock exchange important?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "stock",
+      "why is a stock exchange important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_24",
+    "category": "Basic Concepts",
+    "question": "How should beginners understand a stock exchange?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "how should beginners understand a stock exchange",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_25",
+    "category": "Basic Concepts",
+    "question": "Give a beginner explanation of a stock exchange",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "give a beginner explanation of a stock exchange",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_26",
+    "category": "Basic Concepts",
+    "question": "What should NSE investors know about a stock exchange?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "stock",
+      "what should nse investors know about a stock exchange"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_27",
+    "category": "Basic Concepts",
+    "question": "How does a stock exchange work?",
+    "answer": "A stock exchange is a regulated marketplace where shares and securities are bought and sold. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a stock exchange",
+      "basic concepts",
+      "exchange",
+      "how does a stock exchange work",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_28",
+    "category": "Basic Concepts",
+    "question": "What is the NSE?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "nse",
+      "the",
+      "the nse",
+      "what is the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_29",
+    "category": "Basic Concepts",
+    "question": "Explain the NSE",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "explain the nse",
+      "nse",
+      "the",
+      "the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_30",
+    "category": "Basic Concepts",
+    "question": "Define the NSE",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "define the nse",
+      "nse",
+      "the",
+      "the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_31",
+    "category": "Basic Concepts",
+    "question": "What does the NSE mean?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "nse",
+      "the",
+      "the nse",
+      "what does the nse mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_32",
+    "category": "Basic Concepts",
+    "question": "Why is the NSE important?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "nse",
+      "the",
+      "the nse",
+      "why is the nse important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_33",
+    "category": "Basic Concepts",
+    "question": "How should beginners understand the NSE?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "how should beginners understand the nse",
+      "nse",
+      "the",
+      "the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_34",
+    "category": "Basic Concepts",
+    "question": "Give a beginner explanation of the NSE",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "give a beginner explanation of the nse",
+      "nse",
+      "the",
+      "the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_35",
+    "category": "Basic Concepts",
+    "question": "What should NSE investors know about the NSE?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "nse",
+      "the",
+      "the nse",
+      "what should nse investors know about the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_36",
+    "category": "Basic Concepts",
+    "question": "How does the NSE work?",
+    "answer": "The Nairobi Securities Exchange (NSE) is Kenya's main stock market where securities are traded. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "how does the nse work",
+      "nse",
+      "the",
+      "the nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_37",
+    "category": "Basic Concepts",
+    "question": "What is market capitalization?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "market",
+      "market capitalization",
+      "what is market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_38",
+    "category": "Basic Concepts",
+    "question": "Explain market capitalization",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "explain market capitalization",
+      "market",
+      "market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_39",
+    "category": "Basic Concepts",
+    "question": "Define market capitalization",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "define market capitalization",
+      "market",
+      "market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_40",
+    "category": "Basic Concepts",
+    "question": "What does market capitalization mean?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "market",
+      "market capitalization",
+      "what does market capitalization mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_41",
+    "category": "Basic Concepts",
+    "question": "Why is market capitalization important?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "market",
+      "market capitalization",
+      "why is market capitalization important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_42",
+    "category": "Basic Concepts",
+    "question": "How should beginners understand market capitalization?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "how should beginners understand market capitalization",
+      "market",
+      "market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_43",
+    "category": "Basic Concepts",
+    "question": "Give a beginner explanation of market capitalization",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "give a beginner explanation of market capitalization",
+      "market",
+      "market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_44",
+    "category": "Basic Concepts",
+    "question": "What should NSE investors know about market capitalization?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "market",
+      "market capitalization",
+      "what should nse investors know about market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_45",
+    "category": "Basic Concepts",
+    "question": "How does market capitalization work?",
+    "answer": "Market capitalization is the total value of a company's shares in the stock market. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "basic concepts",
+      "capitalization",
+      "how does market capitalization work",
+      "market",
+      "market capitalization"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_46",
+    "category": "Basic Concepts",
+    "question": "What is a portfolio?",
+    "answer": "A portfolio is a collection of financial investments such as shares, bonds, and assets.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a portfolio",
+      "basic concepts",
+      "portfolio",
+      "what is a portfolio"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_47",
+    "category": "Basic Concepts",
+    "question": "Explain a portfolio",
+    "answer": "A portfolio is a collection of financial investments such as shares, bonds, and assets. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a portfolio",
+      "basic concepts",
+      "explain a portfolio",
+      "portfolio"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_48",
+    "category": "Basic Concepts",
+    "question": "Define a portfolio",
+    "answer": "A portfolio is a collection of financial investments such as shares, bonds, and assets. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a portfolio",
+      "basic concepts",
+      "define a portfolio",
+      "portfolio"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_49",
+    "category": "Basic Concepts",
+    "question": "What does a portfolio mean?",
+    "answer": "A portfolio is a collection of financial investments such as shares, bonds, and assets. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a portfolio",
+      "basic concepts",
+      "portfolio",
+      "what does a portfolio mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "basi_50",
+    "category": "Basic Concepts",
+    "question": "Why is a portfolio important?",
+    "answer": "A portfolio is a collection of financial investments such as shares, bonds, and assets. This is important for beginner investors to understand.",
+    "tags": [
+      "basic_concepts"
+    ],
+    "keywords": [
+      "a portfolio",
+      "basic concepts",
+      "portfolio",
+      "why is a portfolio important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_51",
+    "category": "Trading Concepts",
+    "question": "What is buying and selling of shares?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts",
+      "what is buying and selling of shares"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_52",
+    "category": "Trading Concepts",
+    "question": "Explain buying and selling of shares",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "explain buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_53",
+    "category": "Trading Concepts",
+    "question": "Define buying and selling of shares",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "define buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_54",
+    "category": "Trading Concepts",
+    "question": "What does buying and selling of shares mean?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts",
+      "what does buying and selling of shares mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_55",
+    "category": "Trading Concepts",
+    "question": "Why is buying and selling of shares important?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts",
+      "why is buying and selling of shares important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_56",
+    "category": "Trading Concepts",
+    "question": "How should beginners understand buying and selling of shares?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "how should beginners understand buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_57",
+    "category": "Trading Concepts",
+    "question": "Give a beginner explanation of buying and selling of shares",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "give a beginner explanation of buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_58",
+    "category": "Trading Concepts",
+    "question": "What should NSE investors know about buying and selling of shares?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "selling",
+      "shares",
+      "trading concepts",
+      "what should nse investors know about buying and selling of shares"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_59",
+    "category": "Trading Concepts",
+    "question": "How does buying and selling of shares work?",
+    "answer": "Buying shares means acquiring ownership in a company, while selling means transferring ownership to another investor. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "and",
+      "buying",
+      "buying and selling of shares",
+      "how does buying and selling of shares work",
+      "selling",
+      "shares",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_60",
+    "category": "Trading Concepts",
+    "question": "What is a bull market?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "market",
+      "trading concepts",
+      "what is a bull market"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_61",
+    "category": "Trading Concepts",
+    "question": "Explain a bull market",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "explain a bull market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_62",
+    "category": "Trading Concepts",
+    "question": "Define a bull market",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "define a bull market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_63",
+    "category": "Trading Concepts",
+    "question": "What does a bull market mean?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "market",
+      "trading concepts",
+      "what does a bull market mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_64",
+    "category": "Trading Concepts",
+    "question": "Why is a bull market important?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "market",
+      "trading concepts",
+      "why is a bull market important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_65",
+    "category": "Trading Concepts",
+    "question": "How should beginners understand a bull market?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "how should beginners understand a bull market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_66",
+    "category": "Trading Concepts",
+    "question": "Give a beginner explanation of a bull market",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "give a beginner explanation of a bull market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_67",
+    "category": "Trading Concepts",
+    "question": "What should NSE investors know about a bull market?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "market",
+      "trading concepts",
+      "what should nse investors know about a bull market"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_68",
+    "category": "Trading Concepts",
+    "question": "How does a bull market work?",
+    "answer": "A bull market is a period of rising stock prices and strong investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bull market",
+      "bull",
+      "how does a bull market work",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_69",
+    "category": "Trading Concepts",
+    "question": "What is a bear market?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "market",
+      "trading concepts",
+      "what is a bear market"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_70",
+    "category": "Trading Concepts",
+    "question": "Explain a bear market",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "explain a bear market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_71",
+    "category": "Trading Concepts",
+    "question": "Define a bear market",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "define a bear market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_72",
+    "category": "Trading Concepts",
+    "question": "What does a bear market mean?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "market",
+      "trading concepts",
+      "what does a bear market mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_73",
+    "category": "Trading Concepts",
+    "question": "Why is a bear market important?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "market",
+      "trading concepts",
+      "why is a bear market important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_74",
+    "category": "Trading Concepts",
+    "question": "How should beginners understand a bear market?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "how should beginners understand a bear market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_75",
+    "category": "Trading Concepts",
+    "question": "Give a beginner explanation of a bear market",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "give a beginner explanation of a bear market",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_76",
+    "category": "Trading Concepts",
+    "question": "What should NSE investors know about a bear market?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "market",
+      "trading concepts",
+      "what should nse investors know about a bear market"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_77",
+    "category": "Trading Concepts",
+    "question": "How does a bear market work?",
+    "answer": "A bear market is a period of falling stock prices and low investor confidence. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a bear market",
+      "bear",
+      "how does a bear market work",
+      "market",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_78",
+    "category": "Trading Concepts",
+    "question": "What is liquidity?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "liquidity",
+      "trading concepts",
+      "what is liquidity"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_79",
+    "category": "Trading Concepts",
+    "question": "Explain liquidity",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "explain liquidity",
+      "liquidity",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_80",
+    "category": "Trading Concepts",
+    "question": "Define liquidity",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "define liquidity",
+      "liquidity",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_81",
+    "category": "Trading Concepts",
+    "question": "What does liquidity mean?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "liquidity",
+      "trading concepts",
+      "what does liquidity mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_82",
+    "category": "Trading Concepts",
+    "question": "Why is liquidity important?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "liquidity",
+      "trading concepts",
+      "why is liquidity important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_83",
+    "category": "Trading Concepts",
+    "question": "How should beginners understand liquidity?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "how should beginners understand liquidity",
+      "liquidity",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_84",
+    "category": "Trading Concepts",
+    "question": "Give a beginner explanation of liquidity",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "give a beginner explanation of liquidity",
+      "liquidity",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_85",
+    "category": "Trading Concepts",
+    "question": "What should NSE investors know about liquidity?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "liquidity",
+      "trading concepts",
+      "what should nse investors know about liquidity"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_86",
+    "category": "Trading Concepts",
+    "question": "How does liquidity work?",
+    "answer": "Liquidity refers to how quickly an asset can be bought or sold without affecting its price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "how does liquidity work",
+      "liquidity",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_87",
+    "category": "Trading Concepts",
+    "question": "What is a market order?",
+    "answer": "A market order executes a trade immediately at the current market price.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "market",
+      "order",
+      "trading concepts",
+      "what is a market order"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_88",
+    "category": "Trading Concepts",
+    "question": "Explain a market order",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "explain a market order",
+      "market",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_89",
+    "category": "Trading Concepts",
+    "question": "Define a market order",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "define a market order",
+      "market",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_90",
+    "category": "Trading Concepts",
+    "question": "What does a market order mean?",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "market",
+      "order",
+      "trading concepts",
+      "what does a market order mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_91",
+    "category": "Trading Concepts",
+    "question": "Why is a market order important?",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "market",
+      "order",
+      "trading concepts",
+      "why is a market order important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_92",
+    "category": "Trading Concepts",
+    "question": "How should beginners understand a market order?",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "how should beginners understand a market order",
+      "market",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_93",
+    "category": "Trading Concepts",
+    "question": "Give a beginner explanation of a market order",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "give a beginner explanation of a market order",
+      "market",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_94",
+    "category": "Trading Concepts",
+    "question": "What should NSE investors know about a market order?",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "market",
+      "order",
+      "trading concepts",
+      "what should nse investors know about a market order"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_95",
+    "category": "Trading Concepts",
+    "question": "How does a market order work?",
+    "answer": "A market order executes a trade immediately at the current market price. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a market order",
+      "how does a market order work",
+      "market",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_96",
+    "category": "Trading Concepts",
+    "question": "What is a limit order?",
+    "answer": "A limit order executes a trade only at a specified price or better.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a limit order",
+      "limit",
+      "order",
+      "trading concepts",
+      "what is a limit order"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_97",
+    "category": "Trading Concepts",
+    "question": "Explain a limit order",
+    "answer": "A limit order executes a trade only at a specified price or better. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a limit order",
+      "explain a limit order",
+      "limit",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_98",
+    "category": "Trading Concepts",
+    "question": "Define a limit order",
+    "answer": "A limit order executes a trade only at a specified price or better. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a limit order",
+      "define a limit order",
+      "limit",
+      "order",
+      "trading concepts"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_99",
+    "category": "Trading Concepts",
+    "question": "What does a limit order mean?",
+    "answer": "A limit order executes a trade only at a specified price or better. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a limit order",
+      "limit",
+      "order",
+      "trading concepts",
+      "what does a limit order mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "trad_100",
+    "category": "Trading Concepts",
+    "question": "Why is a limit order important?",
+    "answer": "A limit order executes a trade only at a specified price or better. This is important for beginner investors to understand.",
+    "tags": [
+      "trading_concepts"
+    ],
+    "keywords": [
+      "a limit order",
+      "limit",
+      "order",
+      "trading concepts",
+      "why is a limit order important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_101",
+    "category": "NSE-specific Information",
+    "question": "What companies are listed on NSE?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information",
+      "what companies are listed on nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_102",
+    "category": "NSE-specific Information",
+    "question": "Explain listed on NSE",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "explain listed on nse",
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_103",
+    "category": "NSE-specific Information",
+    "question": "Define listed on NSE",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "define listed on nse",
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_104",
+    "category": "NSE-specific Information",
+    "question": "What does listed on NSE mean?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information",
+      "what does listed on nse mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_105",
+    "category": "NSE-specific Information",
+    "question": "Why is listed on NSE important?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information",
+      "why is listed on nse important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_106",
+    "category": "NSE-specific Information",
+    "question": "How should beginners understand listed on NSE?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how should beginners understand listed on nse",
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_107",
+    "category": "NSE-specific Information",
+    "question": "Give a beginner explanation of listed on NSE",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "give a beginner explanation of listed on nse",
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_108",
+    "category": "NSE-specific Information",
+    "question": "What should NSE investors know about listed on NSE?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information",
+      "what should nse investors know about listed on nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_109",
+    "category": "NSE-specific Information",
+    "question": "How does listed on NSE work?",
+    "answer": "The NSE lists companies like Safaricom, Equity Group, KCB Group, and many others. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how does listed on nse work",
+      "listed",
+      "listed on nse",
+      "nse",
+      "nse-specific information"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_110",
+    "category": "NSE-specific Information",
+    "question": "What is NSE 20 Share Index?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share",
+      "what is nse 20 share index"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_111",
+    "category": "NSE-specific Information",
+    "question": "Explain nSE 20 Share Index",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "explain nse 20 share index",
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_112",
+    "category": "NSE-specific Information",
+    "question": "Define nSE 20 Share Index",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "define nse 20 share index",
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_113",
+    "category": "NSE-specific Information",
+    "question": "What does nSE 20 Share Index mean?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share",
+      "what does nse 20 share index mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_114",
+    "category": "NSE-specific Information",
+    "question": "Why is nSE 20 Share Index important?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share",
+      "why is nse 20 share index important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_115",
+    "category": "NSE-specific Information",
+    "question": "How should beginners understand nSE 20 Share Index?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how should beginners understand nse 20 share index",
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_116",
+    "category": "NSE-specific Information",
+    "question": "Give a beginner explanation of nSE 20 Share Index",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "give a beginner explanation of nse 20 share index",
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_117",
+    "category": "NSE-specific Information",
+    "question": "What should NSE investors know about nSE 20 Share Index?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share",
+      "what should nse investors know about nse 20 share index"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_118",
+    "category": "NSE-specific Information",
+    "question": "How does nSE 20 Share Index work?",
+    "answer": "It is an index that tracks the performance of 20 top companies on the NSE. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how does nse 20 share index work",
+      "index",
+      "nse",
+      "nse 20 share index",
+      "nse-specific information",
+      "share"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_119",
+    "category": "NSE-specific Information",
+    "question": "What are NSE trading hours?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading",
+      "what are nse trading hours"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_120",
+    "category": "NSE-specific Information",
+    "question": "Explain nSE trading hours",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "explain nse trading hours",
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_121",
+    "category": "NSE-specific Information",
+    "question": "Define nSE trading hours",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "define nse trading hours",
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_122",
+    "category": "NSE-specific Information",
+    "question": "What does nSE trading hours mean?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading",
+      "what does nse trading hours mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_123",
+    "category": "NSE-specific Information",
+    "question": "Why is nSE trading hours important?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading",
+      "why is nse trading hours important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_124",
+    "category": "NSE-specific Information",
+    "question": "How should beginners understand nSE trading hours?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "how should beginners understand nse trading hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_125",
+    "category": "NSE-specific Information",
+    "question": "Give a beginner explanation of nSE trading hours",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "give a beginner explanation of nse trading hours",
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_126",
+    "category": "NSE-specific Information",
+    "question": "What should NSE investors know about nSE trading hours?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading",
+      "what should nse investors know about nse trading hours"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_127",
+    "category": "NSE-specific Information",
+    "question": "How does nSE trading hours work?",
+    "answer": "The NSE operates Monday to Friday from 9:30 AM to 3:00 PM excluding public holidays. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "hours",
+      "how does nse trading hours work",
+      "nse",
+      "nse trading hours",
+      "nse-specific information",
+      "trading"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_128",
+    "category": "NSE-specific Information",
+    "question": "What is settlement in NSE?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse",
+      "what is settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_129",
+    "category": "NSE-specific Information",
+    "question": "Explain settlement in NSE",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "explain settlement in nse",
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_130",
+    "category": "NSE-specific Information",
+    "question": "Define settlement in NSE",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "define settlement in nse",
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_131",
+    "category": "NSE-specific Information",
+    "question": "What does settlement in NSE mean?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse",
+      "what does settlement in nse mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_132",
+    "category": "NSE-specific Information",
+    "question": "Why is settlement in NSE important?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse",
+      "why is settlement in nse important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_133",
+    "category": "NSE-specific Information",
+    "question": "How should beginners understand settlement in NSE?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how should beginners understand settlement in nse",
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_134",
+    "category": "NSE-specific Information",
+    "question": "Give a beginner explanation of settlement in NSE",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "give a beginner explanation of settlement in nse",
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_135",
+    "category": "NSE-specific Information",
+    "question": "What should NSE investors know about settlement in NSE?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse",
+      "what should nse investors know about settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_136",
+    "category": "NSE-specific Information",
+    "question": "How does settlement in NSE work?",
+    "answer": "Settlement is the process where shares and money are exchanged after a trade is completed. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how does settlement in nse work",
+      "nse",
+      "nse-specific information",
+      "settlement",
+      "settlement in nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_137",
+    "category": "NSE-specific Information",
+    "question": "What is the role of NSE?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse",
+      "what is the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_138",
+    "category": "NSE-specific Information",
+    "question": "Explain the role of NSE",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "explain the role of nse",
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_139",
+    "category": "NSE-specific Information",
+    "question": "Define the role of NSE",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "define the role of nse",
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_140",
+    "category": "NSE-specific Information",
+    "question": "What does the role of NSE mean?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse",
+      "what does the role of nse mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_141",
+    "category": "NSE-specific Information",
+    "question": "Why is the role of NSE important?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse",
+      "why is the role of nse important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_142",
+    "category": "NSE-specific Information",
+    "question": "How should beginners understand the role of NSE?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how should beginners understand the role of nse",
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_143",
+    "category": "NSE-specific Information",
+    "question": "Give a beginner explanation of the role of NSE",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "give a beginner explanation of the role of nse",
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_144",
+    "category": "NSE-specific Information",
+    "question": "What should NSE investors know about the role of NSE?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse",
+      "what should nse investors know about the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_145",
+    "category": "NSE-specific Information",
+    "question": "How does the role of NSE work?",
+    "answer": "The NSE facilitates buying and selling of securities in Kenya. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "how does the role of nse work",
+      "nse",
+      "nse-specific information",
+      "role",
+      "the",
+      "the role of nse"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_146",
+    "category": "NSE-specific Information",
+    "question": "What is a stock index?",
+    "answer": "A stock index measures the performance of selected groups of stocks in the market.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "a stock index",
+      "index",
+      "nse-specific information",
+      "stock",
+      "what is a stock index"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_147",
+    "category": "NSE-specific Information",
+    "question": "Explain a stock index",
+    "answer": "A stock index measures the performance of selected groups of stocks in the market. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "a stock index",
+      "explain a stock index",
+      "index",
+      "nse-specific information",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_148",
+    "category": "NSE-specific Information",
+    "question": "Define a stock index",
+    "answer": "A stock index measures the performance of selected groups of stocks in the market. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "a stock index",
+      "define a stock index",
+      "index",
+      "nse-specific information",
+      "stock"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_149",
+    "category": "NSE-specific Information",
+    "question": "What does a stock index mean?",
+    "answer": "A stock index measures the performance of selected groups of stocks in the market. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "a stock index",
+      "index",
+      "nse-specific information",
+      "stock",
+      "what does a stock index mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "nse-_150",
+    "category": "NSE-specific Information",
+    "question": "Why is a stock index important?",
+    "answer": "A stock index measures the performance of selected groups of stocks in the market. This is important for beginner investors to understand.",
+    "tags": [
+      "nse-specific_information"
+    ],
+    "keywords": [
+      "a stock index",
+      "index",
+      "nse-specific information",
+      "stock",
+      "why is a stock index important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_151",
+    "category": "Investment Basics",
+    "question": "What is risk vs return?",
+    "answer": "Higher investment returns usually come with higher levels of risk.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return",
+      "what is risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_152",
+    "category": "Investment Basics",
+    "question": "Explain risk vs return",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "explain risk vs return",
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_153",
+    "category": "Investment Basics",
+    "question": "Define risk vs return",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "define risk vs return",
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_154",
+    "category": "Investment Basics",
+    "question": "What does risk vs return mean?",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return",
+      "what does risk vs return mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_155",
+    "category": "Investment Basics",
+    "question": "Why is risk vs return important?",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return",
+      "why is risk vs return important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_156",
+    "category": "Investment Basics",
+    "question": "How should beginners understand risk vs return?",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "how should beginners understand risk vs return",
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_157",
+    "category": "Investment Basics",
+    "question": "Give a beginner explanation of risk vs return",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "give a beginner explanation of risk vs return",
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_158",
+    "category": "Investment Basics",
+    "question": "What should NSE investors know about risk vs return?",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return",
+      "what should nse investors know about risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_159",
+    "category": "Investment Basics",
+    "question": "How does risk vs return work?",
+    "answer": "Higher investment returns usually come with higher levels of risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "how does risk vs return work",
+      "investment basics",
+      "return",
+      "risk",
+      "risk vs return"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_160",
+    "category": "Investment Basics",
+    "question": "What is diversification?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "investment basics",
+      "what is diversification"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_161",
+    "category": "Investment Basics",
+    "question": "Explain diversification",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "explain diversification",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_162",
+    "category": "Investment Basics",
+    "question": "Define diversification",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "define diversification",
+      "diversification",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_163",
+    "category": "Investment Basics",
+    "question": "What does diversification mean?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "investment basics",
+      "what does diversification mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_164",
+    "category": "Investment Basics",
+    "question": "Why is diversification important?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "investment basics",
+      "why is diversification important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_165",
+    "category": "Investment Basics",
+    "question": "How should beginners understand diversification?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "how should beginners understand diversification",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_166",
+    "category": "Investment Basics",
+    "question": "Give a beginner explanation of diversification",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "give a beginner explanation of diversification",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_167",
+    "category": "Investment Basics",
+    "question": "What should NSE investors know about diversification?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "investment basics",
+      "what should nse investors know about diversification"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_168",
+    "category": "Investment Basics",
+    "question": "How does diversification work?",
+    "answer": "Diversification is spreading investments across different assets to reduce risk. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "diversification",
+      "how does diversification work",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_169",
+    "category": "Investment Basics",
+    "question": "What is compound interest?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "interest",
+      "investment basics",
+      "what is compound interest"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_170",
+    "category": "Investment Basics",
+    "question": "Explain compound interest",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "explain compound interest",
+      "interest",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_171",
+    "category": "Investment Basics",
+    "question": "Define compound interest",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "define compound interest",
+      "interest",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_172",
+    "category": "Investment Basics",
+    "question": "What does compound interest mean?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "interest",
+      "investment basics",
+      "what does compound interest mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_173",
+    "category": "Investment Basics",
+    "question": "Why is compound interest important?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "interest",
+      "investment basics",
+      "why is compound interest important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_174",
+    "category": "Investment Basics",
+    "question": "How should beginners understand compound interest?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "how should beginners understand compound interest",
+      "interest",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_175",
+    "category": "Investment Basics",
+    "question": "Give a beginner explanation of compound interest",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "give a beginner explanation of compound interest",
+      "interest",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_176",
+    "category": "Investment Basics",
+    "question": "What should NSE investors know about compound interest?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "interest",
+      "investment basics",
+      "what should nse investors know about compound interest"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_177",
+    "category": "Investment Basics",
+    "question": "How does compound interest work?",
+    "answer": "Compound interest is interest earned on both initial capital and accumulated interest. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "compound",
+      "compound interest",
+      "how does compound interest work",
+      "interest",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_178",
+    "category": "Investment Basics",
+    "question": "What is capital gain?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "investment basics",
+      "what is capital gain"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_179",
+    "category": "Investment Basics",
+    "question": "Explain capital gain",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "explain capital gain",
+      "gain",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_180",
+    "category": "Investment Basics",
+    "question": "Define capital gain",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "define capital gain",
+      "gain",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_181",
+    "category": "Investment Basics",
+    "question": "What does capital gain mean?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "investment basics",
+      "what does capital gain mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_182",
+    "category": "Investment Basics",
+    "question": "Why is capital gain important?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "investment basics",
+      "why is capital gain important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_183",
+    "category": "Investment Basics",
+    "question": "How should beginners understand capital gain?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "how should beginners understand capital gain",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_184",
+    "category": "Investment Basics",
+    "question": "Give a beginner explanation of capital gain",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "give a beginner explanation of capital gain",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_185",
+    "category": "Investment Basics",
+    "question": "What should NSE investors know about capital gain?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "investment basics",
+      "what should nse investors know about capital gain"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_186",
+    "category": "Investment Basics",
+    "question": "How does capital gain work?",
+    "answer": "Capital gain is the profit made when selling an asset at a higher price than purchase price. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "capital",
+      "capital gain",
+      "gain",
+      "how does capital gain work",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_187",
+    "category": "Investment Basics",
+    "question": "What is long-term investing?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term",
+      "what is long-term investing"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_188",
+    "category": "Investment Basics",
+    "question": "Explain long-term investing",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "explain long-term investing",
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_189",
+    "category": "Investment Basics",
+    "question": "Define long-term investing",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "define long-term investing",
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_190",
+    "category": "Investment Basics",
+    "question": "What does long-term investing mean?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term",
+      "what does long-term investing mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_191",
+    "category": "Investment Basics",
+    "question": "Why is long-term investing important?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term",
+      "why is long-term investing important"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_192",
+    "category": "Investment Basics",
+    "question": "How should beginners understand long-term investing?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "how should beginners understand long-term investing",
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_193",
+    "category": "Investment Basics",
+    "question": "Give a beginner explanation of long-term investing",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "give a beginner explanation of long-term investing",
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_194",
+    "category": "Investment Basics",
+    "question": "What should NSE investors know about long-term investing?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term",
+      "what should nse investors know about long-term investing"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_195",
+    "category": "Investment Basics",
+    "question": "How does long-term investing work?",
+    "answer": "Long-term investing involves holding assets for an extended period to grow wealth. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "how does long-term investing work",
+      "investing",
+      "investment basics",
+      "long",
+      "long-term investing",
+      "term"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_196",
+    "category": "Investment Basics",
+    "question": "What is inflation?",
+    "answer": "Inflation is the rise in prices of goods and services over time, reducing purchasing power.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "inflation",
+      "investment basics",
+      "what is inflation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_197",
+    "category": "Investment Basics",
+    "question": "Explain inflation",
+    "answer": "Inflation is the rise in prices of goods and services over time, reducing purchasing power. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "explain inflation",
+      "inflation",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_198",
+    "category": "Investment Basics",
+    "question": "Define inflation",
+    "answer": "Inflation is the rise in prices of goods and services over time, reducing purchasing power. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "define inflation",
+      "inflation",
+      "investment basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_199",
+    "category": "Investment Basics",
+    "question": "What does inflation mean?",
+    "answer": "Inflation is the rise in prices of goods and services over time, reducing purchasing power. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "inflation",
+      "investment basics",
+      "what does inflation mean"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "inve_200",
+    "category": "Investment Basics",
+    "question": "Why is inflation important?",
+    "answer": "Inflation is the rise in prices of goods and services over time, reducing purchasing power. This is important for beginner investors to understand.",
+    "tags": [
+      "investment_basics"
+    ],
+    "keywords": [
+      "inflation",
+      "investment basics",
+      "why is inflation important"
+    ],
+    "difficulty": "beginner"
+  }
+]
