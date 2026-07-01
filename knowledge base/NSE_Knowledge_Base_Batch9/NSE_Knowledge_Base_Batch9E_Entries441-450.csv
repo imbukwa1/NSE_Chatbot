@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+441,what-is-an-investor-complaint,Capital Markets Regulation,Investor Protection,What is an investor complaint?,Define investor complaint,"# Investor Complaint
+
+An investor complaint is a formal report submitted when an investor believes they have been treated unfairly or suffered loss due to misconduct.",investor complaint,Beginner,How do I report market misconduct?,CMA
+442,how-to-file-investor-complaint,Capital Markets Regulation,Investor Protection,How do I file an investor complaint?,File investor complaint,"# Filing an Investor Complaint
+
+Investors can submit complaints to the relevant licensed intermediary or directly to the Capital Markets Authority using its official complaint procedures.",investor complaint process,Beginner,What is an investor complaint?,CMA
+443,what-is-dispute-resolution,Capital Markets Regulation,Dispute Resolution,What is dispute resolution?,Define dispute resolution,"# Dispute Resolution
+
+Dispute resolution refers to processes used to resolve disagreements between investors and market participants fairly and efficiently.",dispute resolution,Beginner,What is arbitration?,General
+444,what-is-arbitration,Capital Markets Regulation,Dispute Resolution,What is arbitration?,Define arbitration,"# Arbitration
+
+Arbitration is an alternative dispute resolution process where an independent arbitrator makes a binding decision.",arbitration,Intermediate,What is dispute resolution?,General
+445,what-is-regulatory-compliance-audit,Capital Markets Regulation,Compliance,What is a regulatory compliance audit?,Compliance audit,"# Compliance Audit
+
+A compliance audit assesses whether an organization follows applicable laws, regulations, and internal policies.",compliance audit,Intermediate,What is compliance?,CMA
+446,what-is-risk-management,Capital Markets Regulation,Risk,What is risk management?,Define risk management,"# Risk Management
+
+Risk management is the process of identifying, assessing, and reducing risks that could affect an organization or investment.",risk management,Beginner,What is operational risk?,General
+447,what-is-operational-risk,Capital Markets Regulation,Risk,What is operational risk?,Define operational risk,"# Operational Risk
+
+Operational risk is the possibility of loss resulting from failed internal processes, people, systems, or external events.",operational risk,Intermediate,What is risk management?,Basel
+448,what-is-regulatory-reporting,Capital Markets Regulation,Compliance,What is regulatory reporting?,Define regulatory reporting,"# Regulatory Reporting
+
+Regulated firms must submit required reports to regulators to demonstrate compliance and support market oversight.",regulatory reporting,Intermediate,What are listing rules?,CMA
+449,what-is-market-confidence,Capital Markets Regulation,Market Integrity,Why is investor confidence important in capital markets?,Investor confidence,"# Investor Confidence
+
+Investor confidence encourages participation in capital markets, improves liquidity, and supports efficient price discovery.",investor confidence,Beginner,Why is market transparency important?,Internal
+450,overview-capital-markets-regulation,Capital Markets Regulation,Education,What should investors know about capital markets regulation?,Capital markets regulation overview,"# Capital Markets Regulation
+
+Capital markets regulation promotes fair, transparent, and efficient markets through oversight, investor protection, disclosure requirements, and enforcement of applicable rules.",capital markets regulation,Beginner,What is the CMA?,CMA

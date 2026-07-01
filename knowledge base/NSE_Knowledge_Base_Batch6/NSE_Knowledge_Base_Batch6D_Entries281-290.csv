@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+281,what-is-a-bond-fund,Bonds & Fixed Income,Investment Vehicles,What is a bond fund?,Define bond fund; Bond mutual fund,"# Bond Fund
+
+A bond fund pools money from multiple investors to invest in a diversified portfolio of bonds managed by professionals.",bond fund;fixed income fund,Beginner,What is an ETF?,Internal
+282,what-is-a-bond-etf,Bonds & Fixed Income,Investment Vehicles,What is a bond ETF?,Define bond ETF,"# Bond ETF
+
+A bond ETF is an exchange-traded fund that invests primarily in bonds and trades on a stock exchange like a share.",bond ETF;ETF,Intermediate,What is a bond fund?,Internal
+283,what-is-a-municipal-bond,Bonds & Fixed Income,Types of Bonds,What is a municipal bond?,Define municipal bond,"# Municipal Bond
+
+A municipal bond is issued by a local government or public authority to finance infrastructure and public projects.",municipal bond,Intermediate,What is a government bond?,General
+284,what-is-a-sovereign-bond,Bonds & Fixed Income,Types of Bonds,What is a sovereign bond?,Define sovereign bond,"# Sovereign Bond
+
+A sovereign bond is a debt security issued by a national government to raise funds from investors.",sovereign bond,Beginner,What is a government bond?,General
+285,what-is-a-green-bond,Bonds & Fixed Income,Sustainable Finance,What is a green bond?,Define green bond,"# Green Bond
+
+A green bond finances projects with environmental benefits such as renewable energy, clean transport, or sustainable infrastructure.",green bond;ESG,Beginner,What is sustainable investing?,ICMA
+286,what-is-a-social-bond,Bonds & Fixed Income,Sustainable Finance,What is a social bond?,Define social bond,"# Social Bond
+
+A social bond raises funds for projects that deliver positive social outcomes such as healthcare, education, or affordable housing.",social bond,Intermediate,What is a green bond?,ICMA
+287,what-is-an-inflation-linked-bond,Bonds & Fixed Income,Types of Bonds,What is an inflation-linked bond?,Define inflation-linked bond,"# Inflation-Linked Bond
+
+An inflation-linked bond adjusts its value or interest payments based on inflation to help preserve purchasing power.",inflation-linked bond,Advanced,How does inflation affect bonds?,Internal
+288,what-is-bond-market-price,Bonds & Fixed Income,Pricing,What is a bond's market price?,Define bond market price,"# Bond Market Price
+
+A bond's market price is the amount investors are willing to pay for it in the secondary market, which may be above or below face value.",bond price,Beginner,What is face value?,Internal
+289,why-do-bond-prices-change,Bonds & Fixed Income,Pricing,Why do bond prices change?,Bond price movements,"# Bond Price Changes
+
+Bond prices change because of interest rate movements, credit quality, inflation expectations, and market supply and demand.",bond prices,Intermediate,What is interest rate risk?,Internal
+290,what-is-bond-liquidity,Bonds & Fixed Income,Market Concepts,What is bond liquidity?,Define bond liquidity,"# Bond Liquidity
+
+Bond liquidity refers to how easily a bond can be bought or sold without significantly affecting its market price.",bond liquidity,Intermediate,What is market liquidity?,Internal

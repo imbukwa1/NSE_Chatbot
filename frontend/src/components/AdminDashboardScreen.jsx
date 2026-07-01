@@ -166,8 +166,11 @@ function AdminDashboardScreen({ onRequireLogin }) {
   const [analytics, setAnalytics] = useState(null)
   const [users, setUsers] = useState([])
   const [knowledgeEntries, setKnowledgeEntries] = useState([])
+  const [knowledgeStats, setKnowledgeStats] = useState({})
+  const [knowledgeSearch, setKnowledgeSearch] = useState('')
   const [marketUpdate, setMarketUpdate] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isReimporting, setIsReimporting] = useState(false)
   const [error, setError] = useState('')
   const [feedback, setFeedback] = useState('')
   const [showKnowledgeForm, setShowKnowledgeForm] = useState(false)
@@ -198,6 +201,7 @@ function AdminDashboardScreen({ onRequireLogin }) {
       setAnalytics(analyticsPayload.data?.analytics || {})
       setUsers(usersPayload.data?.users || [])
       setKnowledgeEntries(knowledgePayload.data?.entries || [])
+      setKnowledgeStats(knowledgePayload.data?.stats || {})
       setMarketUpdate(
         marketPayload?.data?.market?.generated_at ||
           marketPayload?.data?.market?.last_updated ||
@@ -317,6 +321,36 @@ function AdminDashboardScreen({ onRequireLogin }) {
     }
   }
 
+  const handleKnowledgeSearch = async (event) => {
+    event.preventDefault()
+    try {
+      const payload = await adminApi.getKnowledgeBase(knowledgeSearch.trim())
+      setKnowledgeEntries(payload.data?.entries || [])
+      setKnowledgeStats(payload.data?.stats || knowledgeStats)
+    } catch (err) {
+      setFeedback(err.message || 'Could not search knowledge base.')
+    }
+  }
+
+  const handleReimportKnowledge = async () => {
+    setIsReimporting(true)
+    setFeedback('')
+    try {
+      const payload = await adminApi.reimportKnowledgeBase()
+      const stats = payload.data?.import
+      setFeedback(
+        `Knowledge base import complete: ${stats?.imported_count ?? 0} imported, ${stats?.skipped_count ?? 0} skipped.`,
+      )
+      const refreshed = await adminApi.getKnowledgeBase(knowledgeSearch.trim())
+      setKnowledgeEntries(refreshed.data?.entries || [])
+      setKnowledgeStats(refreshed.data?.stats || {})
+    } catch (err) {
+      setFeedback(err.message || 'Could not re-import knowledge base.')
+    } finally {
+      setIsReimporting(false)
+    }
+  }
+
   if (isAuthLoading || isLoading) {
     return (
       <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
@@ -374,7 +408,7 @@ function AdminDashboardScreen({ onRequireLogin }) {
           </p>
         )}
 
-        <section className="grid gap-4 md:grid-cols-3">
+        <section className="grid gap-4 md:grid-cols-4">
           <SummaryCard
             icon="U"
             title="Total Users"
@@ -392,6 +426,18 @@ function AdminDashboardScreen({ onRequireLogin }) {
             title="Last Market Update"
             value={formatMarketUpdate(marketUpdate)}
             subtitle="Latest market snapshot"
+          />
+          <SummaryCard
+            icon="K"
+            title="KB Articles"
+            value={knowledgeStats.total_articles ?? knowledgeEntries.length}
+            subtitle={`${knowledgeStats.categories?.length ?? 0} categories`}
+          />
+          <SummaryCard
+            icon="I"
+            title="Last KB Import"
+            value={formatDate(knowledgeStats.last_import?.imported_at)}
+            subtitle={knowledgeStats.last_import?.status || 'No import recorded'}
           />
         </section>
 
@@ -497,10 +543,41 @@ function AdminDashboardScreen({ onRequireLogin }) {
               <h3 className="text-lg font-semibold text-slate-950">
                 Knowledge Base Management
               </h3>
-              <ActionButton tone="primary" onClick={openCreateForm}>
-                Add Knowledge Entry
-              </ActionButton>
+              <div className="flex flex-wrap justify-end gap-2">
+                <ActionButton onClick={handleReimportKnowledge}>
+                  {isReimporting ? 'Importing...' : 'Re-import KB'}
+                </ActionButton>
+                <ActionButton tone="primary" onClick={openCreateForm}>
+                  Add Knowledge Entry
+                </ActionButton>
+              </div>
             </div>
+
+            <form onSubmit={handleKnowledgeSearch} className="mb-4 flex gap-2">
+              <input
+                value={knowledgeSearch}
+                onChange={(event) => setKnowledgeSearch(event.target.value)}
+                className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-blue-300"
+                placeholder="Search articles, aliases, keywords, or slugs"
+              />
+              <ActionButton type="submit" tone="primary">
+                Search
+              </ActionButton>
+            </form>
+
+            {knowledgeStats.articles_per_category?.length ? (
+              <div className="mb-4 rounded-2xl bg-slate-50 p-4">
+                <h4 className="text-sm font-semibold text-slate-900">Articles per category</h4>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {knowledgeStats.articles_per_category.map((item) => (
+                    <p key={item.category} className="rounded-xl bg-white px-3 py-2 text-sm text-slate-600 shadow-sm">
+                      <span className="font-semibold text-slate-900">{item.category}</span>{' '}
+                      <span className="text-xs text-slate-400">({item.count})</span>
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             {showKnowledgeForm && (
               <KnowledgeForm

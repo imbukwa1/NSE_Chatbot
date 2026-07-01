@@ -1,0 +1,44 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+21,what-is-a-share,NSE Basics,Securities,What is a share?,What is a company share?; Define share; Explain shares; Ownership share,"# Share
+
+A **share** is a unit of ownership in a company. When you buy shares, you become a shareholder and may benefit from company growth, dividends, and voting rights depending on the type of share.",share;ownership;shareholder,Beginner,What is a shareholder?; What is a stock?,NSE
+22,what-is-a-shareholder,NSE Basics,Participants,Who is a shareholder?,Define shareholder; What does shareholder mean?,"# Shareholder
+
+A **shareholder** is an individual or organization that owns one or more shares in a company. Shareholders may receive dividends and can vote on certain company matters.",shareholder;investor,Beginner,What is a share?; What are dividends?,NSE
+23,benefits-of-investing-in-shares,NSE Basics,Investing,What are the benefits of investing in shares?,Advantages of shares; Why invest in stocks?,"# Benefits of Investing in Shares
+
+Investing in shares can provide:
+- Capital appreciation
+- Dividend income
+- Portfolio diversification
+- Partial ownership of a company
+
+Returns are not guaranteed and investments carry risk.",benefits;shares;returns,Beginner,What are investment risks?,Internal
+24,risks-of-investing-in-shares,NSE Basics,Investing,What are the risks of investing in shares?,Risks of stocks; Share investment risks,"# Risks of Investing in Shares
+
+Risks include:
+- Falling share prices
+- Company losses
+- Market volatility
+- Economic downturns
+
+Investors should diversify and invest according to their financial goals.",risk;shares;volatility,Beginner,What is diversification?,Internal
+25,what-is-capital-market,NSE Basics,Markets,What is a capital market?,Define capital market; Capital market meaning,"# Capital Market
+
+A **capital market** is a financial market where long-term securities such as shares and bonds are issued and traded, helping businesses and governments raise funds.",capital market;finance,Beginner,What is a money market?,CMA
+26,difference-between-capital-and-money-market,NSE Basics,Markets,What is the difference between a capital market and a money market?,Capital market vs money market,"# Capital Market vs Money Market
+
+- **Capital Market:** Trades long-term investments like shares and bonds.
+- **Money Market:** Trades short-term financial instruments, usually maturing within one year.",capital market;money market,Beginner,What is a Treasury Bill?,CMA
+27,what-is-an-index,NSE Basics,Indices,What is a stock market index?,Define market index; What is an index?,"# Stock Market Index
+
+A stock market index measures the performance of a selected group of listed companies. It helps investors understand how the market is performing overall.",index;market index,Beginner,What is the NSE 20 Share Index?,NSE
+28,what-is-the-nse-20-share-index,NSE Basics,Indices,What is the NSE 20 Share Index?,Explain NSE 20; NSE 20 Index,"# NSE 20 Share Index
+
+The NSE 20 Share Index tracks the performance of twenty selected companies listed on the Nairobi Securities Exchange and serves as an indicator of market performance.",NSE20;index,Beginner,What is a stock market index?,NSE
+29,what-is-the-nse-all-share-index,NSE Basics,Indices,What is the NSE All Share Index (NASI)?,Explain NASI; What is the All Share Index?,"# NSE All Share Index (NASI)
+
+The NASI measures the overall performance of nearly all ordinary shares listed on the Nairobi Securities Exchange, providing a broader view of the market than the NSE 20 Share Index.",NASI;All Share Index,Beginner,How is NASI calculated?,NSE
+30,why-is-the-stock-market-important,NSE Basics,Importance,Why is the stock market important?,Importance of the stock market; Why do stock markets matter?,"# Importance of the Stock Market
+
+The stock market helps businesses raise capital, creates investment opportunities, supports economic growth, and enables efficient allocation of financial resources within the economy.",stock market;economy;investment,Beginner,Why is the NSE important?,Internal

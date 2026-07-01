@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+381,what-is-a-stock-market-sector,NSE Listed Companies & Market Sectors,Sectors,What is a stock market sector?,Define stock market sector,"# Stock Market Sector
+
+A stock market sector groups companies with similar business activities, making it easier for investors to compare businesses.",stock market sector,Beginner,What is an industry?,Internal
+382,what-is-an-industry-group,NSE Listed Companies & Market Sectors,Sectors,What is an industry group?,Define industry group,"# Industry Group
+
+An industry group consists of companies that operate in closely related business activities within a broader market sector.",industry group,Beginner,What is a stock market sector?,Internal
+383,why-do-sectors-matter,NSE Listed Companies & Market Sectors,Sectors,Why are market sectors important?,Importance of sectors,"# Importance of Market Sectors
+
+Market sectors help investors compare similar companies, identify trends, and diversify investment portfolios.",market sectors,Beginner,What is diversification?,Internal
+384,what-is-sector-rotation,NSE Listed Companies & Market Sectors,Investment Strategy,What is sector rotation?,Define sector rotation,"# Sector Rotation
+
+Sector rotation is an investment strategy that shifts investments between sectors based on economic and market conditions.",sector rotation,Advanced,What is diversification?,Internal
+385,what-is-a-company-profile,NSE Listed Companies & Market Sectors,Company Analysis,What is a company profile?,Define company profile,"# Company Profile
+
+A company profile summarizes a company's business activities, products, leadership, and financial information.",company profile,Beginner,How do I research a company?,Internal
+386,how-to-research-a-listed-company,NSE Listed Companies & Market Sectors,Company Analysis,How do I research a listed company?,Research listed company,"# Researching a Listed Company
+
+Review annual reports, financial statements, company announcements, industry trends, and market performance before investing.",company research,Beginner,What is a company profile?,NSE
+387,what-are-company-announcements,NSE Listed Companies & Market Sectors,Disclosures,What are company announcements?,Listed company announcements,"# Company Announcements
+
+Listed companies publish announcements about financial results, dividends, mergers, and other material events to keep investors informed.",company announcements,Beginner,Why are disclosures important?,NSE
+388,what-is-a-trading-symbol,NSE Listed Companies & Market Sectors,Listings,What is a trading symbol?,Ticker symbol,"# Trading Symbol
+
+A trading symbol, or ticker, is the unique abbreviation used to identify a listed company's shares on the exchange.",ticker symbol,Beginner,What is a listed company?,NSE
+389,what-is-a-share-register,NSE Listed Companies & Market Sectors,Shareholding,What is a share register?,Define share register,"# Share Register
+
+A share register is the official record of a company's shareholders and the number of shares they own.",share register,Intermediate,What is CDSC?,Internal
+390,what-is-free-float,NSE Listed Companies & Market Sectors,Shareholding,What is free float?,Define free float,"# Free Float
+
+Free float refers to the proportion of a company's shares that are available for public trading, excluding restricted or closely held shares.",free float,Intermediate,What is free-float market capitalization?,NSE

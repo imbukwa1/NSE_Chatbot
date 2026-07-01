@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+231,what-are-fixed-assets,Financial Statements & Ratios,Balance Sheet,What are fixed assets?,Define fixed assets,"# Fixed Assets
+
+Fixed assets are long-term tangible resources such as buildings, machinery, and equipment used in business operations.",fixed assets,Beginner,What is depreciation?,IFRS
+232,what-are-intangible-assets,Financial Statements & Ratios,Balance Sheet,What are intangible assets?,Define intangible assets,"# Intangible Assets
+
+Intangible assets are non-physical assets such as patents, trademarks, software, and goodwill that provide economic value.",intangible assets,Intermediate,What is goodwill?,IFRS
+233,what-is-goodwill,Financial Statements & Ratios,Accounting,What is goodwill?,Define goodwill,"# Goodwill
+
+Goodwill is an intangible asset arising when a company acquires another business for more than the fair value of its identifiable net assets.",goodwill,Intermediate,What are intangible assets?,IFRS
+234,what-is-amortization,Financial Statements & Ratios,Accounting,What is amortization?,Define amortization,"# Amortization
+
+Amortization is the gradual allocation of the cost of an intangible asset over its useful life.",amortization,Intermediate,What is depreciation?,IFRS
+235,what-is-cost-of-goods-sold,Financial Statements & Ratios,Income Statement,What is Cost of Goods Sold (COGS)?,Define COGS,"# Cost of Goods Sold
+
+COGS represents the direct costs incurred to produce the goods or services sold by a business.",COGS;cost of goods sold,Beginner,What is gross profit?,IFRS
+236,what-is-operating-expense,Financial Statements & Ratios,Income Statement,What are operating expenses?,Define operating expenses,"# Operating Expenses
+
+Operating expenses are the day-to-day costs of running a business, excluding direct production costs.",operating expenses,Beginner,What is operating margin?,IFRS
+237,what-is-net-income,Financial Statements & Ratios,Income Statement,What is net income?,Define net income,"# Net Income
+
+Net income is the final profit remaining after deducting all expenses, taxes, and interest from revenue.",net income,Beginner,What is net profit?,IFRS
+238,what-is-ebit,Financial Statements & Ratios,Income Statement,What is EBIT?,Define EBIT,"# EBIT
+
+EBIT stands for Earnings Before Interest and Taxes and measures operating profitability before financing and tax costs.",EBIT,Intermediate,What is EBITDA?,IFRS
+239,what-is-ebitda,Financial Statements & Ratios,Income Statement,What is EBITDA?,Define EBITDA,"# EBITDA
+
+EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization. It is commonly used to evaluate operating performance.",EBITDA,Intermediate,What is EBIT?,IFRS
+240,what-is-retained-earnings,Financial Statements & Ratios,Equity,What are retained earnings?,Define retained earnings,"# Retained Earnings
+
+Retained earnings are accumulated profits kept in the business rather than distributed to shareholders as dividends.",retained earnings,Beginner,What is shareholders' equity?,IFRS

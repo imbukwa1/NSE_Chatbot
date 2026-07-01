@@ -9,11 +9,19 @@ class KnowledgeBaseEntry(Base):
     __tablename__ = "knowledge_base_entries"
 
     id = Column(Integer, primary_key=True, index=True)
+    source_id = Column(String(50), nullable=True, index=True)
+    slug = Column(String(255), nullable=True, index=True)
     category = Column(String(80), nullable=False, index=True)
+    subcategory = Column(String(120), nullable=True, index=True)
     question = Column(String(255), nullable=False, index=True)
+    aliases = Column(Text, nullable=True)
     answer = Column(Text, nullable=False)
+    answer_markdown = Column(Text, nullable=True)
+    keywords = Column(Text, nullable=True)
+    difficulty = Column(String(40), nullable=True, index=True)
+    related_questions = Column(Text, nullable=True)
     source = Column(String(255), nullable=True)
-    created_by = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    created_by = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
     created_at = Column(DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
     updated_at = Column(
         DateTime,
@@ -21,4 +29,3 @@ class KnowledgeBaseEntry(Base):
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
     )
-

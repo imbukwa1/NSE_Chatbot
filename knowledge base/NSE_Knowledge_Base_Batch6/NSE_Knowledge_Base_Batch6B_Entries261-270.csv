@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+261,what-is-a-treasury-bond,Bonds & Fixed Income,Government Securities,What is a Treasury Bond?,Define Treasury Bond; T-Bond,"# Treasury Bond
+
+A Treasury Bond is a long-term government debt security that pays periodic interest and returns the principal at maturity.",treasury bond;government bond,Beginner,What is a Treasury Bill?,CBK
+262,difference-between-tbill-and-tbond,Bonds & Fixed Income,Government Securities,What is the difference between a Treasury Bill and a Treasury Bond?,T-Bill vs T-Bond,"# Treasury Bill vs Treasury Bond
+
+Treasury Bills are short-term securities sold at a discount, while Treasury Bonds are long-term securities that pay regular interest.",treasury bill;treasury bond,Beginner,What is a Treasury Bill?,CBK
+263,what-is-a-zero-coupon-bond,Bonds & Fixed Income,Types of Bonds,What is a zero-coupon bond?,Define zero coupon bond,"# Zero-Coupon Bond
+
+A zero-coupon bond does not make periodic interest payments. Instead, it is sold below face value and redeemed at full face value at maturity.",zero coupon bond,Intermediate,What is a coupon rate?,Internal
+264,what-is-a-fixed-rate-bond,Bonds & Fixed Income,Types of Bonds,What is a fixed-rate bond?,Define fixed-rate bond,"# Fixed-Rate Bond
+
+A fixed-rate bond pays the same interest rate throughout its life, providing predictable income to investors.",fixed-rate bond,Beginner,What is a floating-rate bond?,Internal
+265,what-is-a-floating-rate-bond,Bonds & Fixed Income,Types of Bonds,What is a floating-rate bond?,Define floating-rate bond,"# Floating-Rate Bond
+
+A floating-rate bond has an interest rate that changes periodically based on a reference rate or benchmark.",floating-rate bond,Intermediate,What is a fixed-rate bond?,Internal
+266,what-is-bond-duration,Bonds & Fixed Income,Risk,What is bond duration?,Define bond duration,"# Bond Duration
+
+Bond duration measures a bond's sensitivity to changes in interest rates and estimates how much its price may change.",bond duration,Advanced,What is interest rate risk?,Internal
+267,what-is-interest-rate-risk,Bonds & Fixed Income,Risk,What is interest rate risk?,Define interest rate risk,"# Interest Rate Risk
+
+Interest rate risk is the possibility that bond prices will fall when market interest rates rise.",interest rate risk,Intermediate,What is bond duration?,Internal
+268,what-is-credit-risk,Bonds & Fixed Income,Risk,What is credit risk?,Define credit risk,"# Credit Risk
+
+Credit risk is the possibility that a bond issuer may fail to make interest payments or repay the principal.",credit risk,Intermediate,What is default risk?,Internal
+269,what-is-default-risk,Bonds & Fixed Income,Risk,What is default risk?,Define default risk,"# Default Risk
+
+Default risk is the likelihood that a borrower will not fulfill the financial obligations of a bond or loan.",default risk,Intermediate,What is credit risk?,Internal
+270,what-is-bond-diversification,Bonds & Fixed Income,Portfolio,What is bond diversification?,Diversifying bond investments,"# Bond Diversification
+
+Bond diversification involves investing in different bond types, issuers, and maturities to reduce portfolio risk.",bond diversification,Beginner,Why diversify investments?,Internal

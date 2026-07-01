@@ -1,0 +1,35 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+41,what-is-a-dividend,NSE Basics,Returns,What is a dividend?,Define dividend; Explain dividends; Dividend meaning; What are dividends?,"# Dividend
+
+A **dividend** is a portion of a company's profits distributed to shareholders, usually in cash or additional shares.
+
+Companies are not required to pay dividends, and payments depend on profitability and board approval.",dividend;profits;shareholder,Beginner,What is dividend yield?; Why do companies pay dividends?,NSE
+42,why-do-companies-pay-dividends,NSE Basics,Returns,Why do companies pay dividends?,Reasons for dividends; Why pay shareholders?,"# Why Companies Pay Dividends
+
+Companies may distribute part of their profits to reward shareholders, attract investors, and demonstrate financial stability.",dividends;profits,Beginner,What is a dividend?,Internal
+43,what-is-dividend-yield,NSE Basics,Returns,What is dividend yield?,Define dividend yield; Dividend yield meaning,"# Dividend Yield
+
+Dividend yield measures the annual dividend paid relative to the current share price.
+
+It helps investors compare income potential between investments.",dividend yield;income,Beginner,What is a dividend?,Internal
+44,what-is-a-bull-market,NSE Basics,Market Conditions,What is a bull market?,Bull market meaning; Define bull market,"# Bull Market
+
+A **bull market** is a period during which share prices generally rise and investor confidence is strong.",bull market;prices,Beginner,What is a bear market?,Internal
+45,what-is-a-bear-market,NSE Basics,Market Conditions,What is a bear market?,Bear market meaning; Define bear market,"# Bear Market
+
+A **bear market** is a prolonged period in which share prices generally decline and market sentiment is pessimistic.",bear market;decline,Beginner,What is a bull market?,Internal
+46,what-is-portfolio-diversification,NSE Basics,Portfolio,What is portfolio diversification?,Diversification meaning; Diversify investments,"# Portfolio Diversification
+
+Diversification means spreading investments across different assets to reduce the impact of poor performance from a single investment.",diversification;portfolio;risk,Beginner,Why diversify a portfolio?,Internal
+47,why-is-diversification-important,NSE Basics,Portfolio,Why is diversification important?,Importance of diversification,"# Importance of Diversification
+
+Diversification helps reduce investment risk by avoiding over-reliance on one company, industry, or asset class.",diversification;risk,Beginner,What is diversification?,Internal
+48,what-is-long-term-investing,NSE Basics,Investing,What is long-term investing?,Define long-term investing,"# Long-Term Investing
+
+Long-term investing involves buying and holding investments for several years to benefit from growth, dividends, and compounding.",long-term;investing,Beginner,What is trading?,Internal
+49,what-is-financial-literacy,NSE Basics,Education,What is financial literacy?,Define financial literacy; Financial literacy meaning,"# Financial Literacy
+
+Financial literacy is the ability to understand and effectively use financial concepts such as budgeting, saving, investing, and managing risk to make informed decisions.",financial literacy;education,Beginner,Why is financial literacy important?,Internal
+50,why-is-financial-literacy-important,NSE Basics,Education,Why is financial literacy important?,Importance of financial literacy,"# Importance of Financial Literacy
+
+Financial literacy enables individuals to make informed financial decisions, avoid common mistakes, plan for the future, and invest with greater confidence.",financial literacy;money management,Beginner,What is financial literacy?,Internal

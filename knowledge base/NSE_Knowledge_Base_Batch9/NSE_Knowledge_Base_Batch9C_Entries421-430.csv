@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+421,what-is-a-public-offer,Capital Markets Regulation,Capital Raising,What is a public offer?,Define public offer; IPO offer,"# Public Offer
+
+A public offer allows a company to sell securities to the general public in accordance with regulatory requirements.",public offer;IPO,Beginner,What is an IPO?,CMA
+422,what-is-an-initial-public-offering,Capital Markets Regulation,Capital Raising,What is an Initial Public Offering (IPO)?,Define IPO,"# Initial Public Offering
+
+An IPO is the first sale of a company's shares to the public before they begin trading on a stock exchange.",IPO,Beginner,What is a public offer?,NSE
+423,what-is-a-private-placement,Capital Markets Regulation,Capital Raising,What is a private placement?,Define private placement,"# Private Placement
+
+A private placement is the sale of securities to a limited group of qualified investors instead of the general public.",private placement,Intermediate,What is an IPO?,CMA
+424,what-is-a-prospectus,Capital Markets Regulation,Disclosure,What is a prospectus?,Define prospectus,"# Prospectus
+
+A prospectus is a legal disclosure document that provides information about a securities offering, including risks and financial information.",prospectus,Beginner,Why read a prospectus?,CMA
+425,why-read-a-prospectus,Capital Markets Regulation,Disclosure,Why should investors read a prospectus?,Importance of prospectus,"# Reading a Prospectus
+
+A prospectus helps investors understand an investment's objectives, risks, financial information, and terms before investing.",prospectus,Beginner,What is a prospectus?,CMA
+426,what-is-compliance,Capital Markets Regulation,Compliance,What is regulatory compliance?,Define compliance,"# Regulatory Compliance
+
+Compliance means following applicable laws, regulations, listing rules, and ethical standards governing capital markets.",compliance,Beginner,What are listed company obligations?,CMA
+427,what-is-audit-committee,Capital Markets Regulation,Governance,What is an audit committee?,Define audit committee,"# Audit Committee
+
+An audit committee is a board committee that oversees financial reporting, internal controls, and the external audit process.",audit committee,Intermediate,What is a board of directors?,CMA
+428,what-is-conflict-of-interest,Capital Markets Regulation,Ethics,What is a conflict of interest?,Define conflict of interest,"# Conflict of Interest
+
+A conflict of interest occurs when personal interests could improperly influence professional decisions or responsibilities.",conflict of interest,Beginner,What is corporate governance?,General
+429,what-is-whistleblowing,Capital Markets Regulation,Enforcement,What is whistleblowing?,Define whistleblowing,"# Whistleblowing
+
+Whistleblowing is the reporting of suspected illegal, unethical, or improper conduct to the appropriate authority.",whistleblowing,Beginner,How do I report market misconduct?,CMA
+430,what-is-market-transparency,Capital Markets Regulation,Market Integrity,What is market transparency?,Define market transparency,"# Market Transparency
+
+Market transparency ensures investors have timely access to accurate and relevant information needed to make informed investment decisions.",market transparency,Beginner,Why is market regulation important?,CMA

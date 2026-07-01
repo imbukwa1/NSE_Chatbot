@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+481,what-is-behavioral-finance,Personal Finance & Portfolio Management,Behavioral Finance,What is behavioral finance?,Define behavioral finance,"# Behavioral Finance
+
+Behavioral finance studies how emotions and psychological biases influence financial and investment decisions.",behavioral finance,Intermediate,What is emotional investing?,CFA Institute
+482,what-is-emotional-investing,Personal Finance & Portfolio Management,Behavioral Finance,What is emotional investing?,Define emotional investing,"# Emotional Investing
+
+Emotional investing occurs when fear, greed, or other emotions drive investment decisions instead of careful analysis.",emotional investing,Beginner,What is behavioral finance?,General
+483,what-is-fomo-investing,Personal Finance & Portfolio Management,Behavioral Finance,What is FOMO investing?,Fear of missing out investing,"# FOMO Investing
+
+FOMO investing is buying investments because of fear of missing out on potential gains rather than based on research.",FOMO,Beginner,What is emotional investing?,General
+484,why-have-an-investment-plan,Personal Finance & Portfolio Management,Planning,Why should I have an investment plan?,Investment plan importance,"# Investment Plan
+
+An investment plan provides clear objectives, guides decisions, and helps investors remain focused during market fluctuations.",investment plan,Beginner,What is financial planning?,General
+485,what-is-periodic-portfolio-review,Personal Finance & Portfolio Management,Portfolio,What is a periodic portfolio review?,Review investment portfolio,"# Portfolio Review
+
+A periodic portfolio review evaluates investment performance and ensures the portfolio remains aligned with financial goals and risk tolerance.",portfolio review,Intermediate,What is portfolio rebalancing?,General
+486,what-is-investment-performance,Personal Finance & Portfolio Management,Returns,What is investment performance?,Define investment performance,"# Investment Performance
+
+Investment performance measures how well an investment or portfolio has generated returns over a specific period.",investment performance,Beginner,What is net investment return?,General
+487,what-is-financial-resilience,Personal Finance & Portfolio Management,Financial Habits,What is financial resilience?,Define financial resilience,"# Financial Resilience
+
+Financial resilience is the ability to withstand unexpected financial challenges through savings, planning, and responsible money management.",financial resilience,Beginner,What is an emergency fund?,General
+488,how-to-avoid-investment-scams,Personal Finance & Portfolio Management,Investor Safety,How can I avoid investment scams?,Avoid investment scams,"# Avoiding Investment Scams
+
+Verify investment providers, avoid guaranteed returns, research thoroughly, and use only licensed financial institutions and intermediaries.",investment scams,Beginner,What is investor protection?,CMA
+489,what-is-financial-literacy,Personal Finance & Portfolio Management,Education,What is financial literacy?,Define financial literacy,"# Financial Literacy
+
+Financial literacy is the knowledge and skills needed to make informed decisions about budgeting, saving, investing, and managing money.",financial literacy,Beginner,Why is investor education important?,General
+490,why-is-financial-literacy-important,Personal Finance & Portfolio Management,Education,Why is financial literacy important?,Importance of financial literacy,"# Importance of Financial Literacy
+
+Financial literacy helps people make informed financial decisions, avoid common mistakes, and achieve long-term financial well-being.",financial literacy importance,Beginner,What is financial literacy?,General

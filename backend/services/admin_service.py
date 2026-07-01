@@ -1,4 +1,5 @@
 from fastapi import HTTPException, status
+from sqlalchemy import func, text
 from sqlalchemy.orm import Session
 
 from auth.roles import ROLE_ADMIN
@@ -63,6 +64,54 @@ def list_knowledge_base(db: Session) -> list[KnowledgeBaseEntry]:
     return db.query(KnowledgeBaseEntry).order_by(KnowledgeBaseEntry.updated_at.desc()).all()
 
 
+def search_knowledge_base(db: Session, query: str | None = None) -> list[KnowledgeBaseEntry]:
+    base_query = db.query(KnowledgeBaseEntry)
+    if query:
+        pattern = f"%{query.strip().lower()}%"
+        base_query = base_query.filter(
+            func.lower(KnowledgeBaseEntry.question).like(pattern)
+            | func.lower(KnowledgeBaseEntry.aliases).like(pattern)
+            | func.lower(KnowledgeBaseEntry.keywords).like(pattern)
+            | func.lower(KnowledgeBaseEntry.related_questions).like(pattern)
+            | func.lower(KnowledgeBaseEntry.slug).like(pattern)
+        )
+    return base_query.order_by(KnowledgeBaseEntry.updated_at.desc()).limit(100).all()
+
+
+def get_knowledge_base_stats(db: Session) -> dict:
+    categories = (
+        db.query(KnowledgeBaseEntry.category, func.count(KnowledgeBaseEntry.id))
+        .group_by(KnowledgeBaseEntry.category)
+        .order_by(KnowledgeBaseEntry.category)
+        .all()
+    )
+    last_import = db.execute(
+        text(
+            """
+            SELECT imported_at, files_scanned, rows_seen, imported_count, skipped_count, status
+            FROM knowledge_base_imports
+            ORDER BY imported_at DESC
+            LIMIT 1
+            """
+        )
+    ).mappings().first()
+    return {
+        "total_articles": db.query(func.count(KnowledgeBaseEntry.id)).scalar() or 0,
+        "categories": [category for category, _ in categories if category],
+        "articles_per_category": [
+            {"category": category or "Uncategorized", "count": count}
+            for category, count in categories
+        ],
+        "last_import": dict(last_import) if last_import else None,
+    }
+
+
+def reimport_knowledge_base(db: Session) -> dict:
+    from scripts.import_knowledgebase import import_knowledgebase
+
+    return import_knowledgebase(db=db)
+
+
 def create_knowledge_base_entry(
     db: Session,
     admin: User,
@@ -72,6 +121,7 @@ def create_knowledge_base_entry(
         category=payload.category.strip(),
         question=payload.question.strip(),
         answer=payload.answer.strip(),
+        answer_markdown=payload.answer.strip(),
         source=payload.source.strip() if payload.source else None,
         created_by=admin.id,
     )
@@ -102,6 +152,8 @@ def update_knowledge_base_entry(
     updates = payload.model_dump(exclude_unset=True)
     for field, value in updates.items():
         setattr(entry, field, value.strip() if isinstance(value, str) else value)
+        if field == "answer" and isinstance(value, str):
+            entry.answer_markdown = value.strip()
     db.commit()
     db.refresh(entry)
     log_admin_action(db, admin.id, "Updated knowledge base entry", f"kb:{entry.id}")
@@ -113,4 +165,3 @@ def delete_knowledge_base_entry(db: Session, admin: User, entry_id: int) -> None
     db.delete(entry)
     db.commit()
     log_admin_action(db, admin.id, "Deleted knowledge base entry", f"kb:{entry_id}")
-

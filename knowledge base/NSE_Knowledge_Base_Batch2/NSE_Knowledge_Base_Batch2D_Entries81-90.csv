@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+81,why-are-companies-delisted,Stock Market Fundamentals,Listings,Why are companies delisted?,Reasons for delisting; Why delist a company?,"# Why Companies Are Delisted
+
+Companies may be delisted because of regulatory violations, mergers, acquisitions, prolonged financial difficulties, or voluntary decisions by shareholders.",delisting;listing,Intermediate,What is a delisted company?,NSE
+82,what-is-a-listed-security,Stock Market Fundamentals,Securities,What is a listed security?,Define listed security,"# Listed Security
+
+A listed security is a financial instrument officially approved for trading on a recognized stock exchange such as the NSE.",listed security;security,Beginner,What is a listed company?,NSE
+83,what-is-an-order-book,Stock Market Fundamentals,Trading,What is an order book?,Define order book; Order book meaning,"# Order Book
+
+An order book is an electronic list of buy and sell orders for a security arranged by price and time.",order book;buy orders;sell orders,Intermediate,What is a market order?,NSE
+84,what-is-a-bid-price,Stock Market Fundamentals,Trading,What is a bid price?,Define bid price,"# Bid Price
+
+The bid price is the highest price a buyer is willing to pay for a security at a given time.",bid price,Beginner,What is an ask price?,Internal
+85,what-is-an-ask-price,Stock Market Fundamentals,Trading,What is an ask price?,Offer price; Define ask price,"# Ask Price
+
+The ask price is the lowest price a seller is willing to accept for a security.",ask price;offer price,Beginner,What is a bid price?,Internal
+86,what-is-the-bid-ask-spread,Stock Market Fundamentals,Trading,What is the bid-ask spread?,Define bid ask spread,"# Bid-Ask Spread
+
+The bid-ask spread is the difference between the highest bid price and the lowest ask price.",spread;bid;ask,Intermediate,Why does the spread matter?,Internal
+87,what-is-a-brokerage-fee,Stock Market Fundamentals,Costs,What is a brokerage fee?,Broker commission; Trading fee,"# Brokerage Fee
+
+A brokerage fee is the commission or charge paid to a broker for executing a buy or sell order.",brokerage fee;commission,Beginner,What costs are involved in trading?,Internal
+88,what-are-transaction-costs,Stock Market Fundamentals,Costs,What are transaction costs?,Trading costs; Costs of buying shares,"# Transaction Costs
+
+Transaction costs include brokerage commissions, taxes, levies, and other charges incurred when buying or selling securities.",transaction costs;fees,Beginner,What is a brokerage fee?,Internal
+89,what-is-an-ex-dividend-date,Stock Market Fundamentals,Dividends,What is an ex-dividend date?,Define ex-dividend date,"# Ex-Dividend Date
+
+The ex-dividend date is the first trading day on which a buyer of a share is not entitled to receive the upcoming dividend.",ex-dividend;dividend,Intermediate,What is a record date?,NSE
+90,what-is-a-record-date,Stock Market Fundamentals,Dividends,What is a record date?,Define record date,"# Record Date
+
+The record date is the date a company uses to determine which shareholders are eligible to receive a declared dividend.",record date;dividend,Intermediate,What is an ex-dividend date?,NSE

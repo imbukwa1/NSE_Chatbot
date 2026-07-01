@@ -14,8 +14,11 @@ from services.admin_service import (
     create_knowledge_base_entry,
     delete_knowledge_base_entry,
     delete_user,
+    get_knowledge_base_stats,
     list_knowledge_base,
     list_users,
+    reimport_knowledge_base,
+    search_knowledge_base,
     update_knowledge_base_entry,
     update_user_role,
     update_user_status,
@@ -27,19 +30,38 @@ router = APIRouter(prefix="/admin", tags=["Admin"])
 
 @router.get("/knowledge-base")
 def get_knowledge_base(
+    q: str | None = None,
     db: Session = Depends(get_db),
     admin: User = Depends(get_current_admin),
 ):
-    entries = list_knowledge_base(db)
+    entries = search_knowledge_base(db, q) if q else list_knowledge_base(db)
     return api_success(
         "Knowledge base entries retrieved successfully",
         {
             "entries": [
                 KnowledgeBaseResponse.model_validate(entry).model_dump(mode="json")
                 for entry in entries
-            ]
+            ],
+            "stats": get_knowledge_base_stats(db),
         },
     )
+
+
+@router.get("/knowledge-base/stats")
+def get_kb_stats(
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_current_admin),
+):
+    return api_success("Knowledge base stats retrieved successfully", get_knowledge_base_stats(db))
+
+
+@router.post("/knowledge-base/reimport")
+def reimport_kb(
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_current_admin),
+):
+    stats = reimport_knowledge_base(db)
+    return api_success("Knowledge base re-import completed", {"import": stats})
 
 
 @router.post("/knowledge-base", status_code=status.HTTP_201_CREATED)
@@ -132,4 +154,3 @@ def remove_user(
 ):
     delete_user(db, admin, user_id)
     return api_success("User deleted successfully", {"id": user_id})
-

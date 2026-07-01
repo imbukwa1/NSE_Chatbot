@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+131,what-is-investment-income,Investing Basics,Income,What is investment income?,Define investment income; Income from investments,"# Investment Income
+
+Investment income is money earned from investments such as dividends, interest, rental income, or capital gains.",investment income;returns,Beginner,What is passive income?,Internal
+132,what-is-dividend-income,Investing Basics,Income,What is dividend income?,Define dividend income,"# Dividend Income
+
+Dividend income is money paid by companies to shareholders from their profits.",dividend income;dividends,Beginner,What is a dividend?,NSE
+133,what-is-interest-income,Investing Basics,Income,What is interest income?,Define interest income,"# Interest Income
+
+Interest income is money earned from lending funds or holding interest-bearing investments such as bonds or savings accounts.",interest income,Beginner,What is a bond?,Internal
+134,what-is-an-investment-strategy,Investing Basics,Strategies,What is an investment strategy?,Define investment strategy,"# Investment Strategy
+
+An investment strategy is a structured plan that guides how an investor selects and manages investments to achieve financial goals.",investment strategy,Beginner,What are investment goals?,Internal
+135,what-is-long-term-investing-strategy,Investing Basics,Strategies,What is a long-term investing strategy?,Long-term strategy,"# Long-Term Investing Strategy
+
+A long-term investing strategy focuses on holding investments for several years to benefit from growth, dividends, and compounding.",long-term investing,Beginner,What is compound interest?,Internal
+136,what-is-short-term-investing,Investing Basics,Strategies,What is short-term investing?,Define short-term investing,"# Short-Term Investing
+
+Short-term investing involves buying investments with the intention of holding them for a relatively short period, often less than three years.",short-term investing,Beginner,What is trading?,Internal
+137,what-is-financial-planning,Investing Basics,Planning,What is financial planning?,Define financial planning,"# Financial Planning
+
+Financial planning is the process of managing income, expenses, savings, investments, and insurance to achieve financial goals.",financial planning,Beginner,What are financial goals?,Internal
+138,why-is-financial-planning-important,Investing Basics,Planning,Why is financial planning important?,Importance of financial planning,"# Importance of Financial Planning
+
+Financial planning helps individuals manage money wisely, prepare for emergencies, and achieve long-term financial objectives.",financial planning,Beginner,What is financial planning?,Internal
+139,what-is-investment-discipline,Investing Basics,Behavior,What is investment discipline?,Define investment discipline,"# Investment Discipline
+
+Investment discipline is the ability to consistently follow an investment plan without making emotional decisions during market fluctuations.",investment discipline,Intermediate,Why avoid emotional investing?,Internal
+140,why-avoid-emotional-investing,Investing Basics,Behavior,Why should investors avoid emotional investing?,Emotional investing,"# Emotional Investing
+
+Making investment decisions based on fear or excitement can lead to poor outcomes. A disciplined approach based on research and long-term goals is generally more effective.",emotional investing;behavior,Intermediate,What is investment discipline?,Internal

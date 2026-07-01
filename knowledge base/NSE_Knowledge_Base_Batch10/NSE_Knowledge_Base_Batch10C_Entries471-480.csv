@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+471,what-is-retirement-planning,Personal Finance & Portfolio Management,Retirement,What is retirement planning?,Define retirement planning,"# Retirement Planning
+
+Retirement planning is the process of saving and investing to provide financial security after you stop working.",retirement planning,Beginner,Why invest early?,General
+472,why-plan-for-retirement,Personal Finance & Portfolio Management,Retirement,Why is retirement planning important?,Importance of retirement planning,"# Importance of Retirement Planning
+
+Planning early helps build sufficient savings to support your desired lifestyle during retirement.",retirement,Beginner,What is retirement planning?,General
+473,what-is-inflation,Personal Finance & Portfolio Management,Economics,What is inflation?,Define inflation,"# Inflation
+
+Inflation is the general increase in prices over time, reducing the purchasing power of money.",inflation,Beginner,How does inflation affect investments?,General
+474,how-does-inflation-affect-investments,Personal Finance & Portfolio Management,Economics,How does inflation affect investments?,Inflation and investing,"# Inflation and Investments
+
+Inflation reduces the real value of investment returns unless investments grow faster than the inflation rate.",inflation investing,Intermediate,What is inflation?,General
+475,what-is-financial-independence,Personal Finance & Portfolio Management,Wealth Building,What is financial independence?,Define financial independence,"# Financial Independence
+
+Financial independence means having enough income or assets to cover living expenses without relying solely on employment.",financial independence,Beginner,How can I build wealth?,General
+476,what-is-net-investment-return,Personal Finance & Portfolio Management,Returns,What is net investment return?,Define net investment return,"# Net Investment Return
+
+Net investment return is the profit earned from an investment after deducting fees, taxes, and other costs.",net return,Intermediate,What is investment return?,General
+477,what-is-financial-discipline,Personal Finance & Portfolio Management,Financial Habits,What is financial discipline?,Define financial discipline,"# Financial Discipline
+
+Financial discipline involves consistently following a budget, saving regularly, avoiding unnecessary debt, and sticking to long-term financial goals.",financial discipline,Beginner,Why is budgeting important?,General
+478,what-is-good-debt,Personal Finance & Portfolio Management,Debt Management,What is good debt?,Define good debt,"# Good Debt
+
+Good debt is borrowing that has the potential to increase future income or long-term value, such as education or business financing.",good debt,Intermediate,What is bad debt?,General
+479,what-is-bad-debt,Personal Finance & Portfolio Management,Debt Management,What is bad debt?,Define bad debt,"# Bad Debt
+
+Bad debt is borrowing used to purchase depreciating assets or finance unnecessary consumption that creates long-term financial strain.",bad debt,Beginner,What is good debt?,General
+480,how-to-manage-personal-finances,Personal Finance & Portfolio Management,Financial Habits,How can I manage my personal finances effectively?,Manage personal finances,"# Managing Personal Finances
+
+Effective personal finance management includes budgeting, saving, investing, managing debt, reviewing progress regularly, and setting realistic financial goals.",personal finance management,Beginner,What is financial planning?,General

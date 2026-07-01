@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+181,what-is-a-trading-journal,Trading Concepts,Performance,What is a trading journal?,Define trading journal; Trading diary,"# Trading Journal
+
+A trading journal is a record of trades, decisions, outcomes, and lessons learned. It helps traders evaluate performance and improve strategies.",trading journal;performance,Beginner,Why keep a trading journal?,Internal
+182,why-keep-a-trading-journal,Trading Concepts,Performance,Why should traders keep a trading journal?,Importance of trading journal,"# Importance of a Trading Journal
+
+A journal helps identify strengths, weaknesses, recurring mistakes, and areas for improvement through consistent record keeping.",journal;discipline,Beginner,What is a trading journal?,Internal
+183,what-is-a-trading-edge,Trading Concepts,Strategies,What is a trading edge?,Define trading edge,"# Trading Edge
+
+A trading edge is a repeatable advantage or strategy that increases the probability of successful trades over time.",trading edge,Intermediate,What is a trading strategy?,Internal
+184,what-is-backtesting,Trading Concepts,Strategies,What is backtesting?,Define backtesting,"# Backtesting
+
+Backtesting evaluates a trading strategy using historical market data to estimate how it might have performed in the past.",backtesting,Intermediate,What is paper trading?,Internal
+185,what-is-paper-trading,Trading Concepts,Practice,What is paper trading?,Virtual trading; Simulated trading,"# Paper Trading
+
+Paper trading allows investors to practice buying and selling securities using virtual money without risking real capital.",paper trading,Beginner,What is backtesting?,Internal
+186,what-is-a-watchlist,Trading Concepts,Planning,What is a watchlist?,Define watchlist,"# Watchlist
+
+A watchlist is a personalized list of securities that an investor monitors for potential trading or investment opportunities.",watchlist,Beginner,How do I choose stocks?,Internal
+187,what-is-market-noise,Trading Concepts,Behavior,What is market noise?,Define market noise,"# Market Noise
+
+Market noise refers to short-term price movements or information that may not reflect meaningful changes in a company's value.",market noise,Intermediate,Why avoid emotional trading?,Internal
+188,what-is-fomo-in-trading,Trading Concepts,Behavior,What is FOMO in trading?,Fear of missing out; FOMO meaning,"# FOMO
+
+FOMO (Fear of Missing Out) is an emotional response that causes traders to enter positions impulsively because they fear missing potential profits.",FOMO;psychology,Intermediate,Why avoid emotional investing?,Internal
+189,what-is-revenge-trading,Trading Concepts,Behavior,What is revenge trading?,Define revenge trading,"# Revenge Trading
+
+Revenge trading occurs when a trader makes impulsive trades after a loss in an attempt to recover money quickly, often increasing risk.",revenge trading,Intermediate,What is overtrading?,Internal
+190,what-is-a-trading-psychology,Trading Concepts,Behavior,What is trading psychology?,Define trading psychology,"# Trading Psychology
+
+Trading psychology examines how emotions, discipline, confidence, and decision-making influence trading performance and outcomes.",trading psychology,Intermediate,What is behavioral finance?,Academic

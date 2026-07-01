@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+221,what-is-net-profit-margin,Financial Statements & Ratios,Financial Ratios,What is net profit margin?,Define net profit margin; Profit margin,"# Net Profit Margin
+
+Net profit margin measures the percentage of revenue that remains as profit after all expenses have been deducted.",net profit margin;profitability,Intermediate,What is operating margin?,IFRS
+222,what-is-gross-profit-margin,Financial Statements & Ratios,Financial Ratios,What is gross profit margin?,Define gross profit margin,"# Gross Profit Margin
+
+Gross profit margin shows the percentage of revenue remaining after subtracting the cost of goods sold.",gross margin,Intermediate,What is gross profit?,IFRS
+223,what-is-earnings-growth,Financial Statements & Ratios,Performance,What is earnings growth?,Define earnings growth,"# Earnings Growth
+
+Earnings growth measures the increase in a company's profits over time and is an important indicator of business performance.",earnings growth,Beginner,What is EPS?,Internal
+224,what-is-revenue-growth,Financial Statements & Ratios,Performance,What is revenue growth?,Define revenue growth,"# Revenue Growth
+
+Revenue growth measures the increase in a company's sales over a specific period and indicates business expansion.",revenue growth,Beginner,What is revenue?,Internal
+225,what-is-cash-flow,Financial Statements & Ratios,Cash Flow,What is cash flow?,Define cash flow,"# Cash Flow
+
+Cash flow is the movement of money into and out of a business. Positive cash flow helps a company meet its financial obligations.",cash flow,Beginner,What is a cash flow statement?,IFRS
+226,what-is-free-cash-flow,Financial Statements & Ratios,Cash Flow,What is free cash flow?,Define free cash flow,"# Free Cash Flow
+
+Free cash flow is the cash remaining after a company pays for operating expenses and capital expenditures.",free cash flow,Intermediate,What is cash flow?,IFRS
+227,what-is-working-capital,Financial Statements & Ratios,Liquidity,What is working capital?,Define working capital,"# Working Capital
+
+Working capital is the difference between current assets and current liabilities and reflects short-term financial health.",working capital,Intermediate,What is the current ratio?,IFRS
+228,what-are-current-assets,Financial Statements & Ratios,Balance Sheet,What are current assets?,Define current assets,"# Current Assets
+
+Current assets are assets expected to be converted into cash or used within one year, such as cash, inventory and receivables.",current assets,Beginner,What are assets?,IFRS
+229,what-are-current-liabilities,Financial Statements & Ratios,Balance Sheet,What are current liabilities?,Define current liabilities,"# Current Liabilities
+
+Current liabilities are obligations expected to be paid within one year, including trade payables and short-term loans.",current liabilities,Beginner,What are liabilities?,IFRS
+230,what-is-depreciation,Financial Statements & Ratios,Accounting,What is depreciation?,Define depreciation,"# Depreciation
+
+Depreciation is the systematic allocation of the cost of a tangible asset over its useful life.",depreciation,Intermediate,What are fixed assets?,IFRS

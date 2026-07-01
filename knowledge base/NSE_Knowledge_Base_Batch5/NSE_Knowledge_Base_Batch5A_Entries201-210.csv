@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+201,what-is-revenue,Financial Statements & Ratios,Income Statement,What is revenue?,Define revenue; Sales revenue,"# Revenue
+
+Revenue is the total income a company earns from its normal business activities before expenses are deducted.",revenue;sales,Beginner,What is profit?,IFRS
+202,what-is-profit,Financial Statements & Ratios,Income Statement,What is profit?,Define profit; Company profit,"# Profit
+
+Profit is the amount remaining after a company subtracts all expenses from its revenue.",profit;earnings,Beginner,What is net profit?,IFRS
+203,what-is-gross-profit,Financial Statements & Ratios,Income Statement,What is gross profit?,Define gross profit,"# Gross Profit
+
+Gross profit equals revenue minus the direct cost of producing goods or services sold.",gross profit,Beginner,What is net profit?,IFRS
+204,what-is-net-profit,Financial Statements & Ratios,Income Statement,What is net profit?,Define net profit,"# Net Profit
+
+Net profit is the final earnings after all operating costs, taxes and interest have been deducted.",net profit,Beginner,What is gross profit?,IFRS
+205,what-is-an-income-statement,Financial Statements & Ratios,Financial Statements,What is an income statement?,Profit and loss statement; P&L,"# Income Statement
+
+An income statement summarizes a company's revenue, expenses and profit over a specific accounting period.",income statement;P&L,Beginner,What is a balance sheet?,IFRS
+206,what-is-a-balance-sheet,Financial Statements & Ratios,Financial Statements,What is a balance sheet?,Define balance sheet,"# Balance Sheet
+
+A balance sheet shows a company's assets, liabilities and shareholders' equity at a specific point in time.",balance sheet,Beginner,What are assets?,IFRS
+207,what-is-a-cash-flow-statement,Financial Statements & Ratios,Financial Statements,What is a cash flow statement?,Define cash flow statement,"# Cash Flow Statement
+
+A cash flow statement reports cash received and cash paid from operating, investing and financing activities.",cash flow statement,Beginner,Why is cash flow important?,IFRS
+208,what-are-assets,Financial Statements & Ratios,Balance Sheet,What are assets?,Define assets,"# Assets
+
+Assets are resources owned by a company that are expected to provide future economic benefits.",assets,Beginner,What are liabilities?,IFRS
+209,what-are-liabilities,Financial Statements & Ratios,Balance Sheet,What are liabilities?,Define liabilities,"# Liabilities
+
+Liabilities are financial obligations or debts that a company owes to other parties.",liabilities;debt,Beginner,What are assets?,IFRS
+210,what-is-shareholders-equity,Financial Statements & Ratios,Balance Sheet,What is shareholders' equity?,Owner's equity; Equity meaning,"# Shareholders' Equity
+
+Shareholders' equity represents the owners' residual interest in a company's assets after deducting liabilities.",equity;shareholders equity,Beginner,What is a balance sheet?,IFRS

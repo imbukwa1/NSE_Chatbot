@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+191,what-is-a-trading-system,Trading Concepts,Systems,What is a trading system?,Define trading system; Trading methodology,"# Trading System
+
+A trading system is a structured set of rules that determines when to enter, manage, and exit trades.",trading system,Intermediate,What is a trading strategy?,Internal
+192,what-is-trade-management,Trading Concepts,Risk Management,What is trade management?,Define trade management,"# Trade Management
+
+Trade management is the process of monitoring and adjusting open trades to manage risk and maximize potential returns.",trade management,Intermediate,What is risk management?,Internal
+193,what-is-position-sizing,Trading Concepts,Risk Management,What is position sizing?,Define position sizing,"# Position Sizing
+
+Position sizing determines how much capital to allocate to a single trade based on risk tolerance and account size.",position sizing,Intermediate,What is the risk-reward ratio?,Internal
+194,why-is-position-sizing-important,Trading Concepts,Risk Management,Why is position sizing important?,Importance of position sizing,"# Importance of Position Sizing
+
+Proper position sizing helps control losses, preserve capital, and support consistent trading over the long term.",position sizing;risk,Intermediate,What is position sizing?,Internal
+195,what-is-risk-management,Trading Concepts,Risk Management,What is risk management in trading?,Define risk management,"# Risk Management
+
+Risk management involves identifying, assessing, and controlling potential losses through strategies such as diversification, stop-loss orders, and position sizing.",risk management,Beginner,What is a stop-loss order?,Internal
+196,what-is-market-discipline,Trading Concepts,Behavior,What is market discipline?,Define market discipline,"# Market Discipline
+
+Market discipline is the ability to consistently follow a trading plan and avoid emotional decisions.",discipline,Beginner,What is a trading plan?,Internal
+197,what-is-a-trading-routine,Trading Concepts,Planning,What is a trading routine?,Define trading routine,"# Trading Routine
+
+A trading routine is a consistent schedule for market analysis, executing trades, and reviewing performance.",trading routine,Beginner,What is a trading journal?,Internal
+198,what-is-post-trade-analysis,Trading Concepts,Performance,What is post-trade analysis?,Define post-trade analysis,"# Post-Trade Analysis
+
+Post-trade analysis is the review of completed trades to identify strengths, weaknesses, and opportunities for improvement.",post-trade analysis,Intermediate,Why keep a trading journal?,Internal
+199,what-is-trading-consistency,Trading Concepts,Performance,What is trading consistency?,Define trading consistency,"# Trading Consistency
+
+Trading consistency is the ability to apply the same disciplined approach across many trades over time.",consistency,Intermediate,What is market discipline?,Internal
+200,what-makes-a-successful-trader,Trading Concepts,Education,What makes a successful trader?,Characteristics of a successful trader; Successful trading,"# Successful Trader
+
+Successful traders combine knowledge, discipline, patience, sound risk management, continuous learning, and emotional control rather than relying on luck.",successful trader,Beginner,What is trading psychology?,Internal

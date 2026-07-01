@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+431,what-is-know-your-customer,Capital Markets Regulation,Compliance,What is Know Your Customer (KYC)?,Define KYC,"# Know Your Customer (KYC)
+
+KYC is the process financial institutions use to verify the identity of clients to prevent fraud, money laundering, and other financial crimes.",KYC,Beginner,Why is AML important?,CMA
+432,what-is-anti-money-laundering,Capital Markets Regulation,Compliance,What is Anti-Money Laundering (AML)?,Define AML,"# Anti-Money Laundering
+
+AML refers to laws, regulations, and procedures designed to prevent criminals from disguising illegally obtained funds as legitimate income.",AML,Beginner,What is KYC?,CMA
+433,why-is-kyc-important,Capital Markets Regulation,Compliance,Why is KYC important?,Importance of KYC,"# Importance of KYC
+
+KYC helps protect investors and financial institutions by verifying customer identities and reducing fraud and financial crime.",KYC importance,Beginner,What is KYC?,CMA
+434,what-is-money-laundering,Capital Markets Regulation,Compliance,What is money laundering?,Define money laundering,"# Money Laundering
+
+Money laundering is the process of concealing the origins of illegally obtained money to make it appear legitimate.",money laundering,Beginner,What is AML?,General
+435,what-is-market-surveillance,Capital Markets Regulation,Market Integrity,What is market surveillance?,Define market surveillance,"# Market Surveillance
+
+Market surveillance involves monitoring trading activity to detect unusual behavior, manipulation, or violations of market rules.",market surveillance,Intermediate,What is market manipulation?,NSE
+436,what-is-securities-fraud,Capital Markets Regulation,Market Integrity,What is securities fraud?,Define securities fraud,"# Securities Fraud
+
+Securities fraud involves deceptive practices that mislead investors or manipulate financial markets for unlawful gain.",securities fraud,Intermediate,What is market manipulation?,CMA
+437,what-are-listing-rules,Capital Markets Regulation,Compliance,What are listing rules?,Define listing rules,"# Listing Rules
+
+Listing rules are the requirements companies must satisfy and continue to meet in order to remain listed on a stock exchange.",listing rules,Beginner,What obligations do listed companies have?,NSE
+438,what-is-regulatory-sanction,Capital Markets Regulation,Enforcement,What is a regulatory sanction?,Define regulatory sanction,"# Regulatory Sanction
+
+A regulatory sanction is a penalty or enforcement action imposed for violating capital market laws or regulations.",regulatory sanction,Intermediate,What is compliance?,CMA
+439,what-is-investor-education,Capital Markets Regulation,Investor Protection,What is investor education?,Define investor education,"# Investor Education
+
+Investor education provides knowledge and skills that help people make informed investment decisions and avoid common risks.",investor education,Beginner,What is investor protection?,CMA
+440,why-is-investor-education-important,Capital Markets Regulation,Investor Protection,Why is investor education important?,Importance of investor education,"# Importance of Investor Education
+
+Educated investors are better equipped to understand investment products, evaluate risks, recognize scams, and make sound financial decisions.",investor education,Beginner,What is investor education?,CMA

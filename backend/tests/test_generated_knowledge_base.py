@@ -30,7 +30,7 @@ class GeneratedKnowledgeBaseTests(unittest.TestCase):
 
         self.assertIsNotNone(response)
         self.assertEqual(response["type"], "educational")
-        self.assertEqual(response["data"]["source"], "generated_knowledge_base")
+        self.assertEqual(response["data"]["source"], "Knowledge Base")
         self.assertIn("shareholders", response["message"])
 
     def test_chat_uses_generated_knowledge_base_for_learning(self):
@@ -40,7 +40,7 @@ class GeneratedKnowledgeBaseTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         body = response.json()
         self.assertEqual(body["type"], "educational")
-        self.assertEqual(body["data"]["source"], "generated_knowledge_base")
+        self.assertEqual(body["data"]["source"], "Knowledge Base")
         self.assertNotIn("Please mention a specific stock", body["message"])
 
 

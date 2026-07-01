@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+341,how-are-unit-trusts-regulated,Collective Investment Schemes,Regulation,How are unit trusts regulated in Kenya?,Unit trust regulation; CMA regulation,"# Regulation of Unit Trusts
+
+Unit trusts in Kenya are regulated by the Capital Markets Authority (CMA), which licenses fund managers and oversees investor protection.",unit trust;CMA;regulation,Beginner,What is the CMA?,CMA
+342,who-can-invest-in-unit-trusts,Collective Investment Schemes,Eligibility,Who can invest in unit trusts?,Eligibility for unit trusts,"# Investing in Unit Trusts
+
+Most adults can invest in unit trusts subject to the provider's requirements, including identification and minimum investment amounts.",unit trust;eligibility,Beginner,How do unit trusts work?,CMA
+343,minimum-investment-unit-trust,Collective Investment Schemes,Eligibility,What is the minimum investment for a unit trust?,Minimum investment unit trust,"# Minimum Investment
+
+The minimum investment varies by fund manager and fund type. Investors should check the specific provider's requirements.",minimum investment,Beginner,How do I choose a unit trust?,CMA
+344,how-often-is-nav-published,Collective Investment Schemes,Fund Pricing,How often is NAV published?,NAV publication frequency,"# NAV Publication
+
+Most funds calculate and publish their Net Asset Value regularly, often daily or weekly depending on the fund and local regulations.",NAV publication,Intermediate,What is NAV?,CMA
+345,can-i-withdraw-from-a-unit-trust,Collective Investment Schemes,Withdrawals,Can I withdraw money from a unit trust?,Redeem unit trust,"# Redeeming Units
+
+Many open-ended unit trusts allow investors to redeem units at the prevailing NAV, subject to the fund's terms and processing timelines.",redeem units,Beginner,What is an open-ended fund?,CMA
+346,what-is-a-redemption-period,Collective Investment Schemes,Withdrawals,What is a redemption period?,Redemption processing,"# Redemption Period
+
+A redemption period is the time between requesting a withdrawal from a fund and receiving the proceeds.",redemption period,Intermediate,Can I withdraw money from a unit trust?,CMA
+347,what-is-esg-investing,Collective Investment Schemes,Sustainable Investing,What is ESG investing?,Define ESG investing,"# ESG Investing
+
+ESG investing considers Environmental, Social, and Governance factors alongside financial performance when selecting investments.",ESG;responsible investing,Beginner,What is a green bond?,CFA Institute
+348,what-is-socially-responsible-investing,Collective Investment Schemes,Sustainable Investing,What is socially responsible investing (SRI)?,Define SRI,"# Socially Responsible Investing
+
+SRI is an investment approach that selects investments based on ethical, social, or environmental considerations in addition to financial returns.",SRI;ethical investing,Intermediate,What is ESG investing?,CFA Institute
+349,what-is-impact-investing,Collective Investment Schemes,Sustainable Investing,What is impact investing?,Define impact investing,"# Impact Investing
+
+Impact investing aims to generate measurable positive social or environmental outcomes alongside financial returns.",impact investing,Intermediate,What is ESG investing?,GIIN
+350,summary-of-collective-investment-schemes,Collective Investment Schemes,Education,What are collective investment schemes?,Collective investment schemes overview; CIS,"# Collective Investment Schemes
+
+Collective investment schemes pool money from many investors and invest it in diversified portfolios managed by professionals. Examples include unit trusts, mutual funds, ETFs, REITs, and money market funds.",collective investment schemes;CIS,Beginner,What is a unit trust?; What is an ETF?,CMA

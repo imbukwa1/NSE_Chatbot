@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+101,what-is-investing,Investing Basics,Introduction,What is investing?,Define investing; Investing meaning,"# Investing
+
+Investing is committing money to assets with the expectation of earning returns over time through growth, income, or both.",investing;returns,Beginner,Why should I invest?,Internal
+102,why-should-i-invest,Investing Basics,Introduction,Why should I invest?,Benefits of investing; Importance of investing,"# Why Invest?
+
+Investing helps build wealth, beat inflation, achieve financial goals, and generate passive income over the long term.",wealth;inflation,Beginner,What is investing?,Internal
+103,what-is-an-investment,Investing Basics,Concepts,What is an investment?,Define investment,"# Investment
+
+An investment is an asset purchased with the expectation that it will generate income or increase in value over time.",investment;asset,Beginner,What are investment types?,Internal
+104,what-are-investment-goals,Investing Basics,Planning,What are investment goals?,Financial goals for investing,"# Investment Goals
+
+Investment goals are the financial objectives an investor hopes to achieve, such as retirement, education, home ownership, or wealth creation.",goals;planning,Beginner,How do I set investment goals?,Internal
+105,what-is-risk-tolerance,Investing Basics,Risk,What is risk tolerance?,Define risk tolerance,"# Risk Tolerance
+
+Risk tolerance is an investor's ability and willingness to accept fluctuations or losses in investment value.",risk tolerance,Beginner,How do I assess risk tolerance?,Internal
+106,what-is-return-on-investment,Investing Basics,Returns,What is return on investment (ROI)?,Define ROI; ROI meaning,"# Return on Investment (ROI)
+
+ROI measures the gain or loss on an investment relative to its original cost.",ROI;return,Beginner,How is ROI calculated?,Internal
+107,what-is-compound-interest,Investing Basics,Growth,What is compound interest?,Define compound interest,"# Compound Interest
+
+Compound interest is interest earned on both the original principal and previously accumulated interest, helping investments grow faster over time.",compound interest,Beginner,Why is compounding powerful?,Internal
+108,what-is-inflation,Investing Basics,Economics,What is inflation?,Define inflation,"# Inflation
+
+Inflation is the general increase in prices over time, reducing the purchasing power of money.",inflation;purchasing power,Beginner,Why should investments beat inflation?,Internal
+109,how-does-inflation-affect-investments,Investing Basics,Economics,How does inflation affect investments?,Inflation and investing,"# Inflation and Investments
+
+Inflation reduces the real value of money. Investors often seek returns that exceed inflation to preserve purchasing power.",inflation;returns,Beginner,What is inflation?,Internal
+110,what-is-passive-income,Investing Basics,Income,What is passive income?,Define passive income,"# Passive Income
+
+Passive income is money earned with limited ongoing effort, such as dividends, interest, rental income, or investment distributions.",passive income;dividends,Beginner,What is dividend income?,Internal

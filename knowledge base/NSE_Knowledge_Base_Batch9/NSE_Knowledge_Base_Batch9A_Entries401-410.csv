@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+401,what-is-the-capital-markets-authority,Capital Markets Regulation,Regulators,What is the Capital Markets Authority (CMA)?,Define CMA; Kenya CMA,"# Capital Markets Authority (CMA)
+
+The Capital Markets Authority is the Kenyan regulator responsible for supervising, licensing, and developing the capital markets while protecting investors.",CMA;capital markets,Beginner,What is the NSE?,CMA
+402,what-is-the-role-of-cma,Capital Markets Regulation,Regulators,What is the role of the CMA?,Functions of CMA,"# Role of the CMA
+
+The CMA regulates market participants, licenses intermediaries, enforces compliance, promotes market development, and protects investors.",CMA functions,Beginner,What is the CMA?,CMA
+403,what-is-the-nse-role,Capital Markets Regulation,Regulators,What is the role of the Nairobi Securities Exchange?,Role of NSE,"# Role of the NSE
+
+The Nairobi Securities Exchange provides a regulated marketplace where securities are listed and traded efficiently and transparently.",NSE role,Beginner,What is the CMA?,NSE
+404,what-is-cdsc,Capital Markets Regulation,Infrastructure,What is the Central Depository and Settlement Corporation (CDSC)?,Define CDSC,"# CDSC
+
+The Central Depository and Settlement Corporation maintains electronic records of securities ownership and facilitates settlement of trades.",CDSC,Beginner,What is a CDS account?,CDSC
+405,what-is-a-cds-account,Capital Markets Regulation,Infrastructure,What is a CDS account?,Define CDS account,"# CDS Account
+
+A CDS account is an electronic account used to hold shares and other securities in Kenya.",CDS account,Beginner,What is CDSC?,CDSC
+406,who-is-a-stockbroker,Capital Markets Regulation,Market Participants,Who is a stockbroker?,Define stockbroker,"# Stockbroker
+
+A stockbroker is a licensed intermediary who executes buy and sell orders on behalf of investors.",stockbroker,Beginner,What is an investment bank?,CMA
+407,what-is-an-investment-bank,Capital Markets Regulation,Market Participants,What is an investment bank?,Define investment bank,"# Investment Bank
+
+An investment bank advises companies on raising capital, mergers, acquisitions, and other corporate finance activities.",investment bank,Intermediate,Who is a stockbroker?,CMA
+408,what-is-a-licensed-intermediary,Capital Markets Regulation,Market Participants,What is a licensed intermediary?,Licensed market intermediary,"# Licensed Intermediary
+
+A licensed intermediary is an individual or firm authorized by the CMA to provide regulated capital market services.",licensed intermediary,Beginner,Who is a stockbroker?,CMA
+409,why-is-market-regulation-important,Capital Markets Regulation,Investor Protection,Why is market regulation important?,Importance of regulation,"# Importance of Market Regulation
+
+Regulation promotes fair, orderly, and transparent markets while reducing fraud and protecting investors.",market regulation,Beginner,What is investor protection?,CMA
+410,what-is-investor-protection,Capital Markets Regulation,Investor Protection,What is investor protection?,Define investor protection,"# Investor Protection
+
+Investor protection refers to laws, regulations, and oversight designed to safeguard investors from unfair practices and misconduct.",investor protection,Beginner,Why is market regulation important?,CMA

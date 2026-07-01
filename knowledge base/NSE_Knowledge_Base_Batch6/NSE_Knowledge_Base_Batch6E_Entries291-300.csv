@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+291,what-is-a-bond-auction,Bonds & Fixed Income,Government Securities,What is a bond auction?,Define bond auction; Treasury auction,"# Bond Auction
+
+A bond auction is the process through which governments or institutions issue new bonds to investors, who submit bids to purchase them.",bond auction;treasury auction,Intermediate,How are government bonds issued?,CBK
+292,how-to-buy-government-bonds-in-kenya,Bonds & Fixed Income,Government Securities,How can I buy government bonds in Kenya?,Buy Treasury bonds Kenya; Invest in bonds Kenya,"# Buying Government Bonds in Kenya
+
+Investors can purchase government bonds through the Central Bank of Kenya using the DhowCSD platform or through authorized financial institutions during bond auctions.",Kenya bonds;DhowCSD;CBK,Beginner,What is a bond auction?,CBK
+293,what-is-the-dhowcsd-platform,Bonds & Fixed Income,Government Securities,What is the DhowCSD platform?,Define DhowCSD; CBK DhowCSD,"# DhowCSD
+
+DhowCSD is the Central Bank of Kenya's digital platform that enables investors to buy, manage, and monitor government securities electronically.",DhowCSD;CBK,Beginner,How do I buy government bonds?,CBK
+294,what-is-bond-accrued-interest,Bonds & Fixed Income,Bond Pricing,What is accrued interest on a bond?,Define accrued interest,"# Accrued Interest
+
+Accrued interest is the interest that has accumulated on a bond since the last coupon payment but has not yet been paid.",accrued interest,Intermediate,What is a coupon rate?,Internal
+295,what-is-bond-redemption,Bonds & Fixed Income,Bond Features,What is bond redemption?,Define bond redemption,"# Bond Redemption
+
+Bond redemption is the repayment of a bond's principal by the issuer when the bond reaches maturity or is redeemed early.",bond redemption,Beginner,What is bond maturity?,Internal
+296,what-is-a-redeemable-bond,Bonds & Fixed Income,Types of Bonds,What is a redeemable bond?,Define redeemable bond,"# Redeemable Bond
+
+A redeemable bond is a bond that the issuer can repay before its scheduled maturity date under specified terms.",redeemable bond,Intermediate,What is a callable bond?,Internal
+297,what-is-bond-market-risk,Bonds & Fixed Income,Risk,What is bond market risk?,Define bond market risk,"# Bond Market Risk
+
+Bond market risk refers to the possibility that a bond's value will fluctuate because of changes in market conditions, interest rates, or investor sentiment.",bond market risk,Intermediate,What is interest rate risk?,Internal
+298,what-is-bond-income,Bonds & Fixed Income,Returns,What is bond income?,Define bond income,"# Bond Income
+
+Bond income is the money earned from holding bonds, mainly through coupon payments and, in some cases, capital gains.",bond income;coupon payments,Beginner,What is bond yield?,Internal
+299,what-is-fixed-income-investing,Bonds & Fixed Income,Investment Strategy,What is fixed-income investing?,Define fixed-income investing,"# Fixed-Income Investing
+
+Fixed-income investing focuses on securities that provide regular income, such as government bonds, corporate bonds, and Treasury bills.",fixed income;bond investing,Beginner,What is a bond?,Internal
+300,why-invest-in-bonds,Bonds & Fixed Income,Investment Strategy,Why should investors invest in bonds?,Benefits of bonds; Why buy bonds,"# Why Invest in Bonds?
+
+Bonds can provide regular income, diversify an investment portfolio, preserve capital, and generally involve lower risk than many equity investments.",bond investing;portfolio diversification,Beginner,What is bond diversification?,Internal

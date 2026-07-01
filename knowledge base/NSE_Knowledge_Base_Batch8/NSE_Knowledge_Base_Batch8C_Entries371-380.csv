@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+371,what-is-the-commercial-services-sector,NSE Listed Companies & Market Sectors,Sectors,What is the commercial and services sector on the NSE?,Commercial services sector,"# Commercial & Services Sector
+
+This sector includes companies that provide business, transport, logistics, and related commercial services listed on the NSE.",commercial services,Beginner,What sectors are on the NSE?,NSE
+372,what-is-the-investment-services-sector,NSE Listed Companies & Market Sectors,Sectors,What is the investment services sector?,Investment services,"# Investment Services Sector
+
+The investment services sector includes firms offering brokerage, investment banking, and financial advisory services.",investment services,Beginner,What is a stockbroker?,NSE
+373,what-is-the-growth-enterprise-market-segment,NSE Listed Companies & Market Sectors,Market Segments,What is the Growth Enterprise Market Segment (GEMS)?,GEMS market,"# GEMS
+
+GEMS is an NSE market segment designed to help small and medium-sized companies raise capital for growth.",GEMS;growth enterprise market,Intermediate,What is the Main Investment Market Segment?,NSE
+374,what-is-the-main-investment-market-segment,NSE Listed Companies & Market Sectors,Market Segments,What is the Main Investment Market Segment (MIMS)?,MIMS,"# Main Investment Market Segment
+
+MIMS is the primary NSE market segment for established companies that meet the exchange's listing requirements.",MIMS,Intermediate,What is GEMS?,NSE
+375,what-is-the-alternative-investment-market-segment,NSE Listed Companies & Market Sectors,Market Segments,What is the Alternative Investment Market Segment (AIMS)?,AIMS,"# Alternative Investment Market Segment
+
+AIMS is intended for companies seeking to raise capital while meeting specific NSE listing requirements.",AIMS,Intermediate,What is MIMS?,NSE
+376,what-is-a-market-index,NSE Listed Companies & Market Sectors,Indices,What is a market index?,Define market index,"# Market Index
+
+A market index measures the performance of a selected group of securities and is used to track overall market trends.",market index,Beginner,What is the NSE 20 Share Index?,NSE
+377,what-is-the-nse-20-share-index,NSE Listed Companies & Market Sectors,Indices,What is the NSE 20 Share Index?,NSE 20 Index,"# NSE 20 Share Index
+
+The NSE 20 Share Index tracks the performance of twenty leading listed companies and is one of Kenya's best-known market indicators.",NSE 20,Beginner,What is a market index?,NSE
+378,what-is-the-nse-all-share-index,NSE Listed Companies & Market Sectors,Indices,What is the NSE All Share Index (NASI)?,NASI,"# NSE All Share Index
+
+NASI measures the performance of all ordinary shares listed on the Nairobi Securities Exchange.",NASI,Beginner,What is the NSE 20 Share Index?,NSE
+379,why-are-market-indices-important,NSE Listed Companies & Market Sectors,Indices,Why are market indices important?,Importance of market indices,"# Importance of Market Indices
+
+Market indices help investors monitor overall market performance, compare investments, and identify market trends.",market indices,Beginner,What is a market index?,Internal
+380,what-is-free-float-market-cap,NSE Listed Companies & Market Sectors,Market Metrics,What is free-float market capitalization?,Free float market cap,"# Free-Float Market Capitalization
+
+Free-float market capitalization measures the value of shares that are available for public trading, excluding restricted holdings.",free float,Advanced,What is market capitalization?,NSE

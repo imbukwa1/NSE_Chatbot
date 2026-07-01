@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+171,what-is-a-trailing-stop,Trading Concepts,Risk Management,What is a trailing stop?,Define trailing stop; Trailing stop order,"# Trailing Stop
+
+A trailing stop automatically adjusts as the market price moves in your favor, helping lock in profits while limiting downside risk.",trailing stop;stop order,Intermediate,What is a stop-loss order?,Internal
+172,what-is-a-trading-plan,Trading Concepts,Planning,What is a trading plan?,Define trading plan,"# Trading Plan
+
+A trading plan outlines a trader's objectives, entry and exit rules, risk limits, and strategy before trades are executed.",trading plan,Beginner,Why is discipline important in trading?,Internal
+173,why-is-a-trading-plan-important,Trading Concepts,Planning,Why is a trading plan important?,Importance of a trading plan,"# Importance of a Trading Plan
+
+A trading plan promotes consistency, reduces emotional decision-making, and helps traders manage risk effectively.",trading plan;discipline,Beginner,What is a trading plan?,Internal
+174,what-is-overtrading,Trading Concepts,Behavior,What is overtrading?,Define overtrading,"# Overtrading
+
+Overtrading occurs when a trader executes too many trades, often due to emotion or lack of discipline, increasing costs and risk.",overtrading,Intermediate,Why avoid emotional trading?,Internal
+175,what-is-leverage,Trading Concepts,Risk,What is leverage in trading?,Define leverage,"# Leverage
+
+Leverage allows traders to control larger positions using borrowed funds. While it can increase profits, it also increases potential losses.",leverage,Intermediate,What is margin trading?,Internal
+176,what-is-margin-trading,Trading Concepts,Risk,What is margin trading?,Define margin trading,"# Margin Trading
+
+Margin trading involves borrowing money from a broker to purchase securities, increasing both potential returns and risks.",margin trading,Advanced,What is leverage?,Internal
+177,what-is-market-timing,Trading Concepts,Strategies,What is market timing?,Define market timing,"# Market Timing
+
+Market timing is the practice of attempting to buy and sell securities based on predictions of future market movements.",market timing,Intermediate,What is long-term investing?,Internal
+178,what-is-slippage,Trading Concepts,Execution,What is slippage?,Define slippage,"# Slippage
+
+Slippage occurs when a trade is executed at a different price than expected due to rapid market movements or limited liquidity.",slippage,Intermediate,What is liquidity?,Internal
+179,what-is-order-execution,Trading Concepts,Execution,What is order execution?,Define order execution,"# Order Execution
+
+Order execution is the process of completing a buy or sell order on the stock exchange after it has been submitted.",order execution,Beginner,How does the stock market work?,NSE
+180,what-is-market-liquidity,Trading Concepts,Market Concepts,What is market liquidity?,Define market liquidity,"# Market Liquidity
+
+Market liquidity refers to how easily securities can be bought or sold without causing significant changes in their market price.",market liquidity,Beginner,Why is liquidity important?,Internal

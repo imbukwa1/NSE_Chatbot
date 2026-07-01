@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+111,what-is-diversification,Investing Basics,Portfolio,What is diversification?,Define diversification; Diversification meaning,"# Diversification
+
+Diversification means spreading investments across different asset types or sectors to reduce overall investment risk.",diversification;portfolio;risk,Beginner,Why is diversification important?,Internal
+112,why-is-diversification-important,Investing Basics,Portfolio,Why is diversification important?,Importance of diversification,"# Importance of Diversification
+
+Diversification helps reduce the impact of poor performance from a single investment by spreading risk.",diversification;risk,Beginner,What is diversification?,Internal
+113,what-is-asset-allocation,Investing Basics,Portfolio,What is asset allocation?,Define asset allocation,"# Asset Allocation
+
+Asset allocation is the process of dividing investments among different asset classes such as shares, bonds and cash.",asset allocation,Beginner,How do I build a portfolio?,Internal
+114,what-is-a-portfolio,Investing Basics,Portfolio,What is an investment portfolio?,Define investment portfolio,"# Investment Portfolio
+
+An investment portfolio is the collection of assets owned by an investor, including shares, bonds, ETFs and cash.",portfolio;investments,Beginner,What is asset allocation?,Internal
+115,how-to-build-an-investment-portfolio,Investing Basics,Portfolio,How do I build an investment portfolio?,Create a portfolio; Build portfolio,"# Building a Portfolio
+
+Start with clear goals, assess your risk tolerance, diversify across assets, and review your investments regularly.",portfolio;planning,Beginner,What is diversification?,Internal
+116,what-is-capital-preservation,Investing Basics,Objectives,What is capital preservation?,Define capital preservation,"# Capital Preservation
+
+Capital preservation is an investment strategy focused on protecting the original amount invested while accepting lower risk.",capital preservation,Intermediate,What is risk tolerance?,Internal
+117,what-is-capital-appreciation,Investing Basics,Returns,What is capital appreciation?,Define capital appreciation,"# Capital Appreciation
+
+Capital appreciation is the increase in the value of an investment over time.",capital appreciation;growth,Beginner,What is a capital gain?,Internal
+118,what-is-an-emergency-fund,Investing Basics,Planning,What is an emergency fund?,Define emergency fund,"# Emergency Fund
+
+An emergency fund is money set aside to cover unexpected expenses before investing for long-term goals.",emergency fund;savings,Beginner,Why save before investing?,Internal
+119,difference-between-saving-and-investing,Investing Basics,Planning,What is the difference between saving and investing?,Saving vs investing,"# Saving vs Investing
+
+Saving focuses on preserving money for short-term needs, while investing aims to grow wealth over the long term with some level of risk.",saving;investing,Beginner,What is investing?,Internal
+120,when-should-i-start-investing,Investing Basics,Planning,When should I start investing?,Best time to start investing,"# When to Start Investing
+
+The best time to start investing is when you have clear financial goals, manageable debt, and an emergency fund. Starting early allows compounding to work in your favor.",start investing;compound interest,Beginner,What is compound interest?,Internal

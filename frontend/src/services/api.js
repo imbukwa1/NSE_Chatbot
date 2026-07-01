@@ -182,8 +182,19 @@ export const adminApi = {
     })
   },
 
-  async getKnowledgeBase() {
-    return apiRequest('/admin/knowledge-base')
+  async getKnowledgeBase(query = '') {
+    const suffix = query ? `?q=${encodeURIComponent(query)}` : ''
+    return apiRequest(`/admin/knowledge-base${suffix}`)
+  },
+
+  async getKnowledgeBaseStats() {
+    return apiRequest('/admin/knowledge-base/stats')
+  },
+
+  async reimportKnowledgeBase() {
+    return apiRequest('/admin/knowledge-base/reimport', {
+      method: 'POST',
+    })
   },
 
   async createKnowledgeEntry(entry) {

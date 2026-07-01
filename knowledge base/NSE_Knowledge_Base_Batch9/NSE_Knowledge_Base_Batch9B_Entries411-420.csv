@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+411,what-is-insider-trading,Capital Markets Regulation,Market Integrity,What is insider trading?,Define insider trading,"# Insider Trading
+
+Insider trading is the buying or selling of securities using material non-public information. It is illegal in many jurisdictions, including Kenya.",insider trading,Beginner,What is market manipulation?,CMA
+412,what-is-market-manipulation,Capital Markets Regulation,Market Integrity,What is market manipulation?,Define market manipulation,"# Market Manipulation
+
+Market manipulation involves deliberately influencing the price or trading activity of securities through deceptive or unfair practices.",market manipulation,Beginner,What is insider trading?,CMA
+413,what-is-material-information,Capital Markets Regulation,Disclosure,What is material information?,Material non-public information,"# Material Information
+
+Material information is information that could significantly influence an investor's decision or the price of a security if made public.",material information,Intermediate,What is insider trading?,CMA
+414,what-is-continuous-disclosure,Capital Markets Regulation,Disclosure,What is continuous disclosure?,Define continuous disclosure,"# Continuous Disclosure
+
+Continuous disclosure requires listed companies to promptly release material information to ensure all investors have equal access.",continuous disclosure,Intermediate,What are company announcements?,NSE
+415,what-is-a-listed-company-obligation,Capital Markets Regulation,Compliance,What obligations do listed companies have?,Listed company obligations,"# Listed Company Obligations
+
+Listed companies must comply with disclosure, governance, financial reporting, and listing rules established by the NSE and CMA.",listing obligations,Beginner,What is continuous disclosure?,NSE
+416,what-is-corporate-governance,Capital Markets Regulation,Governance,What is corporate governance?,Define corporate governance,"# Corporate Governance
+
+Corporate governance is the framework of rules and practices that guide how a company is directed, managed, and held accountable.",corporate governance,Beginner,Why is corporate governance important?,CMA
+417,why-is-corporate-governance-important,Capital Markets Regulation,Governance,Why is corporate governance important?,Importance of corporate governance,"# Importance of Corporate Governance
+
+Good corporate governance promotes transparency, accountability, ethical decision-making, and investor confidence.",corporate governance,Beginner,What is corporate governance?,CMA
+418,what-is-a-board-of-directors,Capital Markets Regulation,Governance,What is a board of directors?,Define board of directors,"# Board of Directors
+
+A board of directors oversees a company's strategic direction, governance, and management on behalf of shareholders.",board of directors,Beginner,What is corporate governance?,General
+419,what-is-shareholder-rights,Capital Markets Regulation,Investor Protection,What are shareholder rights?,Define shareholder rights,"# Shareholder Rights
+
+Shareholders have rights such as voting, receiving dividends when declared, accessing information, and participating in major corporate decisions.",shareholder rights,Beginner,What is investor protection?,Companies Act
+420,how-to-report-market-misconduct,Capital Markets Regulation,Enforcement,How can I report suspected market misconduct?,Report market misconduct,"# Reporting Market Misconduct
+
+Suspected market misconduct can be reported to the Capital Markets Authority or the Nairobi Securities Exchange through their official reporting channels.",market misconduct,Beginner,What is insider trading?,CMA

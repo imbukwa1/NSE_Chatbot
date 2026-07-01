@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+311,what-is-a-money-market-fund,Collective Investment Schemes,Fund Types,What is a Money Market Fund (MMF)?,Define money market fund; MMF,"# Money Market Fund
+
+A Money Market Fund invests in low-risk, short-term debt instruments and aims to provide capital preservation with modest returns.",money market fund;MMF,Beginner,What is a bond fund?,CMA
+312,benefits-of-money-market-funds,Collective Investment Schemes,Fund Types,What are the benefits of a Money Market Fund?,Advantages of MMF,"# Benefits of Money Market Funds
+
+Money Market Funds offer liquidity, relatively low risk, professional management, and competitive returns compared to ordinary savings accounts.",money market fund;benefits,Beginner,What is a Money Market Fund?,CMA
+313,what-is-an-equity-fund,Collective Investment Schemes,Fund Types,What is an equity fund?,Define equity fund,"# Equity Fund
+
+An equity fund primarily invests in company shares with the objective of achieving long-term capital growth.",equity fund,Beginner,What is a balanced fund?,CMA
+314,what-is-a-balanced-fund,Collective Investment Schemes,Fund Types,What is a balanced fund?,Define balanced fund,"# Balanced Fund
+
+A balanced fund invests in a mix of shares, bonds, and other assets to balance growth and income.",balanced fund,Beginner,What is an equity fund?,CMA
+315,what-is-a-fixed-income-fund,Collective Investment Schemes,Fund Types,What is a fixed income fund?,Define fixed income fund,"# Fixed Income Fund
+
+A fixed income fund mainly invests in bonds and other interest-paying securities to generate regular income.",fixed income fund,Beginner,What is a bond fund?,CMA
+316,what-is-a-real-estate-fund,Collective Investment Schemes,Fund Types,What is a real estate fund?,Define real estate fund,"# Real Estate Fund
+
+A real estate fund invests in property-related assets to provide income and potential capital appreciation.",real estate fund,Intermediate,What is a REIT?,General
+317,what-are-fund-management-fees,Collective Investment Schemes,Costs,What are fund management fees?,Define fund management fees,"# Fund Management Fees
+
+Fund management fees are charges paid to professional managers for administering and managing an investment fund.",management fees,Beginner,What is a fund manager?,CMA
+318,what-is-an-exit-fee,Collective Investment Schemes,Costs,What is an exit fee?,Define exit fee,"# Exit Fee
+
+An exit fee is a charge some investment funds apply when an investor withdraws money from the fund.",exit fee,Beginner,What are fund management fees?,CMA
+319,how-to-choose-a-unit-trust,Collective Investment Schemes,Selection,How do I choose a unit trust?,Choose a unit trust; Selecting a fund,"# Choosing a Unit Trust
+
+Consider your investment goals, risk tolerance, fees, historical performance, and the fund manager's experience before investing.",unit trust selection,Intermediate,Why invest in unit trusts?,Internal
+320,what-is-fund-diversification,Collective Investment Schemes,Portfolio,What is fund diversification?,Define fund diversification,"# Fund Diversification
+
+Fund diversification spreads investments across different asset classes and securities to reduce overall investment risk.",fund diversification,Beginner,What is diversification?,Internal

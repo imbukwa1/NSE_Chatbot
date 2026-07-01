@@ -21,11 +21,18 @@ class KnowledgeBaseResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
+    source_id: str | None = None
+    slug: str | None = None
     category: str
+    subcategory: str | None = None
     question: str
+    aliases: str | None = None
     answer: str
+    answer_markdown: str | None = None
+    keywords: str | None = None
+    difficulty: str | None = None
+    related_questions: str | None = None
     source: str | None
-    created_by: int
+    created_by: int | None
     created_at: datetime
     updated_at: datetime
-

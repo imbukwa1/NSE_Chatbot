@@ -1,0 +1,33 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+51,what-is-the-stock-market,Stock Market Fundamentals,Introduction,What is the stock market?,Define stock market; Explain stock market; Stock market meaning; What does stock market mean?,"# Stock Market
+
+The stock market is a marketplace where investors buy and sell ownership shares of publicly listed companies.
+
+It enables companies to raise capital while giving investors opportunities to grow wealth through investments.",stock market;shares;investing,Beginner,How does the stock market work?; What is a stock exchange?,NSE/CMA
+52,how-does-the-stock-market-work,Stock Market Fundamentals,Introduction,How does the stock market work?,Explain how the stock market works; How are shares traded?,"# How the Stock Market Works
+
+Investors place buy and sell orders through licensed brokers. The exchange matches compatible orders electronically and ownership is transferred through the Central Depository System.",stock market;trading;broker,Beginner,What is a broker?,NSE
+53,what-is-the-primary-market,Stock Market Fundamentals,Markets,What is the primary market?,Define primary market; IPO market,"# Primary Market
+
+The primary market is where new securities are issued for the first time. Investors buy shares directly from the issuing company during events such as an Initial Public Offering (IPO).",primary market;IPO,Beginner,What is the secondary market?,CMA
+54,what-is-the-secondary-market,Stock Market Fundamentals,Markets,What is the secondary market?,Define secondary market; Share trading market,"# Secondary Market
+
+The secondary market is where investors buy and sell existing securities after they have been issued. Most daily trading on the NSE occurs in the secondary market.",secondary market;trading,Beginner,What is the primary market?,NSE
+55,what-is-a-securities-market,Stock Market Fundamentals,Markets,What is a securities market?,Define securities market,"# Securities Market
+
+A securities market is a regulated environment where financial instruments such as shares, bonds, ETFs and REITs are issued and traded.",securities market;shares;bonds,Beginner,What are securities?,CMA
+56,what-is-an-equity-market,Stock Market Fundamentals,Markets,What is an equity market?,Define equity market; Share market,"# Equity Market
+
+An equity market is the part of the financial market where company shares are bought and sold, allowing investors to own part of a business.",equity market;shares,Beginner,What is a share?,Internal
+57,what-is-a-bond-market,Stock Market Fundamentals,Markets,What is a bond market?,Define bond market,"# Bond Market
+
+The bond market is where governments and companies issue and trade debt securities known as bonds.",bond market;bonds,Beginner,What is a bond?,NSE
+58,what-determines-share-prices,Stock Market Fundamentals,Pricing,What determines share prices?,How are share prices determined?; What affects stock prices?,"# Share Prices
+
+Share prices are influenced by supply and demand, company performance, economic conditions, interest rates, investor expectations and market news.",share price;supply;demand,Beginner,Why do prices change?,Internal
+59,what-is-supply-and-demand,Stock Market Fundamentals,Pricing,What is supply and demand in the stock market?,Explain supply and demand,"# Supply and Demand
+
+Supply refers to the number of shares available for sale, while demand refers to the number of investors willing to buy them. Prices generally rise when demand exceeds supply.",supply;demand,Beginner,What determines prices?,Internal
+60,what-is-market-sentiment,Stock Market Fundamentals,Pricing,What is market sentiment?,Define market sentiment; Investor sentiment,"# Market Sentiment
+
+Market sentiment is the overall attitude of investors toward the market or a particular security. Positive sentiment may increase buying activity, while negative sentiment may increase selling.",market sentiment;investor confidence,Beginner,What is a bull market?,Internal

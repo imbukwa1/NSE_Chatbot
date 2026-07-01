@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+211,what-is-earnings-per-share,Financial Statements & Ratios,Financial Ratios,What is Earnings Per Share (EPS)?,Define EPS; Earnings per share meaning,"# Earnings Per Share (EPS)
+
+EPS measures the portion of a company's profit allocated to each outstanding ordinary share. A higher EPS may indicate stronger profitability.",EPS;earnings per share,Beginner,What is the P/E ratio?,IFRS
+212,what-is-price-to-earnings-ratio,Financial Statements & Ratios,Financial Ratios,What is the Price-to-Earnings (P/E) ratio?,Define P/E ratio; PE ratio,"# Price-to-Earnings Ratio
+
+The P/E ratio compares a company's share price with its earnings per share. Investors often use it to assess valuation.",P/E ratio;valuation,Intermediate,What is EPS?,Internal
+213,what-is-book-value,Financial Statements & Ratios,Financial Ratios,What is book value?,Define book value,"# Book Value
+
+Book value represents a company's net asset value after subtracting liabilities from total assets.",book value,Beginner,What is shareholders' equity?,IFRS
+214,what-is-book-value-per-share,Financial Statements & Ratios,Financial Ratios,What is Book Value Per Share (BVPS)?,Define BVPS,"# Book Value Per Share
+
+BVPS measures the value of a company's equity attributable to each outstanding share.",BVPS;book value per share,Intermediate,What is book value?,Internal
+215,what-is-return-on-equity,Financial Statements & Ratios,Financial Ratios,What is Return on Equity (ROE)?,Define ROE,"# Return on Equity
+
+ROE measures how effectively a company uses shareholders' equity to generate profit.",ROE;return on equity,Intermediate,What is ROA?,Internal
+216,what-is-return-on-assets,Financial Statements & Ratios,Financial Ratios,What is Return on Assets (ROA)?,Define ROA,"# Return on Assets
+
+ROA measures how efficiently a company uses its assets to generate profit.",ROA;return on assets,Intermediate,What is ROE?,Internal
+217,what-is-debt-to-equity-ratio,Financial Statements & Ratios,Financial Ratios,What is the Debt-to-Equity ratio?,Define debt to equity ratio,"# Debt-to-Equity Ratio
+
+This ratio compares a company's total debt with shareholders' equity to evaluate financial leverage.",debt to equity;leverage,Intermediate,What are liabilities?,IFRS
+218,what-is-current-ratio,Financial Statements & Ratios,Financial Ratios,What is the current ratio?,Define current ratio,"# Current Ratio
+
+The current ratio compares current assets with current liabilities to measure a company's ability to meet short-term obligations.",current ratio;liquidity,Intermediate,What are current assets?,IFRS
+219,what-is-quick-ratio,Financial Statements & Ratios,Financial Ratios,What is the quick ratio?,Define quick ratio; Acid test ratio,"# Quick Ratio
+
+The quick ratio measures a company's ability to pay short-term obligations using its most liquid assets.",quick ratio;acid test,Intermediate,What is the current ratio?,IFRS
+220,what-is-operating-margin,Financial Statements & Ratios,Financial Ratios,What is operating margin?,Define operating margin,"# Operating Margin
+
+Operating margin measures the percentage of revenue remaining after operating expenses but before interest and taxes.",operating margin,Intermediate,What is net profit margin?,IFRS

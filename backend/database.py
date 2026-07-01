@@ -85,6 +85,47 @@ def init_db():
     with get_db_connection() as conn:
         cursor = conn.cursor()
 
+        # Keep the SQLAlchemy-managed knowledge base table compatible with
+        # existing local SQLite files. create_all() creates new tables, but it
+        # does not add columns to tables that already exist.
+        kb_columns = {
+            row["name"]
+            for row in cursor.execute("PRAGMA table_info(knowledge_base_entries)").fetchall()
+        }
+        kb_migrations = {
+            "source_id": "ALTER TABLE knowledge_base_entries ADD COLUMN source_id TEXT",
+            "slug": "ALTER TABLE knowledge_base_entries ADD COLUMN slug TEXT",
+            "subcategory": "ALTER TABLE knowledge_base_entries ADD COLUMN subcategory TEXT",
+            "aliases": "ALTER TABLE knowledge_base_entries ADD COLUMN aliases TEXT",
+            "answer_markdown": "ALTER TABLE knowledge_base_entries ADD COLUMN answer_markdown TEXT",
+            "keywords": "ALTER TABLE knowledge_base_entries ADD COLUMN keywords TEXT",
+            "difficulty": "ALTER TABLE knowledge_base_entries ADD COLUMN difficulty TEXT",
+            "related_questions": "ALTER TABLE knowledge_base_entries ADD COLUMN related_questions TEXT",
+        }
+        for column_name, statement in kb_migrations.items():
+            if column_name not in kb_columns:
+                cursor.execute(statement)
+
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_kb_source_id
+            ON knowledge_base_entries(source_id)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_kb_slug
+            ON knowledge_base_entries(slug)
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS knowledge_base_imports (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                imported_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                files_scanned INTEGER NOT NULL DEFAULT 0,
+                rows_seen INTEGER NOT NULL DEFAULT 0,
+                imported_count INTEGER NOT NULL DEFAULT 0,
+                skipped_count INTEGER NOT NULL DEFAULT 0,
+                status TEXT NOT NULL DEFAULT 'success'
+            )
+        """)
+
         # Create stocks table
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS stocks (

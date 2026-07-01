@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+451,what-is-personal-finance,Personal Finance & Portfolio Management,Personal Finance,What is personal finance?,Define personal finance,"# Personal Finance
+
+Personal finance involves managing income, spending, saving, investing, and financial planning to achieve personal financial goals.",personal finance,Beginner,Why is budgeting important?,General
+452,why-is-budgeting-important,Personal Finance & Portfolio Management,Budgeting,Why is budgeting important?,Importance of budgeting,"# Budgeting
+
+A budget helps individuals track income and expenses, control spending, and allocate money toward savings and investments.",budgeting,Beginner,What is personal finance?,General
+453,what-is-an-emergency-fund,Personal Finance & Portfolio Management,Savings,What is an emergency fund?,Define emergency fund,"# Emergency Fund
+
+An emergency fund is money set aside to cover unexpected expenses such as medical bills, job loss, or urgent repairs.",emergency fund,Beginner,Why save before investing?,General
+454,why-save-before-investing,Personal Finance & Portfolio Management,Savings,Why should I save before investing?,Save before investing,"# Saving Before Investing
+
+Building savings provides financial security and helps avoid selling investments during emergencies.",saving,Beginner,What is an emergency fund?,General
+455,what-is-financial-goal,Personal Finance & Portfolio Management,Planning,What is a financial goal?,Define financial goal,"# Financial Goal
+
+A financial goal is a specific target such as buying a home, funding education, or preparing for retirement.",financial goals,Beginner,What is financial planning?,General
+456,what-is-financial-planning,Personal Finance & Portfolio Management,Planning,What is financial planning?,Define financial planning,"# Financial Planning
+
+Financial planning is the process of setting goals and creating strategies for saving, investing, insurance, and retirement.",financial planning,Beginner,What is a financial goal?,General
+457,what-is-net-worth,Personal Finance & Portfolio Management,Wealth,What is net worth?,Define net worth,"# Net Worth
+
+Net worth is the difference between what you own (assets) and what you owe (liabilities).",net worth,Beginner,What are assets?,General
+458,what-is-asset-allocation,Personal Finance & Portfolio Management,Portfolio,What is asset allocation?,Define asset allocation,"# Asset Allocation
+
+Asset allocation is the process of dividing investments among asset classes such as shares, bonds, and cash to balance risk and return.",asset allocation,Intermediate,What is diversification?,CFA Institute
+459,what-is-diversified-portfolio,Personal Finance & Portfolio Management,Portfolio,What is a diversified portfolio?,Define diversified portfolio,"# Diversified Portfolio
+
+A diversified portfolio contains different asset types and investments to reduce overall investment risk.",diversified portfolio,Beginner,What is asset allocation?,Internal
+460,why-is-diversification-important,Personal Finance & Portfolio Management,Portfolio,Why is diversification important?,Importance of diversification,"# Diversification
+
+Diversification helps reduce the impact of poor performance from a single investment by spreading risk across multiple assets.",diversification,Beginner,What is a diversified portfolio?,Internal

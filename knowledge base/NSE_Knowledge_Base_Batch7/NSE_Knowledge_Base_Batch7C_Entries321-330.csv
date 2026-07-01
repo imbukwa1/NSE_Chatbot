@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+321,what-is-a-reit,Collective Investment Schemes,Real Estate,What is a Real Estate Investment Trust (REIT)?,Define REIT; Real Estate Investment Trust,"# REIT
+
+A Real Estate Investment Trust (REIT) is a company that owns or finances income-producing real estate and allows investors to earn returns without directly owning property.",REIT;real estate,Beginner,What is a real estate fund?,CMA
+322,types-of-reits,Collective Investment Schemes,Real Estate,What are the main types of REITs?,Types of REITs; Equity REIT; Mortgage REIT,"# Types of REITs
+
+The main types are Equity REITs, Mortgage REITs, and Hybrid REITs. Each invests in different types of real estate assets or financing.",REIT types,Intermediate,What is a REIT?,CMA
+323,benefits-of-reits,Collective Investment Schemes,Real Estate,What are the benefits of investing in REITs?,Advantages of REITs,"# Benefits of REITs
+
+REITs provide exposure to real estate, regular income potential, diversification, and professional property management.",REIT benefits,Beginner,What is a REIT?,CMA
+324,risks-of-unit-trusts,Collective Investment Schemes,Risk,What are the risks of unit trusts?,Unit trust risks,"# Risks of Unit Trusts
+
+Unit trusts are subject to market risk, interest rate risk, liquidity risk, and fund management risk depending on the underlying investments.",unit trust risks,Intermediate,Why invest in unit trusts?,Internal
+325,what-is-fund-performance,Collective Investment Schemes,Performance,What is fund performance?,Define fund performance,"# Fund Performance
+
+Fund performance measures how well an investment fund has achieved its objectives over a given period.",fund performance,Beginner,How do I choose a unit trust?,Internal
+326,how-to-evaluate-a-fund,Collective Investment Schemes,Performance,How do I evaluate an investment fund?,Evaluate a fund; Compare funds,"# Evaluating a Fund
+
+Consider historical performance, fees, risk level, investment objectives, benchmark performance, and the manager's experience.",fund evaluation,Intermediate,What is fund performance?,Internal
+327,what-is-a-fund-fact-sheet,Collective Investment Schemes,Documents,What is a fund fact sheet?,Define fund fact sheet,"# Fund Fact Sheet
+
+A fund fact sheet summarizes a fund's objectives, holdings, fees, risks, and recent performance for investors.",fund fact sheet,Beginner,How do I evaluate a fund?,CMA
+328,what-is-fund-benchmark,Collective Investment Schemes,Performance,What is a fund benchmark?,Define benchmark,"# Fund Benchmark
+
+A benchmark is a market index or reference used to compare a fund's performance over time.",benchmark,Intermediate,What is an index fund?,Internal
+329,what-is-systematic-investing,Collective Investment Schemes,Strategies,What is systematic investing?,Systematic investment plan; SIP,"# Systematic Investing
+
+Systematic investing involves contributing a fixed amount into an investment fund at regular intervals to build wealth gradually.",systematic investing;SIP,Beginner,What is dollar-cost averaging?,Internal
+330,what-is-fund-risk-profile,Collective Investment Schemes,Risk,What is a fund risk profile?,Define fund risk profile,"# Fund Risk Profile
+
+A fund's risk profile describes the level of investment risk associated with the fund based on its objectives and underlying assets.",risk profile,Beginner,How do I choose a unit trust?,Internal

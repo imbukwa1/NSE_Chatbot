@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+351,what-is-the-banking-sector,NSE Listed Companies & Market Sectors,Sectors,What is the banking sector on the NSE?,Define NSE banking sector,"# Banking Sector
+
+The banking sector consists of listed commercial banks that provide financial services such as lending, deposits, and payments. It is one of the largest sectors on the NSE.",banking sector;NSE,Beginner,Which banks are listed on the NSE?,NSE
+352,which-banks-are-listed-on-nse,NSE Listed Companies & Market Sectors,Banking,Which banks are listed on the NSE?,NSE listed banks,"# Listed Banks
+
+Examples of banks listed on the NSE include Equity Bank, KCB Group, Standard Chartered Kenya, ABSA Bank Kenya, I&M Group, DTB, and NCBA Group.",listed banks,Beginner,What is the banking sector?,NSE
+353,what-is-the-insurance-sector,NSE Listed Companies & Market Sectors,Sectors,What is the insurance sector on the NSE?,Define insurance sector,"# Insurance Sector
+
+The insurance sector includes companies that provide life, health, and general insurance services and are listed on the NSE.",insurance sector,Beginner,Which insurance companies are listed?,NSE
+354,which-insurance-companies-are-listed,NSE Listed Companies & Market Sectors,Insurance,Which insurance companies are listed on the NSE?,Listed insurers,"# Listed Insurance Companies
+
+Examples include Jubilee Holdings, Britam Holdings, Liberty Kenya, Sanlam Kenya, and Kenya Re.",insurance companies,Beginner,What is the insurance sector?,NSE
+355,what-is-the-telecommunications-sector,NSE Listed Companies & Market Sectors,Sectors,What is the telecommunications sector?,Telecom sector,"# Telecommunications Sector
+
+The telecommunications sector includes companies providing mobile, internet, and communication services. Safaricom is the major listed telecom company on the NSE.",telecommunications;Safaricom,Beginner,Who is Safaricom?,NSE
+356,what-is-the-manufacturing-sector,NSE Listed Companies & Market Sectors,Sectors,What is the manufacturing sector?,Manufacturing companies,"# Manufacturing Sector
+
+Manufacturing companies produce goods such as food, beverages, cement, and consumer products for local and export markets.",manufacturing sector,Beginner,Which manufacturers are listed?,NSE
+357,what-is-the-energy-sector,NSE Listed Companies & Market Sectors,Sectors,What is the energy sector on the NSE?,Energy sector,"# Energy Sector
+
+The energy sector includes companies involved in electricity generation, distribution, petroleum, and related energy services.",energy sector,Beginner,Which energy companies are listed?,NSE
+358,what-is-the-agricultural-sector,NSE Listed Companies & Market Sectors,Sectors,What is the agricultural sector on the NSE?,Agriculture sector,"# Agricultural Sector
+
+The agricultural sector includes companies involved in farming, tea, horticulture, and agricultural production listed on the NSE.",agriculture sector,Beginner,Which agricultural companies are listed?,NSE
+359,what-is-market-capitalization,NSE Listed Companies & Market Sectors,Market Metrics,What is market capitalization?,Define market capitalization; Market cap,"# Market Capitalization
+
+Market capitalization is the total market value of a company's outstanding shares, calculated by multiplying share price by the number of shares outstanding.",market capitalization;market cap,Beginner,How is market cap calculated?,Internal
+360,how-is-market-cap-calculated,NSE Listed Companies & Market Sectors,Market Metrics,How is market capitalization calculated?,Calculate market cap,"# Calculating Market Capitalization
+
+Market capitalization is calculated by multiplying the current share price by the total number of outstanding shares.",market cap calculation,Beginner,What is market capitalization?,Internal

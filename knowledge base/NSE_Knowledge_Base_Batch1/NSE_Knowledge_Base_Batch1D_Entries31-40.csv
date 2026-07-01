@@ -1,0 +1,35 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+31,what-is-an-initial-public-offering,NSE Basics,Listings,What is an Initial Public Offering (IPO)?,What is an IPO?; Explain IPO; IPO meaning,"# Initial Public Offering (IPO)
+
+An **Initial Public Offering (IPO)** is the process through which a private company offers its shares to the public for the first time and becomes listed on a stock exchange.",IPO;listing;public offering,Beginner,Why do companies launch IPOs?,NSE
+32,why-do-companies-launch-ipos,NSE Basics,Listings,Why do companies launch IPOs?,Reasons for IPO; Why go public?,"# Why Companies Launch IPOs
+
+Companies launch IPOs to raise capital, expand operations, repay debt, improve visibility, and allow the public to invest in their business.",IPO;capital,Beginner,What is an IPO?,Internal
+33,how-to-buy-shares-on-the-nse,NSE Basics,Investing,How do I buy shares on the NSE?,Steps to buy shares; Purchase NSE shares,"# Buying Shares
+
+1. Open a CDS account.
+2. Choose a licensed broker.
+3. Deposit funds.
+4. Place a buy order.
+5. Monitor your investment.",buy shares;broker;CDS,Beginner,How do I sell shares?,NSE
+34,how-to-sell-shares,NSE Basics,Investing,How do I sell shares on the NSE?,Selling shares; Dispose of shares,"# Selling Shares
+
+Log in through your broker, submit a sell order, wait for matching, and receive payment after settlement according to market rules.",sell shares;broker,Beginner,How do I buy shares?,NSE
+35,what-is-trading,NSE Basics,Trading,What is trading?,Define trading; Trading meaning,"# Trading
+
+Trading is the buying and selling of financial securities in an organized market with the aim of investing or generating returns.",trading;buy;sell,Beginner,What is investing?,Internal
+36,difference-between-trading-and-investing,NSE Basics,Trading,What is the difference between trading and investing?,Trading vs investing,"# Trading vs Investing
+
+Trading focuses on shorter-term buying and selling, while investing generally focuses on long-term wealth creation through holding assets over time.",trading;investing,Beginner,What is long-term investing?,Internal
+37,what-is-liquidity,NSE Basics,Market Terms,What is liquidity?,Define liquidity; Liquidity meaning,"# Liquidity
+
+Liquidity refers to how easily an asset can be bought or sold without significantly affecting its market price.",liquidity;market,Beginner,Why is liquidity important?,Internal
+38,why-is-liquidity-important,NSE Basics,Market Terms,Why is liquidity important?,Importance of liquidity,"# Importance of Liquidity
+
+High liquidity allows investors to buy and sell securities quickly, often with smaller price changes and lower trading risk.",liquidity;trading,Beginner,What is liquidity?,Internal
+39,what-is-market-volatility,NSE Basics,Market Terms,What is market volatility?,Define volatility; Market fluctuations,"# Market Volatility
+
+Market volatility describes how much prices rise and fall over time. Higher volatility usually means greater uncertainty and risk.",volatility;risk,Beginner,What causes volatility?,Internal
+40,what-causes-market-volatility,NSE Basics,Market Terms,What causes market volatility?,Reasons for market volatility,"# Causes of Market Volatility
+
+Volatility can result from economic news, company performance, interest rates, political events, investor sentiment, and global market developments.",volatility;economy,Beginner,How can investors manage risk?,Internal

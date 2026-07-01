@@ -38,6 +38,11 @@ from services.market_intelligence import (
 )
 from services.market_cache import EAT
 from services.knowledge_base_service import answer_knowledge_question
+from services.knowledge_service import (
+    KnowledgeService,
+    build_knowledge_response,
+    is_educational_query,
+)
 from routes.auth_routes import router as auth_router
 from routes.admin_routes import router as admin_router
 from routes.analytics_routes import router as analytics_router
@@ -393,6 +398,19 @@ def _build_knowledge_base_response(user_query: str) -> dict[str, Any] | None:
         **kb_response,
         "disclaimer": DISCLAIMER_TEXT,
     }
+
+
+def _search_sqlite_knowledge_base(user_query: str) -> dict[str, Any] | None:
+    with database.SessionLocal() as db:
+        match = KnowledgeService(db).search(_normalize_user_query(user_query))
+        if not match:
+            return None
+        response = build_knowledge_response(match)
+        logger.info("Response source: Knowledge Base")
+        return {
+            **response,
+            "disclaimer": DISCLAIMER_TEXT,
+        }
 
 
 async def _classify_query(user_query: str) -> dict[str, Any]:
@@ -879,6 +897,7 @@ def _to_sse(event: str, data: dict[str, Any] | str) -> str:
 
 
 def _stream_sse_response(metadata: dict[str, Any], prompt: str) -> Iterator[str]:
+    logger.info("Response source: %s", metadata.get("source", "Featherless AI"))
     yield _to_sse("metadata", metadata)
     try:
         for chunk in generate_stream_response(prompt):
@@ -1170,6 +1189,11 @@ async def chat(request: ChatRequest):
     entity = classification.get("entity")
     timeframe = classification.get("timeframe")
 
+    if is_educational_query(normalized_query, intent):
+        kb_response = _search_sqlite_knowledge_base(normalized_query)
+        if kb_response:
+            return kb_response
+
     if intent == "market_overview":
         overview = await asyncio.to_thread(get_market_overview)
         if re.search(r"\b(highest|best|top)\b", lowered_query) and re.search(
@@ -1390,10 +1414,12 @@ async def chat(request: ChatRequest):
 
         # If no AI provider, return formatted response
         if not _has_openai_key():
+            logger.info("Response source: Pinecone + Featherless")
             return {
                 "type": "ai_response",
                 "data": {"intent": "news", "ticker": entity},
                 "message": combined_context,
+                "source": "Pinecone + Featherless",
                 "disclaimer": DISCLAIMER_TEXT,
             }
 
@@ -1412,6 +1438,7 @@ async def chat(request: ChatRequest):
             "type": "ai_response",
             "data": {"intent": "news", "ticker": entity},
             "message": "",
+            "source": "Pinecone + Featherless" if pinecone_context else "Featherless AI",
             "disclaimer": DISCLAIMER_TEXT,
         }
         return StreamingResponse(
@@ -1432,6 +1459,7 @@ async def chat(request: ChatRequest):
             "type": "educational",
             "data": {"topic": entity or "general investing"},
             "message": "",
+            "source": "Featherless AI",
             "disclaimer": DISCLAIMER_TEXT,
         }
         prompt = (
@@ -1474,6 +1502,7 @@ async def chat(request: ChatRequest):
                     "analysis": payload["analysis"],
                 },
                 "message": payload["analysis"],
+                "source": "Featherless AI",
                 "disclaimer": DISCLAIMER_TEXT,
             }
 
@@ -1488,6 +1517,7 @@ async def chat(request: ChatRequest):
                 },
                 "message": payload["analysis"]
                 + " Document analysis is currently unavailable.",
+                "source": "Featherless AI",
                 "disclaimer": DISCLAIMER_TEXT,
             }
 
@@ -1499,6 +1529,7 @@ async def chat(request: ChatRequest):
                 "analysis": payload["analysis"],
             },
             "message": "",
+            "source": "Pinecone + Featherless",
             "disclaimer": DISCLAIMER_TEXT,
         }
         prompt = _build_comparison_prompt(
@@ -1578,6 +1609,7 @@ async def chat(request: ChatRequest):
         )
 
     if not tickers:
+        logger.info("Response source: Featherless AI")
         return {
             "type": "ai_response",
             "data": {
@@ -1591,10 +1623,12 @@ async def chat(request: ChatRequest):
                 valid_stocks,
                 news_context,
             ),
+            "source": "Featherless AI",
             "disclaimer": DISCLAIMER_TEXT,
         }
 
     if not _has_openai_key():
+        logger.info("Response source: Featherless AI")
         return {
             "type": "ai_response",
             "data": {"tickers": tickers},
@@ -1607,10 +1641,12 @@ async def chat(request: ChatRequest):
                     news_context,
                 )
             ),
+            "source": "Featherless AI",
             "disclaimer": DISCLAIMER_TEXT,
         }
 
     if not retrieved_context:
+        logger.info("Response source: Featherless AI")
         return {
             "type": "ai_response",
             "data": {"tickers": tickers},
@@ -1626,6 +1662,7 @@ async def chat(request: ChatRequest):
                 )
                 + " Document analysis is currently unavailable."
             ),
+            "source": "Featherless AI",
             "disclaimer": DISCLAIMER_TEXT,
         }
 
@@ -1633,6 +1670,7 @@ async def chat(request: ChatRequest):
         "type": "ai_response",
         "data": {"tickers": tickers},
         "message": "",
+        "source": "Pinecone + Featherless",
         "disclaimer": DISCLAIMER_TEXT,
     }
 

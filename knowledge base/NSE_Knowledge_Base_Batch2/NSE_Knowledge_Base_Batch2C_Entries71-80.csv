@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+71,what-is-a-blue-chip-stock,Stock Market Fundamentals,Stocks,What is a blue-chip stock?,Define blue-chip stock; Blue chip meaning,"# Blue-Chip Stock
+
+A blue-chip stock is a share issued by a well-established, financially stable company with a strong reputation and history of consistent performance.",blue chip;large company,Beginner,What is a growth stock?,Internal
+72,what-is-a-growth-stock,Stock Market Fundamentals,Stocks,What is a growth stock?,Define growth stock,"# Growth Stock
+
+A growth stock belongs to a company expected to grow earnings faster than the overall market. These companies often reinvest profits instead of paying dividends.",growth stock;earnings,Beginner,What is a value stock?,Internal
+73,what-is-a-value-stock,Stock Market Fundamentals,Stocks,What is a value stock?,Define value stock,"# Value Stock
+
+A value stock trades at a price considered lower than its intrinsic value based on company fundamentals.",value stock;valuation,Intermediate,What is intrinsic value?,Internal
+74,what-is-an-income-stock,Stock Market Fundamentals,Stocks,What is an income stock?,Income stock meaning,"# Income Stock
+
+An income stock is a share that regularly pays dividends, making it attractive to investors seeking steady income.",income stock;dividends,Beginner,What is a dividend?,Internal
+75,what-is-an-outstanding-share,Stock Market Fundamentals,Stocks,What are outstanding shares?,Outstanding shares meaning,"# Outstanding Shares
+
+Outstanding shares are the total number of shares currently owned by investors, including institutional and retail shareholders.",outstanding shares,Beginner,What is market capitalization?,Internal
+76,what-is-a-share-certificate,Stock Market Fundamentals,Documentation,What is a share certificate?,Define share certificate,"# Share Certificate
+
+A share certificate is a document that proves ownership of shares. Today, ownership on the NSE is primarily recorded electronically through CDS accounts.",share certificate;ownership,Beginner,What is a CDS account?,CDSC
+77,what-is-a-rights-issue,Stock Market Fundamentals,Corporate Actions,What is a rights issue?,Define rights issue,"# Rights Issue
+
+A rights issue allows existing shareholders to purchase additional shares, usually at a discounted price, before they are offered to the public.",rights issue;corporate action,Intermediate,What is a bonus issue?,Internal
+78,what-is-a-bonus-issue,Stock Market Fundamentals,Corporate Actions,What is a bonus issue?,Define bonus issue,"# Bonus Issue
+
+A bonus issue is the free distribution of additional shares to existing shareholders based on the number of shares they already own.",bonus issue;shares,Intermediate,What is a rights issue?,Internal
+79,what-is-a-stock-split,Stock Market Fundamentals,Corporate Actions,What is a stock split?,Define stock split,"# Stock Split
+
+A stock split increases the number of shares outstanding while proportionally reducing the price per share. The company's overall value remains unchanged.",stock split,Intermediate,Why do companies split stock?,Internal
+80,what-is-a-delisted-company,Stock Market Fundamentals,Listings,What is a delisted company?,Define delisting; Delisted company meaning,"# Delisted Company
+
+A delisted company is one whose shares are no longer traded on a stock exchange due to regulatory, financial, or voluntary reasons.",delisting;listed company,Intermediate,Why are companies delisted?,NSE

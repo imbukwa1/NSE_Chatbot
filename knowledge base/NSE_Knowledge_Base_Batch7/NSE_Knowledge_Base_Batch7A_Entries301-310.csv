@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+301,what-is-a-unit-trust,Collective Investment Schemes,Introduction,What is a unit trust?,Define unit trust; Unit trust meaning,"# Unit Trust
+
+A unit trust is a professionally managed investment fund that pools money from many investors to invest in a diversified portfolio of assets.",unit trust;collective investment,Beginner,What is a mutual fund?,CMA
+302,what-is-a-mutual-fund,Collective Investment Schemes,Introduction,What is a mutual fund?,Define mutual fund,"# Mutual Fund
+
+A mutual fund pools money from investors to purchase a diversified portfolio of securities managed by professional fund managers.",mutual fund,Beginner,What is a unit trust?,CMA
+303,how-do-unit-trusts-work,Collective Investment Schemes,Introduction,How do unit trusts work?,Explain unit trusts,"# How Unit Trusts Work
+
+Investors buy units in a fund. The fund manager invests the pooled money and the value of each unit changes based on the underlying investments.",unit trust;fund manager,Beginner,What is a unit trust?,CMA
+304,what-is-a-fund-manager,Collective Investment Schemes,Management,What is a fund manager?,Define fund manager,"# Fund Manager
+
+A fund manager is a professional responsible for selecting investments and managing a fund according to its objectives.",fund manager,Beginner,How do unit trusts work?,CMA
+305,what-is-an-etf,Collective Investment Schemes,Investment Vehicles,What is an Exchange-Traded Fund (ETF)?,Define ETF; Exchange traded fund,"# Exchange-Traded Fund
+
+An ETF is an investment fund that holds a basket of assets and trades on a stock exchange like an ordinary share.",ETF;exchange traded fund,Beginner,What is an index fund?,CFA Institute
+306,what-is-an-index-fund,Collective Investment Schemes,Investment Vehicles,What is an index fund?,Define index fund,"# Index Fund
+
+An index fund aims to track the performance of a market index rather than outperform it through active management.",index fund,Beginner,What is an ETF?,Internal
+307,active-vs-passive-investing,Collective Investment Schemes,Strategies,What is the difference between active and passive investing?,Active vs passive investing,"# Active vs Passive Investing
+
+Active investing seeks to outperform the market through security selection, while passive investing aims to match market performance by tracking an index.",active investing;passive investing,Intermediate,What is an index fund?,Internal
+308,what-is-nav,Collective Investment Schemes,Fund Pricing,What is Net Asset Value (NAV)?,Define NAV,"# Net Asset Value
+
+NAV is the total value of a fund's assets minus its liabilities, divided by the number of outstanding units or shares.",NAV;net asset value,Intermediate,How are fund prices calculated?,CMA
+309,how-is-nav-calculated,Collective Investment Schemes,Fund Pricing,How is Net Asset Value calculated?,Calculate NAV,"# Calculating NAV
+
+NAV is calculated by subtracting a fund's liabilities from its assets and dividing the result by the number of units outstanding.",NAV calculation,Intermediate,What is NAV?,Internal
+310,why-invest-in-unit-trusts,Collective Investment Schemes,Benefits,Why should I invest in unit trusts?,Benefits of unit trusts,"# Benefits of Unit Trusts
+
+Unit trusts provide diversification, professional management, accessibility, and allow investors to participate in financial markets with relatively small amounts of money.",unit trust;benefits,Beginner,What is a unit trust?,CMA

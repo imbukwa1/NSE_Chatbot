@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+151,what-is-day-trading,Trading Concepts,Strategies,What is day trading?,Define day trading; Day trader,"# Day Trading
+
+Day trading involves buying and selling securities within the same trading day to profit from short-term price movements.",day trading;trading,Intermediate,What is swing trading?,Internal
+152,what-is-swing-trading,Trading Concepts,Strategies,What is swing trading?,Define swing trading,"# Swing Trading
+
+Swing trading involves holding securities for several days or weeks to benefit from short- to medium-term price movements.",swing trading,Intermediate,What is position trading?,Internal
+153,what-is-position-trading,Trading Concepts,Strategies,What is position trading?,Define position trading,"# Position Trading
+
+Position trading is a long-term trading strategy where traders hold positions for months or years based on broader market trends.",position trading,Intermediate,What is investing?,Internal
+154,what-is-scalping,Trading Concepts,Strategies,What is scalping in trading?,Define scalping,"# Scalping
+
+Scalping is a trading strategy that aims to make many small profits from very short-term price movements.",scalping,Advanced,What is day trading?,Internal
+155,what-is-technical-analysis,Trading Concepts,Analysis,What is technical analysis?,Define technical analysis,"# Technical Analysis
+
+Technical analysis evaluates historical price movements and trading volume to identify possible future market trends.",technical analysis;charts,Beginner,What is fundamental analysis?,Internal
+156,what-is-fundamental-analysis,Trading Concepts,Analysis,What is fundamental analysis?,Define fundamental analysis,"# Fundamental Analysis
+
+Fundamental analysis evaluates a company's financial performance, industry position, and economic factors to estimate its intrinsic value.",fundamental analysis,Beginner,What is technical analysis?,Internal
+157,difference-between-technical-and-fundamental-analysis,Trading Concepts,Analysis,What is the difference between technical and fundamental analysis?,Technical vs fundamental analysis,"# Technical vs Fundamental Analysis
+
+Technical analysis focuses on price charts and trends, while fundamental analysis focuses on business performance and financial statements.",technical;fundamental,Beginner,Which analysis should I use?,Internal
+158,what-is-a-price-chart,Trading Concepts,Charts,What is a price chart?,Define price chart,"# Price Chart
+
+A price chart is a graphical representation of how the price of a security changes over time.",price chart,Beginner,What is technical analysis?,Internal
+159,what-is-a-candlestick-chart,Trading Concepts,Charts,What is a candlestick chart?,Define candlestick chart,"# Candlestick Chart
+
+A candlestick chart displays a security's opening, closing, highest, and lowest prices during a specific time period.",candlestick,Intermediate,What is a price chart?,Internal
+160,what-is-support-and-resistance,Trading Concepts,Charts,What are support and resistance levels?,Define support and resistance,"# Support and Resistance
+
+Support is a price level where buying interest tends to emerge, while resistance is a level where selling pressure often increases.",support;resistance,Intermediate,What is technical analysis?,Internal

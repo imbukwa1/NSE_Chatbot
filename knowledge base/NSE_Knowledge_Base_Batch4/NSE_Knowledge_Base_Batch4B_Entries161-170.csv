@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+161,what-is-a-trend,Trading Concepts,Market Trends,What is a market trend?,Define trend; Market trend meaning,"# Market Trend
+
+A market trend is the general direction in which prices move over time. Trends may be upward, downward, or sideways.",trend;market,Beginner,What is an uptrend?,Internal
+162,what-is-an-uptrend,Trading Concepts,Market Trends,What is an uptrend?,Define uptrend,"# Uptrend
+
+An uptrend is a period during which prices generally make higher highs and higher lows.",uptrend,Beginner,What is a downtrend?,Internal
+163,what-is-a-downtrend,Trading Concepts,Market Trends,What is a downtrend?,Define downtrend,"# Downtrend
+
+A downtrend is a period during which prices generally make lower highs and lower lows.",downtrend,Beginner,What is an uptrend?,Internal
+164,what-is-a-sideways-market,Trading Concepts,Market Trends,What is a sideways market?,Range-bound market,"# Sideways Market
+
+A sideways market occurs when prices move within a relatively narrow range without a clear upward or downward trend.",sideways market,Intermediate,What is market trend?,Internal
+165,what-is-a-breakout,Trading Concepts,Chart Patterns,What is a breakout?,Define breakout,"# Breakout
+
+A breakout occurs when price moves above resistance or below support with increased trading activity.",breakout;support;resistance,Intermediate,What is a false breakout?,Internal
+166,what-is-a-false-breakout,Trading Concepts,Chart Patterns,What is a false breakout?,Fake breakout,"# False Breakout
+
+A false breakout happens when price briefly moves beyond a support or resistance level before reversing.",false breakout,Advanced,What is a breakout?,Internal
+167,what-is-volume-analysis,Trading Concepts,Analysis,What is volume analysis?,Define volume analysis,"# Volume Analysis
+
+Volume analysis studies trading volume alongside price movements to confirm the strength of trends.",volume analysis,Intermediate,Why is trading volume important?,Internal
+168,what-is-risk-reward-ratio,Trading Concepts,Risk,What is the risk-reward ratio?,Define risk reward ratio,"# Risk-Reward Ratio
+
+The risk-reward ratio compares the potential profit of a trade with the potential loss, helping traders evaluate opportunities.",risk reward,Intermediate,What is stop-loss?,Internal
+169,what-is-a-stop-loss-order,Trading Concepts,Risk,What is a stop-loss order?,Define stop loss,"# Stop-Loss Order
+
+A stop-loss order automatically sells a security when it reaches a specified price to help limit losses.",stop loss,Beginner,What is take-profit?,Internal
+170,what-is-a-take-profit-order,Trading Concepts,Risk,What is a take-profit order?,Define take profit,"# Take-Profit Order
+
+A take-profit order automatically closes a position once a target profit price is reached.",take profit,Beginner,What is a stop-loss order?,Internal

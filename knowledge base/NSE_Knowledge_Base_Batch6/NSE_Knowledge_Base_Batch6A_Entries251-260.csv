@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+251,what-is-a-bond,Bonds & Fixed Income,Introduction,What is a bond?,Define bond; Bond meaning,"# Bond
+
+A bond is a debt security through which an investor lends money to a government or company in exchange for periodic interest payments and repayment of the principal at maturity.",bond;fixed income,Beginner,What is a government bond?,CMA
+252,how-do-bonds-work,Bonds & Fixed Income,Introduction,How do bonds work?,Explain bonds; How bond investing works,"# How Bonds Work
+
+When investors purchase bonds, they lend money to the issuer. In return, the issuer pays interest (coupon payments) and repays the principal when the bond matures.",bond investing;coupon,Beginner,What is a bond?,CMA
+253,what-is-a-government-bond,Bonds & Fixed Income,Types of Bonds,What is a government bond?,Define government bond; Treasury bond,"# Government Bond
+
+A government bond is issued by a national government to raise money for public spending. It is generally considered lower risk than many corporate bonds.",government bond;treasury,Beginner,What is a corporate bond?,CBK
+254,what-is-a-corporate-bond,Bonds & Fixed Income,Types of Bonds,What is a corporate bond?,Define corporate bond,"# Corporate Bond
+
+A corporate bond is issued by a company to raise capital. Investors receive periodic interest payments and repayment at maturity, subject to the issuer's creditworthiness.",corporate bond,Beginner,What is a government bond?,CMA
+255,what-is-a-coupon-rate,Bonds & Fixed Income,Bond Features,What is a coupon rate?,Define coupon rate,"# Coupon Rate
+
+The coupon rate is the annual interest rate paid by a bond issuer, expressed as a percentage of the bond's face value.",coupon rate;interest,Beginner,What is bond yield?,Internal
+256,what-is-bond-yield,Bonds & Fixed Income,Bond Features,What is bond yield?,Define bond yield,"# Bond Yield
+
+Bond yield is the return an investor earns from holding a bond. Yield can differ from the coupon rate depending on the bond's market price.",bond yield,Intermediate,What is a coupon rate?,Internal
+257,what-is-face-value,Bonds & Fixed Income,Bond Features,What is a bond's face value?,Define face value; Par value,"# Face Value
+
+Face value (par value) is the amount the issuer repays the bondholder when the bond reaches maturity.",face value;par value,Beginner,What is maturity?,Internal
+258,what-is-bond-maturity,Bonds & Fixed Income,Bond Features,What is bond maturity?,Define bond maturity,"# Bond Maturity
+
+Bond maturity is the date on which the issuer repays the principal amount to the bondholder.",bond maturity,Beginner,What is face value?,Internal
+259,what-is-a-treasury-bill,Bonds & Fixed Income,Government Securities,What is a Treasury Bill (T-Bill)?,Define Treasury Bill; T-Bill,"# Treasury Bill
+
+A Treasury Bill is a short-term government security issued at a discount and redeemed at face value upon maturity.",treasury bill;T-Bill,Beginner,What is a Treasury Bond?,CBK
+260,difference-between-bonds-and-shares,Bonds & Fixed Income,Comparison,What is the difference between bonds and shares?,Bonds vs shares; Compare bonds and stocks,"# Bonds vs Shares
+
+Bonds represent loans made to issuers, while shares represent ownership in a company. Bondholders are creditors, whereas shareholders are owners.",bonds;shares;comparison,Beginner,What is a bond?; What is a share?,Internal

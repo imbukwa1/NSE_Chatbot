@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+61,what-is-a-market-order,Stock Market Fundamentals,Trading Orders,What is a market order?,Define market order; Market order meaning,"# Market Order
+
+A market order instructs a broker to buy or sell a security immediately at the best available market price.",market order;trading,Beginner,What is a limit order?,NSE
+62,what-is-a-limit-order,Stock Market Fundamentals,Trading Orders,What is a limit order?,Define limit order; Limit order meaning,"# Limit Order
+
+A limit order instructs a broker to buy or sell a security only at a specified price or better.",limit order;trading,Beginner,What is a market order?,NSE
+63,what-is-a-trading-session,Stock Market Fundamentals,Trading,What is a trading session?,Trading session meaning; Market session,"# Trading Session
+
+A trading session is the period during which the stock exchange is open for buying and selling securities.",trading session;market hours,Beginner,What are NSE trading hours?,NSE
+64,what-is-a-ticker-symbol,Stock Market Fundamentals,Terminology,What is a ticker symbol?,Define ticker symbol; Stock symbol,"# Ticker Symbol
+
+A ticker symbol is a short code used to uniquely identify a listed security on a stock exchange.",ticker;symbol,Beginner,What is a listed company?,NSE
+65,what-is-a-trade,Stock Market Fundamentals,Trading,What is a trade?,Define trade; Stock trade meaning,"# Trade
+
+A trade is the successful execution of a buy or sell transaction between two parties in the market.",trade;transaction,Beginner,How does trading work?,NSE
+66,what-is-trade-settlement,Stock Market Fundamentals,Settlement,What is trade settlement?,Settlement meaning; Share settlement,"# Trade Settlement
+
+Trade settlement is the process of transferring ownership of securities and payment after a trade has been executed.",settlement;CDS,Beginner,What is a CDS account?,CDSC
+67,what-is-a-trading-volume,Stock Market Fundamentals,Market Data,What is trading volume?,Define trading volume; Volume meaning,"# Trading Volume
+
+Trading volume is the total number of shares or securities traded during a specific period.",volume;market data,Beginner,Why is trading volume important?,NSE
+68,why-is-trading-volume-important,Stock Market Fundamentals,Market Data,Why is trading volume important?,Importance of trading volume,"# Importance of Trading Volume
+
+Trading volume helps investors understand market activity and the strength of price movements.",volume;liquidity,Beginner,What is trading volume?,Internal
+69,what-is-price-discovery,Stock Market Fundamentals,Pricing,What is price discovery?,Define price discovery,"# Price Discovery
+
+Price discovery is the process through which buyers and sellers determine the market price of a security.",price discovery,Intermediate,What determines share prices?,Internal
+70,what-is-a-market-index,Stock Market Fundamentals,Indices,What is a market index?,Define market index; Market index meaning,"# Market Index
+
+A market index tracks the performance of a selected group of securities and is used to measure overall market performance.",market index;index,Beginner,What is the NSE 20 Share Index?,NSE

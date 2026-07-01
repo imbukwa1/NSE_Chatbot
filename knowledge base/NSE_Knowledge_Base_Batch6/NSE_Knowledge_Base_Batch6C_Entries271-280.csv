@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+271,what-is-a-bond-rating,Bonds & Fixed Income,Credit Ratings,What is a bond rating?,Define bond rating; Credit rating,"# Bond Rating
+
+A bond rating evaluates the creditworthiness of a bond issuer and indicates the likelihood of timely repayment.",bond rating;credit rating,Beginner,Who assigns bond ratings?,Moody's/S&P/Fitch
+272,who-assigns-bond-ratings,Bonds & Fixed Income,Credit Ratings,Who assigns bond ratings?,Bond rating agencies,"# Bond Rating Agencies
+
+Independent credit rating agencies such as Moody's, S&P Global Ratings, and Fitch Ratings assess the credit quality of bond issuers.",rating agencies,Beginner,What is a bond rating?,Moody's/S&P/Fitch
+273,what-is-investment-grade-bond,Bonds & Fixed Income,Credit Ratings,What is an investment-grade bond?,Define investment grade bond,"# Investment-Grade Bond
+
+An investment-grade bond has a relatively high credit rating, indicating a lower risk of default.",investment grade,Intermediate,What is a junk bond?,Internal
+274,what-is-a-junk-bond,Bonds & Fixed Income,Credit Ratings,What is a junk bond?,High-yield bond meaning,"# Junk Bond
+
+A junk bond, also called a high-yield bond, offers higher potential returns because it carries a higher risk of default.",junk bond;high yield,Intermediate,What is an investment-grade bond?,Internal
+275,what-is-yield-to-maturity,Bonds & Fixed Income,Returns,What is yield to maturity (YTM)?,Define YTM; Yield to maturity,"# Yield to Maturity
+
+Yield to maturity is the estimated annual return an investor earns if a bond is held until maturity, assuming all payments are received as scheduled.",YTM;yield to maturity,Advanced,What is bond yield?,Internal
+276,what-is-callable-bond,Bonds & Fixed Income,Types of Bonds,What is a callable bond?,Define callable bond,"# Callable Bond
+
+A callable bond allows the issuer to repay the bond before its maturity date under specified conditions.",callable bond,Advanced,What is a redeemable bond?,Internal
+277,what-is-convertible-bond,Bonds & Fixed Income,Types of Bonds,What is a convertible bond?,Define convertible bond,"# Convertible Bond
+
+A convertible bond gives the bondholder the option to convert the bond into a predetermined number of company shares.",convertible bond,Advanced,What is a corporate bond?,Internal
+278,what-is-bond-laddering,Bonds & Fixed Income,Strategies,What is bond laddering?,Define bond laddering,"# Bond Laddering
+
+Bond laddering is an investment strategy that spreads investments across bonds with different maturity dates to manage risk and improve cash flow.",bond laddering,Intermediate,What is bond diversification?,Internal
+279,what-is-reinvestment-risk,Bonds & Fixed Income,Risk,What is reinvestment risk?,Define reinvestment risk,"# Reinvestment Risk
+
+Reinvestment risk is the possibility that future coupon payments or principal repayments will be reinvested at lower interest rates.",reinvestment risk,Advanced,What is interest rate risk?,Internal
+280,what-is-inflation-risk-for-bonds,Bonds & Fixed Income,Risk,How does inflation affect bonds?,Inflation risk in bonds,"# Inflation Risk
+
+Inflation reduces the purchasing power of future bond interest payments and principal, potentially lowering the real return on bond investments.",inflation risk;bonds,Intermediate,What is inflation?,Internal

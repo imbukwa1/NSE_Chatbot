@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+91,what-is-a-dividend-declaration-date,Stock Market Fundamentals,Dividends,What is a dividend declaration date?,Define declaration date; Dividend announcement date,"# Dividend Declaration Date
+
+The declaration date is the day a company's board of directors officially announces a dividend, including the payment amount and important dates.",declaration date;dividend,Intermediate,What is the record date?,NSE
+92,what-is-a-dividend-payment-date,Stock Market Fundamentals,Dividends,What is a dividend payment date?,Dividend payout date,"# Dividend Payment Date
+
+The dividend payment date is the day eligible shareholders receive their declared dividends.",payment date;dividend,Beginner,What is an ex-dividend date?,NSE
+93,what-is-a-trading-suspension,Stock Market Fundamentals,Regulation,What is a trading suspension?,Define trading suspension,"# Trading Suspension
+
+A trading suspension is a temporary halt in trading of a security, usually to protect investors or allow important information to be released.",trading suspension,Intermediate,Why are stocks suspended?,NSE
+94,why-is-trading-suspended,Stock Market Fundamentals,Regulation,Why is trading suspended?,Reasons for trading suspension,"# Reasons for Trading Suspension
+
+Trading may be suspended because of major corporate announcements, regulatory investigations, market integrity concerns, or failure to meet listing requirements.",suspension;regulation,Intermediate,What is a trading suspension?,NSE
+95,what-is-a-market-cap-index,Stock Market Fundamentals,Indices,What is a market capitalization index?,Market cap index meaning,"# Market Capitalization Index
+
+A market capitalization index weights companies based on their market value, giving larger companies a greater influence on index performance.",market cap index,Intermediate,What is market capitalization?,Internal
+96,what-is-free-float,Stock Market Fundamentals,Indices,What is free float?,Define free float,"# Free Float
+
+Free float refers to the proportion of a company's shares that are available for public trading, excluding restricted holdings.",free float;shares,Intermediate,Why is free float important?,NSE
+97,what-is-market-efficiency,Stock Market Fundamentals,Concepts,What is market efficiency?,Define market efficiency,"# Market Efficiency
+
+Market efficiency is the idea that security prices reflect all available information, making it difficult to consistently outperform the market.",market efficiency,Advanced,What is the Efficient Market Hypothesis?,Academic
+98,what-is-investor-confidence,Stock Market Fundamentals,Concepts,What is investor confidence?,Define investor confidence,"# Investor Confidence
+
+Investor confidence describes how optimistic or pessimistic investors feel about future market performance and economic conditions.",investor confidence;sentiment,Beginner,What is market sentiment?,Internal
+99,why-is-the-stock-market-important-to-the-economy,Stock Market Fundamentals,Economy,Why is the stock market important to the economy?,Importance of stock market to economy,"# Importance of the Stock Market
+
+The stock market supports economic growth by helping businesses raise capital, creating investment opportunities, improving liquidity, and encouraging wealth creation.",economy;capital market,Beginner,Why is the NSE important?,CMA
+100,what-is-a-capital-gain,Stock Market Fundamentals,Returns,What is a capital gain?,Define capital gain; Capital gain meaning,"# Capital Gain
+
+A capital gain is the profit earned when an investment is sold for more than its purchase price. If sold for less, the result is a capital loss.",capital gain;profit,Beginner,What is capital loss?,Internal

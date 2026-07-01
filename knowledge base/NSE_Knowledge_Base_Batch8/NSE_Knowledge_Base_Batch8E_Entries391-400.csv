@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+391,what-is-a-rights-issue,NSE Listed Companies & Market Sectors,Corporate Actions,What is a rights issue?,Define rights issue,"# Rights Issue
+
+A rights issue allows existing shareholders to buy additional shares, usually at a discounted price, before they are offered to the public.",rights issue,Intermediate,What is a bonus issue?,NSE
+392,what-is-a-bonus-issue,NSE Listed Companies & Market Sectors,Corporate Actions,What is a bonus issue?,Define bonus issue,"# Bonus Issue
+
+A bonus issue is the distribution of additional shares to existing shareholders at no extra cost based on their current holdings.",bonus issue,Beginner,What is a rights issue?,NSE
+393,what-is-a-stock-split,NSE Listed Companies & Market Sectors,Corporate Actions,What is a stock split?,Define stock split; Share split,"# Stock Split
+
+A stock split increases the number of shares while proportionally reducing the share price without changing the company's market value.",stock split,Intermediate,What is market capitalization?,Internal
+394,what-is-a-share-buyback,NSE Listed Companies & Market Sectors,Corporate Actions,What is a share buyback?,Define share buyback,"# Share Buyback
+
+A share buyback occurs when a company repurchases its own shares from shareholders, reducing the number of shares in circulation.",share buyback,Intermediate,Why do companies list on the NSE?,NSE
+395,what-is-dividend-announcement,NSE Listed Companies & Market Sectors,Corporate Actions,What is a dividend announcement?,Dividend declaration,"# Dividend Announcement
+
+A dividend announcement is an official notice that a company intends to distribute part of its profits to eligible shareholders.",dividend announcement,Beginner,What is a dividend?,NSE
+396,what-is-an-earnings-announcement,NSE Listed Companies & Market Sectors,Disclosures,What is an earnings announcement?,Financial results announcement,"# Earnings Announcement
+
+An earnings announcement is the publication of a company's financial results for a reporting period.",earnings announcement,Beginner,What are company announcements?,NSE
+397,why-monitor-company-announcements,NSE Listed Companies & Market Sectors,Disclosures,Why should investors monitor company announcements?,Importance of company announcements,"# Monitoring Company Announcements
+
+Company announcements provide timely information about events that may affect a company's performance or share price.",company announcements,Beginner,What are company announcements?,NSE
+398,what-is-sector-performance,NSE Listed Companies & Market Sectors,Analysis,What is sector performance?,Define sector performance,"# Sector Performance
+
+Sector performance measures how companies within a particular sector perform over a specific period compared with other sectors.",sector performance,Beginner,Why are market sectors important?,Internal
+399,how-to-compare-listed-companies,NSE Listed Companies & Market Sectors,Analysis,How do I compare listed companies?,Compare listed companies,"# Comparing Listed Companies
+
+Compare companies using financial ratios, earnings growth, dividends, market capitalization, and industry position.",compare companies,Intermediate,How do I research a listed company?,Internal
+400,overview-of-nse-listed-companies,NSE Listed Companies & Market Sectors,Education,What should I know about NSE listed companies?,NSE listed companies overview,"# NSE Listed Companies
+
+NSE listed companies operate across multiple sectors including banking, insurance, manufacturing, energy, agriculture, telecommunications, and investment services. Understanding their sectors, financial performance, and disclosures helps investors make informed decisions.",NSE listed companies,Beginner,What is a listed company?,NSE

@@ -1,0 +1,31 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+241,what-is-dividend-payout-ratio,Financial Statements & Ratios,Financial Ratios,What is the dividend payout ratio?,Define dividend payout ratio,"# Dividend Payout Ratio
+
+The dividend payout ratio measures the proportion of a company's earnings distributed to shareholders as dividends.",dividend payout ratio,Intermediate,What is a dividend?,IFRS
+242,what-is-dividend-cover,Financial Statements & Ratios,Financial Ratios,What is dividend cover?,Define dividend cover,"# Dividend Cover
+
+Dividend cover measures how many times a company's earnings can pay its declared dividend.",dividend cover,Intermediate,What is the dividend payout ratio?,IFRS
+243,what-is-price-to-book-ratio,Financial Statements & Ratios,Financial Ratios,What is the Price-to-Book (P/B) ratio?,Define P/B ratio; Price to book,"# Price-to-Book Ratio
+
+The P/B ratio compares a company's market price per share with its book value per share to help assess valuation.",P/B ratio;book value,Intermediate,What is book value?,IFRS
+244,what-is-dividend-per-share,Financial Statements & Ratios,Financial Ratios,What is Dividend Per Share (DPS)?,Define DPS,"# Dividend Per Share
+
+DPS represents the amount of dividend paid for each outstanding ordinary share.",DPS;dividend per share,Beginner,What is a dividend?,IFRS
+245,what-is-interest-coverage-ratio,Financial Statements & Ratios,Financial Ratios,What is the interest coverage ratio?,Define interest coverage ratio,"# Interest Coverage Ratio
+
+The interest coverage ratio measures a company's ability to meet interest payments using operating earnings.",interest coverage,Intermediate,What is EBIT?,IFRS
+246,what-is-inventory-turnover,Financial Statements & Ratios,Efficiency Ratios,What is inventory turnover?,Define inventory turnover,"# Inventory Turnover
+
+Inventory turnover measures how efficiently a company sells and replaces its inventory during a period.",inventory turnover,Intermediate,What is COGS?,IFRS
+247,what-is-accounts-receivable-turnover,Financial Statements & Ratios,Efficiency Ratios,What is accounts receivable turnover?,Define receivable turnover,"# Accounts Receivable Turnover
+
+This ratio measures how efficiently a company collects payments from customers.",receivable turnover,Intermediate,What are current assets?,IFRS
+248,what-is-return-on-invested-capital,Financial Statements & Ratios,Financial Ratios,What is Return on Invested Capital (ROIC)?,Define ROIC,"# Return on Invested Capital
+
+ROIC measures how efficiently a company generates profits from the capital invested in the business.",ROIC,Advanced,What is ROE?,IFRS
+249,what-is-financial-ratio-analysis,Financial Statements & Ratios,Analysis,What is financial ratio analysis?,Define financial ratio analysis,"# Financial Ratio Analysis
+
+Financial ratio analysis evaluates a company's performance, profitability, liquidity, efficiency, and solvency using key financial ratios.",ratio analysis,Intermediate,Why are financial ratios important?,IFRS
+250,why-are-financial-ratios-important,Financial Statements & Ratios,Analysis,Why are financial ratios important?,Importance of financial ratios,"# Importance of Financial Ratios
+
+Financial ratios help investors compare companies, assess financial health, identify strengths and weaknesses, and support informed investment decisions.",financial ratios,Beginner,What is ratio analysis?,IFRS

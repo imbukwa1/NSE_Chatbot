@@ -1,0 +1,81 @@
+id,slug,category,subcategory,question,aliases,answer_markdown,keywords,difficulty,related_questions,source
+11,how-does-the-nse-work,NSE Basics,Operations,How does the Nairobi Securities Exchange work?,What is the process of trading?; Explain how NSE works; How are trades executed?; How does buying and selling happen?,"# How the NSE Works
+
+The NSE provides an electronic marketplace where investors buy and sell securities through licensed brokers.
+
+## Process
+- An investor places a buy or sell order.
+- The broker submits the order to the market.
+- Matching orders are executed electronically.
+- Ownership is updated through the Central Depository System (CDS).
+
+The exchange ensures fair and transparent trading.",NSE;trading;orders;broker;CDS,Beginner,What is a stockbroker?; What is a CDS account?,NSE/CMA
+12,what-is-a-cds-account,NSE Basics,Accounts,What is a CDS account?,Define CDS account; Central Depository System account; Why do I need a CDS account?,"# CDS Account
+
+A **Central Depository System (CDS) account** is an account used to hold securities electronically.
+
+It records ownership of shares and bonds purchased through the NSE and eliminates the need for paper certificates.",CDS;account;shares,Beginner,How do I open a CDS account?; Who manages CDS accounts?,CDSC
+13,how-to-open-a-cds-account,NSE Basics,Accounts,How do I open a CDS account?,Steps to open a CDS account; Register a CDS account; Open investment account,"# Opening a CDS Account
+
+To open a CDS account:
+
+1. Choose a licensed broker or investment bank.
+2. Complete the application form.
+3. Provide identification documents.
+4. Receive your CDS account number.
+
+The account allows you to buy and hold securities electronically.",open CDS;broker;invest,Beginner,What documents are required?; What is a broker?,CDSC
+14,what-is-a-stockbroker,NSE Basics,Participants,What is a stockbroker?,Define stockbroker; What does a broker do?; Licensed broker,"# Stockbroker
+
+A stockbroker is a licensed professional or firm authorized to buy and sell securities on behalf of investors.
+
+They provide market access, execute trades, and may also offer investment advice.",stockbroker;broker,Beginner,How do I choose a broker?,CMA
+15,difference-between-shares-and-stocks,NSE Basics,Terminology,What is the difference between shares and stocks?,Shares vs stocks; Stock and share difference,"# Shares vs Stocks
+
+The terms are often used interchangeably.
+
+- **Stock** generally refers to ownership in one or more companies.
+- **Share** refers to a specific unit of ownership in a company.
+
+In everyday investing, both terms usually mean company ownership.",shares;stocks,Beginner,What is a share?,Internal
+16,what-is-an-investor,NSE Basics,Participants,Who is an investor?,Define investor; What does an investor do?,"# Investor
+
+An investor is a person or organization that commits money into assets with the expectation of earning a return over time.
+
+Investors may purchase shares, bonds, ETFs, REITs, and other financial instruments.",investor;investment,Beginner,What types of investors exist?,Internal
+17,types-of-investors,NSE Basics,Participants,What are the different types of investors?,Individual vs institutional investors; Types of investors,"# Types of Investors
+
+Common investor categories include:
+
+- Individual investors
+- Institutional investors
+- Foreign investors
+- Pension funds
+- Insurance companies
+
+Each group invests based on different financial objectives.",individual;institutional;foreign,Beginner,Who can invest in the NSE?,Internal
+18,what-is-market-capitalization,NSE Basics,Market Terms,What is market capitalization?,Define market capitalization; What is market cap?,"# Market Capitalization
+
+Market capitalization (market cap) is the total market value of a company's outstanding shares.
+
+**Formula**
+
+Market Cap = Share Price × Number of Outstanding Shares
+
+It is commonly used to estimate the size of a listed company.",market cap;company value,Beginner,What is a share price?,Internal
+19,what-is-a-share-price,NSE Basics,Market Terms,What is a share price?,Current stock price; Define share price,"# Share Price
+
+A share price is the current market value of one share in a company.
+
+It changes based on supply, demand, company performance, and overall market conditions.",share price;stock price,Beginner,Why do share prices change?,Internal
+20,why-do-share-prices-change,NSE Basics,Market Terms,Why do share prices change?,What affects stock prices?; Why do prices go up and down?,"# Why Share Prices Change
+
+Share prices move because of:
+
+- Supply and demand
+- Company performance
+- Economic conditions
+- Investor confidence
+- News and market events
+
+Prices rise when demand exceeds supply and fall when supply exceeds demand.",price movement;supply;demand,Beginner,What is market capitalization?,Internal
