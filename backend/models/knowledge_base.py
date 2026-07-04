@@ -21,6 +21,10 @@ class KnowledgeBaseEntry(Base):
     difficulty = Column(String(40), nullable=True, index=True)
     related_questions = Column(Text, nullable=True)
     source = Column(String(255), nullable=True)
+    embedding_model = Column(String(120), nullable=True)
+    embedding_content_hash = Column(String(64), nullable=True, index=True)
+    pinecone_vector_id = Column(String(120), nullable=True, index=True)
+    pinecone_synced_at = Column(DateTime, nullable=True)
     created_by = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
     created_at = Column(DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
     updated_at = Column(

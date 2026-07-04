@@ -78,11 +78,26 @@ def delete_session(db: Session, session: ChatSession) -> None:
     db.commit()
 
 
-async def generate_chatbot_response(query: str) -> dict[str, Any]:
+def build_recent_conversation_context(session: ChatSession, max_messages: int = 6) -> str:
+    messages = list(session.messages or [])[-max_messages:]
+    lines = []
+    for message in messages:
+        speaker = "User" if message.sender_type == "user" else "Assistant"
+        text = " ".join(message.message_text.split())
+        if len(text) > 700:
+            text = f"{text[:697]}..."
+        lines.append(f"{speaker}: {text}")
+    return "\n".join(lines)
+
+
+async def generate_chatbot_response(
+    query: str,
+    conversation_context: str | None = None,
+) -> dict[str, Any]:
     """Reuse the existing chatbot endpoint without rewriting the AI engine."""
     from main import ChatRequest, chat
 
-    response = await chat(ChatRequest(query=query))
+    response = await chat(ChatRequest(query=query, conversation_context=conversation_context))
 
     if isinstance(response, JSONResponse):
         return json.loads(response.body.decode("utf-8"))
@@ -141,11 +156,11 @@ async def add_user_message_and_ai_response(
         db.commit()
         db.refresh(session)
 
+    conversation_context = build_recent_conversation_context(session)
     user_message = add_message(db, session, "user", message_text)
-    chatbot_response = await generate_chatbot_response(message_text)
+    chatbot_response = await generate_chatbot_response(message_text, conversation_context)
     ai_text = chatbot_response.get("message") or chatbot_response.get("data", {}).get("analysis")
     if not ai_text:
         ai_text = "I could not prepare a response for that query. Please try again."
     ai_message = add_message(db, session, "ai", ai_text)
     return session, user_message, ai_message, chatbot_response
-

@@ -43,6 +43,11 @@ from services.knowledge_service import (
     build_knowledge_response,
     is_educational_query,
 )
+from services.knowledge_rag_service import (
+    LOW_CONFIDENCE_THRESHOLD,
+    build_grounded_prompt,
+    retrieve_knowledge_context,
+)
 from routes.auth_routes import router as auth_router
 from routes.admin_routes import router as admin_router
 from routes.analytics_routes import router as analytics_router
@@ -286,6 +291,7 @@ TYPO_NORMALIZATIONS = (
 # ── Request models ────────────────────────────────────────────────────────────
 class ChatRequest(BaseModel):
     query: str
+    conversation_context: str | None = None
 
 
 class CompareRequest(BaseModel):
@@ -411,6 +417,54 @@ def _search_sqlite_knowledge_base(user_query: str) -> dict[str, Any] | None:
             **response,
             "disclaimer": DISCLAIMER_TEXT,
         }
+
+
+def _build_knowledge_rag_response(
+    user_query: str,
+    conversation_context: str | None = None,
+) -> dict[str, Any] | StreamingResponse | None:
+    if not _has_ai_provider():
+        return None
+
+    with database.SessionLocal() as db:
+        retrieval = retrieve_knowledge_context(db, _normalize_user_query(user_query), top_k=5)
+
+    top_score = float(retrieval.get("top_score") or 0)
+    if top_score < LOW_CONFIDENCE_THRESHOLD or not retrieval.get("context"):
+        logger.info("Knowledge RAG confidence %.3f below threshold; using fallback", top_score)
+        return None
+
+    metadata = {
+        "type": "educational",
+        "data": {
+            "source": "Pinecone + Featherless",
+            "similarity_score": top_score,
+            "confidence": retrieval["confidence"],
+            "matches": [
+                {
+                    "id": match["id"],
+                    "score": match["score"],
+                    "category": match["category"],
+                    "question": match["question"],
+                }
+                for match in retrieval["matches"]
+            ],
+        },
+        "message": "",
+        "source": "Pinecone + Featherless",
+        "disclaimer": DISCLAIMER_TEXT,
+    }
+    prompt = build_grounded_prompt(
+        question=user_query,
+        context=retrieval["context"],
+        top_score=top_score,
+        conversation_context=conversation_context,
+    )
+    return StreamingResponse(
+        _stream_sse_response(metadata, prompt),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "Connection": "keep-alive"},
+    )
 
 
 async def _classify_query(user_query: str) -> dict[str, Any]:
@@ -1190,6 +1244,13 @@ async def chat(request: ChatRequest):
     timeframe = classification.get("timeframe")
 
     if is_educational_query(normalized_query, intent):
+        rag_response = _build_knowledge_rag_response(
+            normalized_query,
+            conversation_context=request.conversation_context,
+        )
+        if rag_response:
+            return rag_response
+
         kb_response = _search_sqlite_knowledge_base(normalized_query)
         if kb_response:
             return kb_response

@@ -101,6 +101,10 @@ def init_db():
             "keywords": "ALTER TABLE knowledge_base_entries ADD COLUMN keywords TEXT",
             "difficulty": "ALTER TABLE knowledge_base_entries ADD COLUMN difficulty TEXT",
             "related_questions": "ALTER TABLE knowledge_base_entries ADD COLUMN related_questions TEXT",
+            "embedding_model": "ALTER TABLE knowledge_base_entries ADD COLUMN embedding_model TEXT",
+            "embedding_content_hash": "ALTER TABLE knowledge_base_entries ADD COLUMN embedding_content_hash TEXT",
+            "pinecone_vector_id": "ALTER TABLE knowledge_base_entries ADD COLUMN pinecone_vector_id TEXT",
+            "pinecone_synced_at": "ALTER TABLE knowledge_base_entries ADD COLUMN pinecone_synced_at TIMESTAMP",
         }
         for column_name, statement in kb_migrations.items():
             if column_name not in kb_columns:
@@ -113,6 +117,14 @@ def init_db():
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_kb_slug
             ON knowledge_base_entries(slug)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_kb_embedding_content_hash
+            ON knowledge_base_entries(embedding_content_hash)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_kb_pinecone_vector_id
+            ON knowledge_base_entries(pinecone_vector_id)
         """)
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS knowledge_base_imports (

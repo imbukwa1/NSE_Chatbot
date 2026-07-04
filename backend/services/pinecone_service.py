@@ -16,6 +16,7 @@ except Exception:  # pragma: no cover - depends on local installation state
 
 DEFAULT_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "nse-advisor")
 DEFAULT_NAMESPACE = os.getenv("PINECONE_NAMESPACE", "annual-reports")
+DEFAULT_KB_NAMESPACE = os.getenv("PINECONE_KB_NAMESPACE", "knowledge_base")
 DEFAULT_EMBEDDING_MODEL = os.getenv(
     "OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002"
 )
@@ -38,6 +39,11 @@ def _embed_texts(texts: Iterable[str]) -> list[list[float]]:
         input=clean_texts,
     )
     return [item.embedding for item in response.data]
+
+
+def embed_texts(texts: Iterable[str]) -> list[list[float]]:
+    """Public embedding helper for batch-oriented RAG services."""
+    return _embed_texts(texts)
 
 
 def get_pinecone_client() -> "Pinecone":
@@ -122,6 +128,25 @@ def upsert_documents(
     index.upsert(vectors=vectors, namespace=namespace)
 
     return {"upserted_count": len(vectors), "namespace": namespace}
+
+
+def upsert_vectors(
+    vectors: list[dict],
+    namespace: str = DEFAULT_NAMESPACE,
+    index_name: str = DEFAULT_INDEX_NAME,
+) -> dict:
+    """Upsert pre-embedded vectors into Pinecone."""
+    clean_vectors = [
+        vector
+        for vector in vectors
+        if vector.get("id") and vector.get("values") and vector.get("metadata") is not None
+    ]
+    if not clean_vectors:
+        return {"upserted_count": 0, "namespace": namespace}
+
+    index = get_index(index_name)
+    index.upsert(vectors=clean_vectors, namespace=namespace)
+    return {"upserted_count": len(clean_vectors), "namespace": namespace}
 
 
 def query_documents(
