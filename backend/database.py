@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 # Database path
 DB_DIR = Path(__file__).resolve().parent / "data"
 DB_PATH = DB_DIR / "nse_stocks.db"
+print("DATABASE PATH:", DB_PATH.resolve())
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 engine = create_engine(

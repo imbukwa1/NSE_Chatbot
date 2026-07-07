@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Any
 import requests
 from bs4 import BeautifulSoup
-
+from io import StringIO
 logger = logging.getLogger(__name__)
 
 
@@ -29,13 +29,13 @@ def scrape_nse_data() -> dict[str, dict[str, Any]] | None:
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
 
-        tables = pd.read_html(response.text)
+        tables = pd.read_html(StringIO(response.text))
         if not tables:
             logger.warning("No tables found on the NSE page.")
             return None
         # The last table contains the stock listings
         df = tables[-1]
-        
+
         print(df.columns)
         print(df.dtypes)
 

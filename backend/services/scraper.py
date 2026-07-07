@@ -69,6 +69,10 @@ def scrape_and_update_cache(snapshot_label: str = "scheduled") -> dict[str, Any]
             }
 
         records_updated = database.batch_insert_stocks(stocks)
+        print("Stocks fetched:", len(stocks))
+        print("Records updated:", records_updated)
+        print("SCOM data:", next((s for s in stocks if s["ticker"] == "SCOM"), None))
+        
         for stock in stocks:
             price = stock.get("price")
             if price is not None:
