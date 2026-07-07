@@ -210,6 +210,13 @@ def is_educational_query(question: str, intent: str | None = None) -> bool:
 
 
 def build_knowledge_response(entry: dict[str, Any]) -> dict[str, Any]:
+    """
+    Build a chatbot response from a knowledge base entry.
+
+    The chatbot always returns the cleaned plain-text answer stored in the
+    `answer` column. The `answer_markdown` field is reserved for future use
+    in the admin interface or rich-text displays.
+    """
     return {
         "type": "educational",
         "data": {
@@ -222,6 +229,6 @@ def build_knowledge_response(entry: dict[str, Any]) -> dict[str, Any]:
             "source": "Knowledge Base",
             "match_score": entry.get("match_score"),
         },
-        "message": entry.get("answer_markdown") or entry.get("answer") or "",
+        "message": entry.get("answer") or "",
         "source": "Knowledge Base",
     }
