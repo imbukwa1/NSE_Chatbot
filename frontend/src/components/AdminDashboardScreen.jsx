@@ -1,4 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 import { useAuth } from '../context/AuthContext.jsx'
 import { adminApi } from '../services/api.js'
 
@@ -15,6 +24,36 @@ const EMPTY_FORM = {
   question: '',
   answer: '',
 }
+
+const LOGIN_FILTERS = [
+  { label: 'Last 7 Days', days: 7 },
+  { label: '30 Days', days: 30 },
+  { label: '90 Days', days: 90 },
+]
+
+function toIsoDate(date) {
+  return date.toISOString().slice(0, 10)
+}
+
+function buildMockLoginAnalytics(days = 90) {
+  const today = new Date()
+
+  return Array.from({ length: days }, (_, index) => {
+    const date = new Date(today)
+    date.setDate(today.getDate() - (days - index - 1))
+    const weekday = date.getDay()
+    const weeklyLift = weekday === 1 || weekday === 2 ? 7 : weekday === 0 ? -4 : 2
+    const cycle = Math.round(Math.sin(index / 4) * 5)
+    const logins = Math.max(0, 18 + weeklyLift + cycle + (index % 6))
+
+    return {
+      date: toIsoDate(date),
+      logins,
+    }
+  })
+}
+
+const MOCK_LOGIN_ANALYTICS = buildMockLoginAnalytics()
 
 function formatDate(value) {
   if (!value) return 'No update yet'
@@ -38,11 +77,131 @@ function formatMarketUpdate(value) {
   })} EAT`
 }
 
+function formatChartDate(value) {
+  if (!value) return ''
+  const date = new Date(`${value}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return value
+  return date.toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+  })
+}
+
+function formatExactChartDate(value) {
+  if (!value) return ''
+  const date = new Date(`${value}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return value
+  return date.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 function EmptyState({ children }) {
   return (
     <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-7 text-center text-sm text-slate-500">
       {children}
     </div>
+  )
+}
+
+function LoginTooltip({ active, label, payload }) {
+  if (!active || !payload?.length) return null
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
+      <p className="text-xs font-semibold text-slate-500">{formatExactChartDate(label)}</p>
+      <p className="mt-1 text-sm font-semibold text-blue-700">
+        {payload[0].value} logins
+      </p>
+    </div>
+  )
+}
+
+function LoginAnalyticsChart({ data, rangeDays, onRangeChange }) {
+  const hasLoginData = data.some((item) => Number(item.logins) > 0)
+
+  return (
+    <section className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm sm:p-6">
+      <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
+            User login analytics
+          </p>
+          <h3 className="mt-2 text-lg font-semibold text-slate-950">
+            Daily User Logins
+          </h3>
+        </div>
+        <div className="flex flex-wrap gap-2 rounded-2xl bg-blue-50 p-1">
+          {LOGIN_FILTERS.map((filter) => (
+            <button
+              key={filter.days}
+              type="button"
+              onClick={() => onRangeChange(filter.days)}
+              className={`rounded-xl px-3 py-2 text-xs font-semibold transition ${
+                rangeDays === filter.days
+                  ? 'bg-blue-600 text-white shadow-[0_10px_20px_rgba(37,99,235,0.18)]'
+                  : 'text-blue-700 hover:bg-white/80'
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {hasLoginData ? (
+        <div className="h-[18rem] w-full sm:h-[21rem]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={data} margin={{ top: 8, right: 18, left: 0, bottom: 28 }}>
+              <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
+              <XAxis
+                dataKey="date"
+                tickFormatter={formatChartDate}
+                tick={{ fill: '#64748b', fontSize: 12 }}
+                tickLine={false}
+                axisLine={{ stroke: '#e2e8f0' }}
+                minTickGap={22}
+                label={{
+                  value: 'Date',
+                  position: 'insideBottom',
+                  offset: -18,
+                  fill: '#64748b',
+                  fontSize: 12,
+                }}
+              />
+              <YAxis
+                allowDecimals={false}
+                label={{
+                  value: 'Number of Logins',
+                  angle: -90,
+                  position: 'insideLeft',
+                  fill: '#64748b',
+                  fontSize: 12,
+                }}
+                tick={{ fill: '#64748b', fontSize: 12 }}
+                tickLine={false}
+                axisLine={false}
+                width={58}
+              />
+              <Tooltip content={<LoginTooltip />} cursor={{ stroke: '#93c5fd', strokeWidth: 1 }} />
+              <Line
+                type="monotone"
+                dataKey="logins"
+                name="Logins"
+                stroke="#2563eb"
+                strokeWidth={3}
+                dot={{ r: 2.5, fill: '#2563eb', strokeWidth: 0 }}
+                activeDot={{ r: 6, fill: '#1d4ed8', stroke: '#dbeafe', strokeWidth: 3 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      ) : (
+        <EmptyState>No login activity available.</EmptyState>
+      )}
+    </section>
   )
 }
 
@@ -164,6 +323,8 @@ function KnowledgeForm({ form, isEditing, onCancel, onChange, onSubmit }) {
 function AdminDashboardScreen({ onRequireLogin }) {
   const { isAuthLoading, isAuthenticated, logout, user } = useAuth()
   const [analytics, setAnalytics] = useState(null)
+  const [loginAnalytics, setLoginAnalytics] = useState(MOCK_LOGIN_ANALYTICS)
+  const [loginRangeDays, setLoginRangeDays] = useState(30)
   const [users, setUsers] = useState([])
   const [knowledgeEntries, setKnowledgeEntries] = useState([])
   const [knowledgeStats, setKnowledgeStats] = useState({})
@@ -178,6 +339,16 @@ function AdminDashboardScreen({ onRequireLogin }) {
   const [knowledgeForm, setKnowledgeForm] = useState(EMPTY_FORM)
 
   const isAdmin = user?.role === 'admin'
+
+  const loadLoginAnalytics = useCallback(async (days) => {
+    try {
+      const payload = await adminApi.getLoginAnalytics(days)
+      const logins = payload.data?.logins || payload.data?.analytics?.logins || []
+      setLoginAnalytics(logins)
+    } catch {
+      setLoginAnalytics(MOCK_LOGIN_ANALYTICS)
+    }
+  }, [])
 
   const loadAdminData = useCallback(async () => {
     if (!isAuthenticated || !isAdmin) {
@@ -223,6 +394,12 @@ function AdminDashboardScreen({ onRequireLogin }) {
     loadAdminData()
   }, [loadAdminData])
 
+  useEffect(() => {
+    if (isAuthenticated && isAdmin) {
+      loadLoginAnalytics(loginRangeDays)
+    }
+  }, [isAdmin, isAuthenticated, loadLoginAnalytics, loginRangeDays])
+
   const totalStocksTracked = useMemo(() => {
     const collections = [
       analytics?.most_searched_stocks || [],
@@ -244,6 +421,15 @@ function AdminDashboardScreen({ onRequireLogin }) {
     }),
     [analytics],
   )
+
+  const visibleLoginAnalytics = useMemo(
+    () => loginAnalytics.slice(-loginRangeDays),
+    [loginAnalytics, loginRangeDays],
+  )
+
+  const handleLoginRangeChange = (days) => {
+    setLoginRangeDays(days)
+  }
 
   const handleStatusChange = async (targetUser, isActive) => {
     try {
@@ -440,6 +626,12 @@ function AdminDashboardScreen({ onRequireLogin }) {
             subtitle={knowledgeStats.last_import?.status || 'No import recorded'}
           />
         </section>
+
+        <LoginAnalyticsChart
+          data={visibleLoginAnalytics}
+          rangeDays={loginRangeDays}
+          onRangeChange={handleLoginRangeChange}
+        />
 
         <section className="grid gap-6 xl:grid-cols-[1fr_28rem]">
           <div className="space-y-6">

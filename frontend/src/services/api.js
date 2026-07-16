@@ -171,6 +171,10 @@ export const adminApi = {
     return apiRequest('/admin/analytics')
   },
 
+  async getLoginAnalytics(days = 30) {
+    return apiRequest(`/admin/analytics/logins?days=${encodeURIComponent(days)}`)
+  },
+
   async getUsers() {
     return apiRequest('/admin/users')
   },
